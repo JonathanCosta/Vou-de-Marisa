@@ -1,0 +1,48 @@
+.sprite-sprite, .sprite-sprite-facebook, .sprite-sprite-gplus, .sprite-sprite-linkedin, .sprite-sprite-marisa-site, .sprite-sprite-marisa, .sprite-sprite-twitter {
+  background: url('../images/sprite-sea97c42775.png') no-repeat;
+}
+
+.sprite-sprite-facebook {
+  background-position: 0 -282px;
+}
+
+.sprite-sprite-gplus {
+  background-position: 0 -117px;
+}
+
+.sprite-sprite-linkedin {
+  background-position: 0 -234px;
+}
+
+.sprite-sprite-marisa-site {
+  background-position: 0 -213px;
+}
+
+.sprite-sprite-marisa {
+  background-position: 0 0;
+}
+
+.sprite-sprite-twitter {
+  background-position: 0 -165px;
+}
+
+@font-face {
+  font-family: "Sanchez-Italic";
+  src: url('../fonts/Sanchez-Italic.woff') format('woff');
+}
+
+#header h1 {
+  display: block;
+  width: 20px;
+  height: 21px;
+  text-indent: -99999px;
+  font-family: "Sanchez-Italic";
+}
+
+.box {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+}

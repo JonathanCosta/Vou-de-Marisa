@@ -1,0 +1,28 @@
+//SPRITE
+$toolbar-spacing: 5px;
+$toolbar-layout: 'smart';
+@import "sprite/*.png";
+@include all-sprite-sprites;
+
+//WEB-FONTS
+@import "compass/css3";
+@include font-face("Sanchez-Italic", font-files("Sanchez-Italic.woff"));
+
+//COLORS
+$marisa: #de0084;
+$marisa-light: #e9008a;
+$branco: #fff;
+
+//MIXINS
+
+//ELEMENTS
+#header h1 {
+	display: block;
+	width: 10px +;
+    height: image-height("sprite/sprite-marisa-site.png");
+    text-indent: -99999px;
+    font-family: "Sanchez-Italic";
+}
+
+//CLASSES
+.box { @include border-radius(20px); }
