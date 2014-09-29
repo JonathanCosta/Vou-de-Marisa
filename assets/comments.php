@@ -1,3 +1,4 @@
+<?php define("page", "comments"); ?>
 <?php
 // Do not delete these lines
 	if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))

@@ -1,0 +1,140 @@
+(function(){
+    'use strict';
+
+    /*
+     *
+     *
+     * GLOBAL VARS
+     *
+     *
+     */
+
+    /*
+     *
+     *
+     * GENERAL FUNCTIONS AND CLASSES
+     *
+     *
+     */
+
+    var BannerCarrossel = function BannerCarrossel($el) {
+        this.$el = $el;
+        this.interval = 5000;
+        this.actual = 0;
+        this.slides = 0;
+        this.width = 0;
+        this.widthStep = 0;
+        this.direction = 'foward';
+        this.$slider = $el.find('.arrow');
+        this.$sliderPrev = $el.find('.arrow.previous');
+        this.$sliderNext = $el.find('.arrow.next');
+        this.buildElements();
+    }; //CONSTRUCTOR
+
+    BannerCarrossel.prototype.buildElements = function() {
+        var self = this;
+        if(this.$el.length) {
+            this.$el.find('li').each(function( index ) {
+
+                var bg = $(this).data('bg'),
+                    fg = $(this).data('fg'),
+                    link = $(this).data('link'),
+                    target_window = $(this).data('window');
+
+                $(this).append('<div href="'+link+'" class="headerBg"></div>');
+                $(this).find('.headerBg').css( "background-image", "url('"+bg+"')" );
+
+                $(this).append('<a href="'+link+'" class="headerFg"></a>');
+                $(this).find('a').css( "background-image", "url('"+fg+"')" );
+
+                if ( target_window == 1 ) { $(this).find('a').attr('target','_blank'); }
+                //WIDTH OF UL ELEMENT
+                self.width += parseInt($(this).width(), 10);
+                self.widthStep = parseInt($(this).width(), 10);
+                self.slides = self.$el.find('li').length;
+            });
+            this.$slider.on('click', function(e){
+                self[$(this).hasClass('previous') ? 'previous' : 'next']();
+            });
+            self.animaIn(this.actual);
+        }
+    };
+
+    BannerCarrossel.prototype.previous = function(e) {
+        this.actual--;
+        this.animaOut(this.actual+1);
+        this.direction = 'backward';
+    };
+
+    BannerCarrossel.prototype.next = function() {
+        this.actual++;
+        this.animaOut(this.actual-1);
+        this.direction = 'foward';
+    };
+
+    BannerCarrossel.prototype.animaOut = function(index) {
+        var self = this;
+        var param;
+        if (this.direction == 'foward') {
+            param = -this.widthStep;
+        } else if (this.direction == 'backward') {
+            param = this.widthStep;
+            console.log(param);
+        }
+        console.log(this.direction);
+        TweenLite.to(this.$el.find('li .headerFg').eq(index), 0.6, {opacity:0, left:param, onComplete: step2});
+        function step2() {
+            TweenLite.to(self.$el.find('li .headerBg').eq(index), 0.5, {opacity: 0});
+            self.animaIn();
+        }
+    };
+
+    BannerCarrossel.prototype.animaIn = function() {
+        this.checkArrows();
+        var index = this.actual;
+        var self = this;
+        var param;
+        if (this.direction == 'foward') {
+            this.$el.find('li .headerFg').eq(index).css('left', (this.widthStep)+'px');
+            param = 0;
+        } else {
+            param = this.widthStep;
+        }
+        TweenLite.to(this.$el.find('li .headerBg').eq(index), 0.6, { opacity:1, onComplete: step2});
+        function step2() {
+            TweenLite.to(self.$el.find('li .headerFg').eq(index), 0.5, { opacity:1, left:param});
+        }
+    };
+
+    BannerCarrossel.prototype.checkArrows = function() {
+        if (this.actual <= 0 ) {
+            TweenLite.to(this.$sliderPrev, 1, {left:"-200px"});
+            TweenLite.to(this.$sliderNext, 1, {right:"10px"});
+            return false;
+        } else if (this.actual >= this.slides - 1 ) {
+            TweenLite.to(this.$sliderNext, 1, {right:"-200px"});
+            TweenLite.to(this.$sliderPrev, 1, {left:"10px"});
+            return false;
+        } else {
+            TweenLite.to(this.$sliderNext, 1, {right:"10px"});
+            TweenLite.to(this.$sliderPrev, 1, {left:"10px"});
+        }
+    };
+
+    BannerCarrossel.prototype.timer = function() {
+
+    };
+
+    /*
+     *
+     *
+     * ON PAGE READY
+     *
+     *
+     */
+    $(function(){
+        var banner = new BannerCarrossel($('#banner'));
+        window.banner = banner;
+    });
+
+})();

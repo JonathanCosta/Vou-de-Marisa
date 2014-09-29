@@ -1,0 +1,53 @@
+(function(){
+    'use strict';
+
+    /*
+     *
+     *
+     * GLOBAL VARS
+     *
+     *
+     */
+    var timer;
+
+    /*
+     *
+     *
+     * GENERAL FUNCTIONS
+     *
+     *
+     */
+
+
+    /*
+     *
+     *
+     * ON PAGE READY
+     *
+     *
+     */
+    $(function(){
+        var totalWidth = 0;
+        //HAS BANNERS?
+        if( $('#banner ul li').length) {
+            (function(){
+                $('#banner ul li').each(function( index ) {
+                    console.log($(this));
+                    var bg = $(this).data('bg'); $('#hiddenDIV').append('<img src="'+bg+'">');
+                    var fg = $(this).data('fg'); $('#hiddenDIV').append('<img src="'+fg+'">');
+                    var link = $(this).data('link'); if(link.indexOf('http')<1) { link = "http://"+link; }
+                    var target_window = $(this).data('window');
+                    $(this).parent().parent().parent().css( "background-image", "url('"+bg+"')" );
+                    $(this).append('<a href="'+link+'" class="headerFg"></a>');
+                    $(this).find('a').css( "background-image", "url('"+fg+"')" );
+                    if ( target_window == 1 ) { $(this).find('a').attr('target','_blank'); }
+                    //WIDTH OF UL
+                    totalWidth += parseInt($(this).width(), 10);
+                });
+                $('#banner').attr('data-count', '0');
+                $('#banner ul').css('width', totalWidth+'px');
+            })();
+        }
+    });
+
+})();
