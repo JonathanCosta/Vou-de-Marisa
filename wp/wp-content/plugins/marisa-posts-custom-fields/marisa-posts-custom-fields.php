@@ -22,6 +22,7 @@ function show_post_cf() {
     global $post;  
     $cf_banner_foreground = get_post_meta($post->ID, 'cf_banner_foreground', true);
     $cf_banner_background = get_post_meta($post->ID, 'cf_banner_background', true);
+    $cf_banner_foreground_mobile = get_post_meta($post->ID, 'cf_banner_foreground_mobile', true);
     $cf_banner_exibirhome = get_post_meta($post->ID, 'cf_banner_exibirhome', true);
     $cf_banner_exibircarrossel = get_post_meta($post->ID, 'cf_banner_exibircarrossel', true);
     
@@ -41,6 +42,12 @@ function show_post_cf() {
             jQuery('#cf_banner_background_buttom').click(function() {
                 formfield = jQuery('#cf_banner_background').attr('name');
                 window.formimgid = '#cf_banner_background';
+                tb_show('', 'media-upload.php?type=image&TB_iframe=true');
+                return false;
+            });
+            jQuery('#cf_banner_foreground_mobile_buttom').click(function() {
+                formfield = jQuery('#cf_banner_foreground_mobile').attr('name');
+                window.formimgid = '#cf_banner_foreground_mobile';
                 tb_show('', 'media-upload.php?type=image&TB_iframe=true');
                 return false;
             });
@@ -77,7 +84,7 @@ function show_post_cf() {
     echo '<tr>';
     echo '    <th><label for="cf_banner_foreground">Imagem</label></th>';
     echo '    <td><input id="cf_banner_foreground" type="text" size="36" name="cf_banner_foreground" value="'.$cf_banner_foreground.'">
-                  <input id="cf_banner_foreground_buttom" type="button" value="Upload Image" class="button add-image"/>
+                  <input id="cf_banner_foreground_buttom" type="button" value="Set Image" class="button add-image"/>
                   <br />';
     if ( isset($cf_banner_foreground) && strlen($cf_banner_foreground) > 0 ) {
         echo "<img style='width:100%;' src='{$cf_banner_foreground}' alt=''/>";
@@ -86,10 +93,19 @@ function show_post_cf() {
     echo '<tr>';
     echo '    <th><label for="cf_banner_background">Background</label></th>';
     echo '    <td><input id="cf_banner_background" type="text" size="36" name="cf_banner_background" value="'.$cf_banner_background.'">
-                  <input id="cf_banner_background_buttom" type="button" value="Upload Image" class="button add-image"/>
+                  <input id="cf_banner_background_buttom" type="button" value="Set Image" class="button add-image"/>
                   <br />';
     if ( isset($cf_banner_background) && strlen($cf_banner_background) > 0 ) {
         echo "<img style='max-width:100%;' src='{$cf_banner_background}' alt=''/>";
+    }
+    echo '</td></tr>';
+    echo '<tr>';
+    echo '    <th><label for="cf_banner_foreground_mobile">Imagem do Banner Mobile</label></th>';
+    echo '    <td><input id="cf_banner_foreground_mobile" type="text" size="36" name="cf_banner_foreground_mobile" value="'.$cf_banner_foreground_mobile.'">
+                  <input id="cf_banner_foreground_mobile_buttom" type="button" value="Set Image" class="button add-image"/>
+                  <br />';
+    if ( isset($cf_banner_foreground_mobile) && strlen($cf_banner_foreground_mobile) > 0 ) {
+        echo "<img style='max-width:100%;' src='{$cf_banner_foreground_mobile}' alt=''/>";
     }
     echo '</td></tr>';
     
@@ -149,6 +165,15 @@ function save_post_cf($post_id) {
                 update_post_meta($post_id, "cf_banner_background", $new);
             } elseif ('' == $new && $old) {
                 delete_post_meta($post_id, "cf_banner_background", $old);
+            }
+    
+    
+            $old = get_post_meta($post_id, "cf_banner_foreground_mobile", true);
+            $new = $_POST["cf_banner_foreground_mobile"];
+            if ($new && $new != $old) {
+                update_post_meta($post_id, "cf_banner_foreground_mobile", $new);
+            } elseif ('' == $new && $old) {
+                delete_post_meta($post_id, "cf_banner_foreground_mobile", $old);
             }
     
             

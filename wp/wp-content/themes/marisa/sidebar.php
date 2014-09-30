@@ -16,18 +16,14 @@
                         COMPARTILHE
                     </header>
                     <?php 
-                    $link = the_permalink();
-                    if (strlen($facebook)>0) {
-                        echo "<a href=\"http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)".urlencode($actual_link)."\" target=\"_blank\" title=\"Facebook do autor\" class=\"sprite-facebook-author\">Facebook</a>";
-                    } 
+
+                    $actual_link = get_permalink();
+                    echo "<a href=\"http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)".urlencode($actual_link)."\" target=\"_blank\" title=\"Facebook do autor\" class=\"sprite-facebook-author\">Facebook</a>";
+
+                    echo "<a href=\"http://www.twitter.com/share?text=Li+e+gostei+no+Blog+da+Marisa&url=".urlencode($actual_link)."\" target=\"_blank\" title=\"Twitter do autor\" class=\"sprite-twitter-author\">Twitter</a>";
+
+                    echo "<a href=\"http://plus.google.com/share?url=".urlencode($actual_link)."\" target=\"_blank\" title=\"Google Plus do autor\" class=\"sprite-gplus-author\">Google Plus</a>";
                     
-                    if (strlen($twitter)>0) {
-                        echo "<a href=\"http://www.twitter.com/share?text=Li+e+gostei+no+Blog+da+Marisa&url=".urlencode($actual_link)."\" target=\"_blank\" title=\"Twitter do autor\" class=\"sprite-twitter-author\">Twitter</a>";
-                    } 
-                        
-                    if (strlen($gplus)>0) {
-                        echo "<a href=\"http://plus.google.com/share?url=".urlencode($actual_link)."\" target=\"_blank\" title=\"Google Plus do autor\" class=\"sprite-gplus-author\">Google Plus</a>";
-                    }
                     ?>
                 </div>
             </div>

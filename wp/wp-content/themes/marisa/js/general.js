@@ -86,6 +86,7 @@ function moreposts(url, category) {
             this.$el.find('li').each(function( index ) {
                 var bg = $(this).data('bg'),
                     fg = $(this).data('fg'),
+                    fgm = $(this).data('fgm'),
                     link = $(this).data('link'),
                     target_window = $(this).data('window');
 
@@ -94,6 +95,7 @@ function moreposts(url, category) {
 
                 $(this).append('<a href="'+link+'" class="headerFg"></a>');
                 $(this).find('a').css( "background-image", "url('"+fg+"')" );
+                $(this).find('a').attr( "mobile", fgm)" );
 
                 if ( target_window == 1 ) { $(this).find('a').attr('target','_blank'); }
                 //WIDTH OF UL ELEMENT
@@ -139,7 +141,7 @@ function moreposts(url, category) {
             this.direction = 'backward';
             this.animaOut(this.actual+1);
         } else {
-            this.actual = this.numberofelements;
+            this.actual = this.numberofelements - 1;
             this.next();
         }
     };
@@ -150,7 +152,7 @@ function moreposts(url, category) {
             this.direction = 'foward';
             this.animaOut(this.actual-1);
         } else {
-            this.actual = 1;
+            this.actual = 0;
             this.previous();
         }
     };
@@ -167,10 +169,11 @@ function moreposts(url, category) {
         function step2() {
             TweenLite.to(self.$el.find('li .headerBg').eq(index), 0.5, {opacity: 0, oncomplete: displaynone(self)});
             TweenLite.to(self.$el.find('li .headerBg').eq(self.actual), 0.5, { opacity:1});
-            self.animaIn();
-        }
-        function displaynone(el) {
-            el.$el.find('li').eq(index).css('display','none');
+            
+            function displaynone(el) {
+                el.$el.find('li').eq(index).css('display','none');
+                self.animaIn();
+            }
         }
     };
 
@@ -198,15 +201,18 @@ function moreposts(url, category) {
             TweenLite.to(this.$sliderPrev, 0.5, {left:"10px", opacity: 1});
             return false;
         } else {
-            TweenLite.to(this.$sliderNext, 0.5, {right:"10px"});
-            TweenLite.to(this.$sliderPrev, 0.5, {left:"10px"});
+            TweenLite.to(this.$sliderNext, 0.5, {right:"10px", opacity: 1});
+            TweenLite.to(this.$sliderPrev, 0.5, {left:"10px", opacity: 1});
         }
     }; 
 
     BannerCarrossel.prototype.timer = function() {
-        if( $('.film:visible').length < 1 ) {
+        if( $('.film:visible').length < 1 && this.slides > 1 ) {
             var $this = this;
             this.timer = window.setInterval(function(){ $this.next(); },this.interval);
+        } else {
+            $('.bullets').hide();
+            $('.arrows').hide();
         }
     };
 
@@ -244,75 +250,117 @@ function moreposts(url, category) {
                 }
             }
             
-            if ( scrolled >= $('#socials').position().top - $(window).outerHeight() + 150 ) {
-                //TWITTER
-                if (ajax === true) {
-                    ajax = false;
-                    $.ajax({
-                        url: themeurl+"/inc/facebook.php",
-                        dataType: "text/html",
-                        complete: function (data) {
-                            var $temp = $($.parseHTML( data.responseText )).find('li');
-                            $('.box_facebook_lis img').remove();
-                            $temp.prevObject.each(function( index ) {
-                                $('.box_facebook_lis').append(this);
-                            });
-                            //ajax = true;
-                        },
-                        error: function () {
+            if ($('#socials:visible').length > 0) {
+                if ( scrolled >= $('#socials').position().top - $(window).outerHeight() + 150 ) {
+                    //TWITTER
+                    if (ajax === true) {
+                        ajax = false;
+                        $.ajax({
+                            url: themeurl+"/inc/facebook.php",
+                            dataType: "text/html",
+                            complete: function (data) {
+                                var $temp = $($.parseHTML( data.responseText )).find('li');
+                                $('.box_facebook_lis img').remove();
+                                $temp.prevObject.each(function( index ) {
+                                    $('.box_facebook_lis').append(this);
+                                });
+                                //ajax = true;
+                            },
+                            error: function () {
 
-                        }
-                    });
-                    
-                    ajax = false;
-                    $.ajax({
-                        url: themeurl+"/inc/tweets.php",
-                        dataType: "text/html",
-                        complete: function (data) {
-                            var $temp = $($.parseHTML( data.responseText )).find('li');
-                            $('.box_twitter_lis img').remove();
-                            $temp.prevObject.each(function( index ) {
-                                $('.box_twitter_lis').append(this);
-                            });
-                            //ajax = true;
-                        },
-                        error: function () {
+                            }
+                        });
 
-                        }
-                    });
-                    
-                    $.ajax({
-                        url: themeurl+"/inc/instagram.php",
-                        dataType: "text/html",
-                        complete: function (data) {
-                            var $temp = $($.parseHTML( data.responseText )).find('li');
-                            $('.box_instagram_lis img').remove();
-                            $temp.prevObject.each(function( index ) {
-                                $('.box_instagram_lis').append(this);
-                            });
-                            //ajax = true;
-                        },
-                        error: function () {
+                        ajax = false;
+                        $.ajax({
+                            url: themeurl+"/inc/tweets.php",
+                            dataType: "text/html",
+                            complete: function (data) {
+                                var $temp = $($.parseHTML( data.responseText )).find('li');
+                                $('.box_twitter_lis img').remove();
+                                $temp.prevObject.each(function( index ) {
+                                    $('.box_twitter_lis').append(this);
+                                });
+                                //ajax = true;
+                            },
+                            error: function () {
 
-                        }
-                    });
-                    
-                    $.ajax({
-                        url: themeurl+"/inc/gplus.php",
-                        dataType: "text/html",
-                        complete: function (data) {
-                            var $temp = $($.parseHTML( data.responseText )).find('li');
-                            $('.box_gplus_lis img').remove();
-                            $temp.prevObject.each(function( index ) {
-                                $('.box_gplus_lis').append(this);
-                            });
-                            //ajax = true;
-                        },
-                        error: function () {
+                            }
+                        });
 
-                        }
-                    });
+                        $.ajax({
+                            url: themeurl+"/inc/instagram.php",
+                            dataType: "text/html",
+                            complete: function (data) {
+                                var $temp = $($.parseHTML( data.responseText )).find('li');
+                                $('.box_instagram_lis img').remove();
+                                $temp.prevObject.each(function( index ) {
+                                    $('.box_instagram_lis').append(this);
+                                });
+                                //ajax = true;
+                            },
+                            error: function () {
+
+                            }
+                        });
+
+                        $.ajax({
+                            url: themeurl+"/inc/gplus.php",
+                            dataType: "text/html",
+                            complete: function (data) {
+                                var $temp = $($.parseHTML( data.responseText )).find('li');
+                                $('.box_gplus_lis img').remove();
+                                $temp.prevObject.each(function( index ) {
+                                    $('.box_gplus_lis').append(this);
+                                });
+                                //ajax = true;
+                            },
+                            error: function () {
+
+                            }
+                        });
+                    }
                 }
+            }
+        });
+        
+        $(window).on( 'resize', function(){
+            if ($(window).outerWidth() < 920) {
+                //ADJUSTING MENU LI's WIDTH
+                var navwidth = $('#header nav').outerWidth();
+                var headeritens = $('#header nav ul li').length;
+                var childrenheaderitens = $('#header nav ul li ul.children li').length;
+                var x = ((navwidth)/(headeritens-childrenheaderitens-1))-1;
+                $('#header nav ul li').css('min-width',x+'px');
+                $('#header nav ul li ul.children li, #header nav ul li ul.children').css('min-width',x+'px');
+                
+                banner.$el.find('li').each(function( index ) {
+                    var bg = $(this).data('bg'),
+                        fg = $(this).data('fg'),
+                        fgm = $(this).data('fgm'),
+                        link = $(this).data('link'),
+                        target_window = $(this).data('window');
+
+                    $(this).append('<div href="'+link+'" class="headerBg"></div>');
+                    $(this).find('.headerBg').css( "background-image", "url('"+bg+"')" );
+
+                    $(this).append('<a href="'+link+'" class="headerFg"></a>');
+                    $(this).find('a').css( "background-image", "url('"+fg+"')" );
+                    $(this).find('a').attr( "mobile", fgm)" );
+
+                    if ( target_window == 1 ) { $(this).find('a').attr('target','_blank'); }
+                    //WIDTH OF UL ELEMENT
+                    $self.width += parseInt($(this).width(), 10);
+                    $self.widthStep = parseInt($(this).width(), 10);
+                    $self.slides = $self.$el.find('li').length;
+
+                    $self.$bulletsContainer.append("<a href='#' rel='"+index+"' onclick='banner.bullet(event, "+index+");'>'"+index+"'</a>");
+
+                    $self.numberofelements++;
+
+                });
+            } else {
+                
             }
         });
         
@@ -327,13 +375,11 @@ function moreposts(url, category) {
             lightboxtimer = window.setTimeout(function(){ $('.closelightbox').click(); }, 5000);
         });
         
-        //ADJUSTING MENU LI's WIDTH
-        var navwidth = $('#header nav').outerWidth();
-        var headeritens = $('#header nav ul li').length;
-        var childrenheaderitens = $('#header nav ul li ul.children li').length;
-        var x = ((navwidth)/(headeritens-childrenheaderitens))-1;
-        $('#header nav ul li').css('min-width',x+'px');
-        $('#header nav ul li ul.children li, #header nav ul li ul.children').css('min-width',x+'px');
+        $('.menumobile').on('click', function(event){
+            event.preventDefault();
+            $('#header nav ul').slideToggle(300);
+        });
+        
         
     });
 

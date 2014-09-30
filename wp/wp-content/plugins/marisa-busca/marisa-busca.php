@@ -34,11 +34,11 @@ function busca_entries( ) {
         <div class="artigo <?php
             if ($count % 3 == 0) { echo "first"; }
         ?>">
-            <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+            <a href="<?php the_permalink() ?>"><?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?></a>
             <div class="call-box">
                 <h3><?php echo $first; ?><?php the_category(); ?></h3>
                 <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-                <p><?php the_field('resumo_de_capa'); ?></p>
+                <p><a href="<?php the_permalink() ?>"><?php the_field('resumo_de_capa'); ?></a></p>
             </div>
         </div>
         <?php $count++; ?>

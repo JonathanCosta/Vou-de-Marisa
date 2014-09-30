@@ -19,7 +19,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     <div class="artigo <?php
         if ($count % 3 == 0) { echo "first"; }
     ?>" style="opacity:0;">
-        <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+        <a href="<?php the_permalink() ?>"><?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?></a>
         <div class="call-box">
             <h3><?php echo $first; ?><?php the_category(); ?></h3>
             <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>

@@ -17,8 +17,8 @@
 	<?php if ( have_comments() ) : ?>
 	
 		<ol class="commentlist">
-		<?php wp_list_comments('avatar_size=64&type=comment'); ?>   
-    </ol>
+            <?php wp_list_comments('avatar_size=64&type=comment'); ?>   
+        </ol>
     
 		<?php if ($wp_query->max_num_pages > 1) : ?>
 		<div class="pagination">

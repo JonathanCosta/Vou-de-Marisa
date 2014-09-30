@@ -17,7 +17,7 @@ query_posts($args);
             <?php while ( have_posts() ) { ?>
             <?php the_post(); ?>
             <?php $postid = get_the_ID(); ?>
-            <li id="<? echo $postid; ?>" data-title="<?php the_title(); ?>" data-link="<?php echo get_permalink(); ?>" data-window="_self" data-bg="<?php echo get_post_meta($postid, 'cf_banner_background', true); ?>" data-fg="<?php echo get_post_meta($postid, 'cf_banner_foreground', true); ?>"></li>
+            <li id="<? echo $postid; ?>" data-title="<?php the_title(); ?>" data-link="<?php echo get_permalink(); ?>" data-window="_self" data-bg="<?php echo get_post_meta($postid, 'cf_banner_background', true); ?>" data-fg="<?php echo get_post_meta($postid, 'cf_banner_foreground', true); ?>" data-fgm="<?php echo get_post_meta($postid, 'cf_banner_foreground_mobile', true); ?>"></li>
             <?php } //endwhile ?>
         </ul>
         <ico class="arrow previous sprite-previous"><</ico>
@@ -54,20 +54,17 @@ query_posts($args);
 				<div class="artigo <?php
                     if ($count % 3 == 0) { echo "first"; }
                 ?>">
-					<?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
-					<div class="call-box">
-						<h3><?php echo $first; ?><?php the_category(); ?></h3>
-						<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-						<p><?php the_field('resumo_de_capa'); ?></p>
-						<!--p>Postado por <?php the_author() ?> em <?php the_time('d/M/Y') ?> - <?php comments_popup_link('Sem Comentários', '1 Comentário', '% Comentários', 'comments-link', ''); ?> <?php edit_post_link('(Editar)'); ?></p-->
-					</div>
+                    <a href="<?php the_permalink() ?>"><?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?></a>
+                    <div class="call-box">
+                        <h3><?php echo $first; ?><?php the_category(); ?></h3>
+                        <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
+                        <p><a href="<?php the_permalink() ?>"><?php the_field('resumo_de_capa'); ?></a></p>
+                    </div>
+                    
 				</div>
                 <?php $count++; ?>
                 <?php endwhile?>
-				<!--div class="navegacao">
-					<div class="recentes"><?php next_posts_link('&laquo; Artigos Anteriores') ?></div>
-					<div class="anteriores"><?php previous_posts_link('Artigos Recentes &raquo;') ?></div>
-				</div-->
+				
 			<?php else: ?>
 				<div class="artigo">
 					<h2>Nada Encontrado</h2>

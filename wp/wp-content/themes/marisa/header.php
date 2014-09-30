@@ -7,14 +7,17 @@ $theme_opts = get_option('marisa_options');
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+<meta name="viewport" content="width=640, initial-scale=1, maximum-scale=1">
 <title><?php wp_title(''); ?></title>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); wp_head(); ?>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/main.css?2" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/main.css?5" />
 </head>
     
 <?php 
+
+    $current_user = wp_get_current_user();
 
     if ( is_home() ) {
         $backg = "style=\"background:url(".$theme_opts['marisa_home_background'].") center center;\"";
@@ -41,7 +44,7 @@ $theme_opts = get_option('marisa_options');
     
 <body class="<?php echo constant("page"); ?>" <?php echo $backg; ?>>
 
-    <section id="sup-header">
+    <section id="sup-header" class="hidemobile">
         <ul>
             <?php if (isset($theme_opts['marisa_cartao_marisa']) && strlen($theme_opts['marisa_cartao_marisa']) > 0) { ?>
             <li><a href="http://<?php echo $theme_opts['marisa_cartao_marisa']; ?>" target="_blank">Cart&atilde;o Marisa</a></li>
@@ -72,27 +75,37 @@ $theme_opts = get_option('marisa_options');
     
 	<section id="header">
         <div class="container">
-            <h1 class="" onclick="document.location = '/';">
+            <a class="nav mobile menumobile">Exibir Menu Mobile</a>
+            <h1 class="" onclick="document.location = '<?php echo site_url(); ?>';">
                 <a href="<?php echo $theme_opts['marisa_logo_header_link']; ?>" title="<?php bloginfo('name'); ?>">
-                    <img src="<?php echo $theme_opts['marisa_logo_header_fd']; ?>" alt="<?php bloginfo('name'); ?>" title="<?php bloginfo('name'); ?>" />
+                    <img src="<?php echo $theme_opts['marisa_logo_header_fd']; ?>" alt="<?php bloginfo('name'); ?>" title="<?php bloginfo('name'); ?>" class="hidemobile" />
+                    <img src="<?php echo $theme_opts['marisa_logo_header_mobile_fd']; ?>" alt="<?php bloginfo('name'); ?>" title="<?php bloginfo('name'); ?>" class="mobile" />
                 </a>
             </h1>
+            <?php if ( strlen($current_user->user_firstname) < 1 ) { ?>
+            <a href="<?php echo site_url(); ?>/cadastre-se/" class="nav mobile entrar"><ico class="entrar sprite-door"></ico> Entrar</a>
+            <?php } else { ?>
+            <div class="sprite-home-user mobile">
+                Ol&aacute; 
+                <a href="meus-dados/">
+                   <?php echo $current_user->user_firstname; ?>
+                </a>
+            </div>
+            <?php } ?>
             <form class="<?php             
-                            $current_user = wp_get_current_user();
                             if ( 0 < $current_user->ID ) {
                                 echo "logged";
                             }
-
                           ?>" action="<?php get_site_url(); ?>/busca" method="get">
                     <input type="text" name="b" class="txtbusca" placeholder="O que voc&ecirc; procura?" />
                     <button value="btbusca" class="sprite-sprite-busca">O que voc&ecirc; procura?</button>
             </form>
-            <a href="<?php echo site_url(); ?>/parceiros/" class="nav"><ico class="parceiros sprite-people"></ico> Parceiros</a>
+            <a href="<?php echo site_url(); ?>/parceiros/" class="nav hidemobile parceiros"><ico class="parceiros sprite-people"></ico> Parceiros</a>
             <?php if ( strlen($current_user->user_firstname) < 1 ) { ?>
-            <a href="<?php echo site_url(); ?>/cadastre-se/" class="nav"><ico class="cadastro sprite-form"></ico> Cadastre-se</a>
-            <a class="nav"><ico class="entrar sprite-door"></ico> Entrar</a>
+            <a href="<?php echo site_url(); ?>/cadastre-se/" class="nav hidemobile cadastro"><ico class="cadastro sprite-form"></ico> Cadastre-se</a>
+            <a class="nav hidemobile entrar"><ico class="entrar sprite-door"></ico> Entrar</a>
             <?php } else { ?>
-            <div class="sprite-home-user">
+            <div class="sprite-home-user hidemobile">
                 Ol&aacute; 
                 <a href="meus-dados/">
                    <?php echo $current_user->user_firstname; ?>
@@ -100,7 +113,7 @@ $theme_opts = get_option('marisa_options');
             </div>
             <?php } ?>
             
-            <nav>
+            <nav class="">
                 <ul>
                     <?php 
                         $args = array(
@@ -108,8 +121,9 @@ $theme_opts = get_option('marisa_options');
                             'style'    => 'list',
                             'title_li' => ''
                         );
-                        wp_list_categories( $args ); 
+                        wp_list_categories( $args );
                     ?>
+                    <li class="cat-item cat-item-6 mobile"><a href="<?php echo site_url(); ?>/parceiros/"><ico class="sprite-people"></ico>Parceiros</a></li>
                 </ul>
             </nav>
         </div>

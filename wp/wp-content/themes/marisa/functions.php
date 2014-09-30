@@ -20,7 +20,7 @@ add_action( 'init', 'create_post_tags' );
 /*
  *
  *
- * NEW POST TYPE CARROSSEL
+ * NEW POST TYPE TAG
  *
  *
  */

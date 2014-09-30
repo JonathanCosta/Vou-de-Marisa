@@ -28,6 +28,7 @@ module.exports = function (grunt) {
 
         autoprefixer: {
             // In-depth information about the options:
+            // In-depth information about the options:
             // https://github.com/nDmitry/grunt-autoprefixer#options
             options: {
                 browsers: [ 'last 2 version', 'ie 6', 'ie 7', 'ie 8' ],
@@ -251,7 +252,7 @@ module.exports = function (grunt) {
             },
             scripts: {
                 files: '<%= settings.dir.src %>/**',
-                tasks: ['jshint','copy','compass'],
+                tasks: ['copy','compass'],
                 options: {
                     spawn: false
                 }

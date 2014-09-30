@@ -179,7 +179,7 @@ body {
 }
 
 #sup-header {
-  height: 30px;
+  height: 34px;
   background-color: #000;
   margin-bottom: 1px solid #888888;
   z-index: 1;
@@ -191,20 +191,25 @@ body {
   width: 100%;
   margin: 0 auto;
   text-align: right;
+  overflow: hidden;
+  height: 100%;
 }
 #sup-header li {
-  display: inline-flex;
+  display: inline-block;
   margin: 7.5px 24px;
-}
-#sup-header li.box {
-  margin: 7.5px 8px;
+  overflow: hidden;
 }
 #sup-header li a {
   color: #fff;
   font-size: 14px;
 }
+#sup-header li.box {
+  margin: 10px 8px;
+}
 #sup-header li.box a {
   text-indent: -99999px;
+  display: block;
+  width: 100%;
   opacity: 0;
 }
 
@@ -302,6 +307,9 @@ body {
   z-index: 1;
 }
 #header nav ul li:last-child {
+  border-right: 0px solid #efefef;
+}
+#header nav ul li.cat-item-5 {
   border-right: 0px solid #efefef;
 }
 #header nav ul li a {
@@ -486,6 +494,10 @@ body {
   padding: 0 0px;
   color: #fff;
 }
+#artigos .artigo .call-box p a {
+  color: #fff;
+  text-decoration: none;
+}
 #artigos .artigo.first {
   margin: 20px 0px 0px 0px;
 }
@@ -542,7 +554,7 @@ body {
   line-height: 12px;
   color: #fff;
   display: block;
-  height: 54%;
+  height: 28px;
   font-weight: 200;
   text-transform: capitalize;
   padding-top: 4px;
@@ -654,6 +666,111 @@ body {
   height: 20px;
   line-height: 20px;
   border-bottom: 4px solid #a7a9ac;
+}
+#artigos .content_post .facebook-comentarios {
+  border: 1px solid #cccccc;
+}
+#artigos .content_post .facebook-comentarios h3 {
+  padding-left: 0px;
+  line-height: 31px;
+  text-indent: 22px;
+  background: #de0084;
+  border: 0;
+  height: 31px;
+  color: #fff;
+  font-family: 'verlagbold';
+  font-size: 16px;
+  text-transform: uppercase;
+  min-height: 0;
+}
+#artigos .content_post .commentlist .comment-body {
+  position: relative;
+  border-bottom: 1px solid #cccccc;
+  clear: both;
+  overflow: hidden;
+}
+#artigos .content_post .commentlist .comment-body .comment-author {
+  position: relative;
+  padding: 30px;
+  display: block;
+  float: left;
+}
+#artigos .content_post .commentlist .comment-body .comment-author span {
+  display: none;
+}
+#artigos .content_post .commentlist .comment-body .comment-author .fn {
+  position: absolute;
+  display: block;
+  top: 30px;
+  left: 124px;
+  width: 160px;
+  overflow: hidden;
+}
+#artigos .content_post .commentlist .comment-body .comment-author .fn a {
+  opacity: 1;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+#artigos .content_post .commentlist .children .comment-body {
+  padding-left: 58px;
+}
+#artigos .content_post .commentlist a {
+  font-family: 'arial';
+  font-size: 14px;
+  color: #000;
+  opacity: .6;
+  font-weight: 100;
+}
+#artigos .content_post .commentlist .comment-meta {
+  display: block;
+  float: left;
+  padding: 30px 0 0 168px;
+}
+#artigos .content_post .commentlist .reply {
+  float: right;
+  padding: 30px 30px 0;
+}
+#artigos .content_post .commentlist p {
+  float: left;
+  position: absolute;
+  left: 124px;
+  top: 40px;
+  font-family: 'arial';
+  font-size: 13px;
+  line-height: 15px;
+}
+#artigos .content_post .commentlist .children p {
+  left: 182px;
+}
+#artigos .content_post #respond {
+  padding: 20px;
+  clear: both;
+}
+#artigos .content_post #respond h3 {
+  display: none;
+}
+#artigos .content_post #respond fieldset label {
+  display: none;
+}
+#artigos .content_post #respond textarea {
+  width: 96%;
+  height: 80px;
+  padding: 2%;
+}
+#artigos .content_post #respond .commentsubmit {
+  display: block;
+  width: 150px;
+  height: 32px;
+  background: #de0084;
+  color: #fff;
+  font-family: 'verlagbold';
+  font-size: 16px;
+  border: 0;
+  margin-top: 4px;
+  cursor: pointer;
+}
+#artigos .content_post #respond .cancel {
+  display: none;
 }
 
 .pagecontent {
@@ -1071,6 +1188,9 @@ body {
   width: 90%;
   margin: 0 5%;
   padding: 0 0px;
+  color: #fff;
+}
+#relacionados .artigo .call-box p a {
   color: #fff;
 }
 #relacionados .artigo.first {
@@ -1617,4 +1737,357 @@ html {
 
 button {
   cursor: pointer;
+}
+
+.mobile {
+  display: none;
+}
+
+@media screen and (max-width: 995px) {
+  #sup-header, .hidemobile, .fixed_menu, .parceiros, #socials {
+    display: none !important;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .formnewuser {
+    width: 90%;
+    top: calc(50% - 330px);
+    left: calc(50% - 230px);
+    height: auto;
+    max-width: 460px;
+  }
+  .formnewuser .left {
+    width: 100%;
+    height: auto;
+  }
+  .formnewuser .left img {
+    width: 100%;
+  }
+  .formnewuser .right {
+    width: 100%;
+    height: auto;
+  }
+  .formnewuser .right .text {
+    margin: 0px 10px 10px;
+  }
+  .formnewuser .right .text h4 {
+    font-size: 17px;
+    padding: 10px 0;
+  }
+  .formnewuser .right .text p {
+    padding-bottom: 10px;
+    font-size: 13px;
+  }
+  .formnewuser .social-bt {
+    width: 45%;
+    height: 30px;
+    margin: 12px 0px 10px 12px;
+    float: left;
+  }
+
+  #header {
+    box-shadow: 0px -2px 12px 2px #AAA;
+  }
+  #header h1 {
+    display: block;
+    font-family: "Sanchez-Italic";
+    margin: 23px auto 0px;
+    cursor: pointer;
+    max-width: 50%;
+  }
+  #header h1 img {
+    width: 100%;
+  }
+  #header nav ul {
+    display: none;
+    background: #eeeeee;
+    padding: 0 5% 10px;
+    width: 90%;
+  }
+  #header nav ul li {
+    background: #fff;
+    float: left;
+    width: 48%;
+    margin: 10px 10px 0 0;
+  }
+  #header nav ul li ul.children {
+    display: none !important;
+  }
+  #header nav ul li:hover {
+    background: #fff;
+  }
+  #header nav ul li.cat-item-2 {
+    margin: 10px 0 0 10px;
+  }
+  #header nav ul li.cat-item-4 {
+    margin: 10px 0 0 10px;
+  }
+  #header nav ul li.cat-item-6 {
+    margin: 10px 0 0 10px;
+  }
+  #header nav ul li.cat-item-6 .sprite-people {
+    position: relative;
+    top: 6px;
+    left: 79px;
+    -webkit-filter: contrast(0);
+  }
+  #header .nav.mobile {
+    width: 61px;
+    height: 56px;
+    margin-top: 6px;
+    margin-left: 5%;
+    margin-right: 6%;
+    text-indent: -99999px;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+  #header .nav.mobile.menumobile {
+    background: url(../images/menu-mobile.png) center center no-repeat;
+  }
+  #header .nav.mobile.entrar {
+    margin-left: 6%;
+    margin-right: 0%;
+    text-indent: 20px;
+    line-height: 58px;
+    position: relative;
+  }
+  #header .nav.mobile.entrar ico {
+    position: absolute;
+    margin-top: 20px;
+  }
+  #header form {
+    width: 90%;
+    height: 31px;
+    float: left;
+    margin: 0px 5% 10px;
+  }
+  #header form input {
+    width: calc(100% - 35px);
+  }
+  #header form.logged {
+    width: 90%;
+  }
+  #header form.logged input {
+    width: 94%;
+    font-size: 15px;
+    font-family: 'verlaglight';
+  }
+  #header form.logged button {
+    width: 5%;
+  }
+  #header .sprite-home-user {
+    font-size: 17px;
+    margin: 18px 0 0 18px;
+    padding: 0 10px;
+    background: url(../images/sprite/home-user.png) no-repeat -10px -1px;
+    line-height: 46px;
+    float: left;
+  }
+
+  #banner .bullets {
+    display: none;
+  }
+  #banner ico {
+    margin: 0;
+  }
+  #banner ico.next {
+    margin: 0;
+  }
+
+  #index {
+    width: 90%;
+    margin: 0 5%;
+  }
+
+  #artigos .artigo.first {
+    margin: 12px 0%;
+  }
+  #artigos .artigo {
+    margin: 12px 0%;
+    width: 100%;
+    height: 644px;
+  }
+  #artigos .artigo a {
+    width: 100%;
+    height: 644px;
+  }
+  #artigos .artigo a img {
+    width: 100%;
+    height: 100%;
+  }
+  #artigos .artigo .call-box {
+    width: 100%;
+    bottom: 20px;
+  }
+  #artigos .artigo .call-box h3 {
+    width: 90%;
+  }
+  #artigos .artigo .call-box h3 ul li {
+    font-size: 18px;
+    line-height: 34px;
+  }
+  #artigos .artigo .call-box h2 {
+    width: 90%;
+    font-size: 24px;
+    padding-top: 18px;
+    padding-bottom: 8px;
+    line-height: 28px;
+  }
+  #artigos .artigo .call-box p {
+    width: 90%;
+    font-size: 17px;
+    line-height: 20px;
+  }
+  #artigos .pagecontent {
+    margin: 0 5%;
+    width: 90%;
+  }
+  #artigos .pagecontent h1 {
+    margin: 20px 0 20px;
+    font-size: 26px;
+    line-height: 28px;
+  }
+  #artigos .pagecontent h1 a {
+    padding: 4px 0;
+  }
+  #artigos .pagecontent p {
+    font-family: 'verlaglight';
+    text-align: justify;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 100;
+  }
+  #artigos .pagecontent .author {
+    width: 100%;
+    margin: 10px 0;
+  }
+  #artigos .pagecontent .author .name {
+    font-size: 18px;
+  }
+  #artigos .pagecontent .author .description {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  #artigos .pagecontent .author a {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  #artigos .pagecontent .author img {
+    width: 100%;
+    margin-top: -60px;
+  }
+  #artigos .pagecontent .author .avatar {
+    width: 100%;
+    height: 436px;
+  }
+  #artigos .pagecontent .col1 {
+    margin-top: 10px;
+    width: 100%;
+  }
+  #artigos .pagecontent .col1 label {
+    line-height: 68px;
+    font-size: 18px;
+  }
+  #artigos .pagecontent .col1 input {
+    height: 54px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    text-indent: 12px;
+  }
+  #artigos .pagecontent .col1 select {
+    height: 54px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    text-indent: 12px;
+  }
+  #artigos .pagecontent .col1 input[type=checkbox], #artigos .pagecontent .col1 .col1.naoencontrado input[type=checkbox] {
+    margin-top: 10px;
+    margin-bottom: 0;
+    height: 16px;
+  }
+  #artigos .pagecontent .col1 button {
+    padding: 16px 20px;
+    font-size: 16px;
+    line-height: 16px;
+  }
+  #artigos .pagecontent .col1.naoencontrado h5 {
+    line-height: 88px;
+  }
+  #artigos .pagecontent .col1.naoencontrado .busca-box p {
+    line-height: 40px;
+  }
+  #artigos .pagecontent .col1.naoencontrado .busca-box p ico {
+    margin-top: 10px;
+  }
+  #artigos .pagecontent .col1.naoencontrado .busca-box p ico.sprite-key {
+    margin-top: 14px;
+  }
+  #artigos .pagecontent .col1.naoencontrado .bolder {
+    font-weight: 900;
+    font-size: 19px !important;
+  }
+  #artigos .pagecontent .col2 {
+    display: none;
+  }
+  #artigos .pagecontent .col1.naoencontrado {
+    display: block;
+    margin-top: 10px;
+  }
+  #artigos .resultados p {
+    line-height: 39px;
+  }
+
+  button.mais {
+    font-size: 16px;
+    padding: 14px 20px;
+    margin: 4px auto 20px;
+  }
+  button.mais ico {
+    margin-top: 2px;
+  }
+
+  #footer form {
+    width: 90%;
+    margin: 0 5%;
+  }
+  #footer form input {
+    width: 88%;
+    font-size: 16px;
+  }
+  #footer form button {
+    width: 7%;
+  }
+  #footer form p {
+    text-align: center;
+    font-size: 16px;
+  }
+  #footer .container div {
+    min-width: 50%;
+    margin: 0 auto;
+    float: none;
+    padding-top: 4px;
+  }
+  #footer .container div a {
+    border: 0;
+    float: left;
+  }
+  #footer .container div a img {
+    width: 144px;
+    margin-top: 5px;
+  }
+  #footer .container div p {
+    width: auto;
+    float: left;
+    font-size: 18px;
+    margin-right: 1%;
+    line-height: 38px;
+  }
+  #footer p.copyright {
+    margin-top: 0;
+  }
 }

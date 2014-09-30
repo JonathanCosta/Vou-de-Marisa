@@ -100,16 +100,22 @@ $resultssingle = new WP_Query( $args );
                         }
                         ?>
                     </div>
+                    
                     <div class="facebook-comentarios">
-                        <div id="fb-root"></div>
-                        <script>(function(d, s, id) {
+                        <!--h3><?php comments_number('0 Mensagens', '1 Mensagem', '% Mensagens' );?></h3-->
+                        
+                        <?php comments_template(); ?>
+                        
+                        <!--div id="fb-root"></div-->
+                        
+                        <!--script>(function(d, s, id) {
                           var js, fjs = d.getElementsByTagName(s)[0];
                           if (d.getElementById(id)) return;
                           js = d.createElement(s); js.id = id;
                           js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1464907580437603&version=v2.0";
                           fjs.parentNode.insertBefore(js, fjs);
-                        }(document, 'script', 'facebook-jssdk'));</script>
-                        <div class="fb-comments" data-href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+                        }(document, 'script', 'facebook-jssdk'));</script-->
+                        <!--div class="fb-comments" data-href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" data-width="100%" data-numposts="5" data-colorscheme="light"></div-->
                     </div>
 				</div>
                 <?php get_sidebar(); ?>
@@ -143,11 +149,11 @@ $resultssingle = new WP_Query( $args );
             <div class="artigo <?php
                 if ($count % 3 == 0) { echo "first"; }
             ?>">
-                <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+                <a href="<?php the_permalink() ?>"><?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?></a>
                 <div class="call-box">
-                    <h3><?php the_category(); ?></h3>
+                    <h3><?php echo $first; ?><?php the_category(); ?></h3>
                     <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-                    <p><?php the_field('resumo_de_capa'); ?></p>
+                    <p><a href="<?php the_permalink() ?>"><?php the_field('resumo_de_capa'); ?></a></p>
                 </div>
             </div>			
         <?php 

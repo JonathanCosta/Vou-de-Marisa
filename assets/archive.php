@@ -47,13 +47,12 @@ query_posts($args);
 				<div class="artigo <?php
                     if ($count % 3 == 0) { echo "first"; }
                 ?>">
-					<?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+					<a href="<?php the_permalink() ?>"><?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?></a>
 					<div class="call-box">
-						<h3><?php echo $first; ?><?php the_category(); ?></h3>
-						<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-						<p><?php the_field('resumo_de_capa'); ?></p>
-						<!--p>Postado por <?php the_author() ?> em <?php the_time('d/M/Y') ?> - <?php comments_popup_link('Sem Comentários', '1 Comentário', '% Comentários', 'comments-link', ''); ?> <?php edit_post_link('(Editar)'); ?></p-->
-					</div>
+                        <h3><?php echo $first; ?><?php the_category(); ?></h3>
+                        <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
+                        <p><a href="<?php the_permalink() ?>"><?php the_field('resumo_de_capa'); ?></a></p>
+                    </div>
 				</div>
                 <?php $count++; ?>
                 <?php endwhile?>
