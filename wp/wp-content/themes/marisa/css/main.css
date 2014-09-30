@@ -1776,6 +1776,7 @@ button.mais ico {
   background-color: black;
   min-width: 0px;
   width: 280px;
+  position: absolute;
 }
 
 html {
