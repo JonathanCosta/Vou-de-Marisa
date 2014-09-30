@@ -4,7 +4,7 @@
 $args = array(
     'posts_per_page' => 10,
     'post_type' => 'post',
-    'page' => getLastPathSegment($_SERVER['REQUEST_URI'])
+    'name' => getLastPathSegment($_SERVER['REQUEST_URI'])
 );
 query_posts($args);
 ?>
