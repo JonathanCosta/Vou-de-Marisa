@@ -1,3 +1,5 @@
 .tmp
 dist
+Gruntfile.js
 node_modules
+wp/.htaccess

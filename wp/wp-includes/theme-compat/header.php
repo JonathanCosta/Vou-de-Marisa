@@ -37,6 +37,9 @@ if ( empty($withcomments) && !is_single() ) {
 
 <?php wp_head(); ?>
 </head>
+<script>
+    window.loggedIn = <?php echo is_user_logged_in(); ?>
+</script>
 <body <?php body_class(); ?>>
 <div id="page">
 

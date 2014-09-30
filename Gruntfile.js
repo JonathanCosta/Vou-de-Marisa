@@ -18,7 +18,7 @@ module.exports = function (grunt) {
             dir: {
                 src: 'assets',
                 dist: 'wp/wp-content/themes/marisa',
-                host: 'http://marisa'
+                host: 'http://local.vert/marisa/blog/Vou-de-Marisa/'
             }
         },
 

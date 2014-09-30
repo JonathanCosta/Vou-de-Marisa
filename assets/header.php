@@ -13,6 +13,14 @@ $theme_opts = get_option('marisa_options');
 <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); wp_head(); ?>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/main.css?7" />
+<script>
+    window.app = {
+        userLoggedIn: '<?php echo is_user_logged_in(); ?>',
+        templateUrl: '',
+        adminUrl: '',
+        siteUrl: ''
+    };
+</script>
 </head>
     
 <?php 

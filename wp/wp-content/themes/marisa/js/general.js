@@ -45,6 +45,13 @@ function moreposts(url, category) {
     });
 }
 
+function appendAdminOptions() {
+    $('#wpadminbar')
+        .addClass('visible')
+        .find('#wp-admin-bar-top-secondary')
+        .detach();
+}
+
 (function(){
     'use strict';
 
@@ -235,7 +242,6 @@ function moreposts(url, category) {
      */
     
     $(function(){
-        
         var banner = new BannerCarrossel($('#banner'));
         window.banner = banner;
         
@@ -243,7 +249,7 @@ function moreposts(url, category) {
         //FIXED MENU ON SCROOL
         $(window).on( 'scroll', function(){
             scrolled = $('body').scrollTop();
-            
+
             if ($(window).outerWidth() > 920) {
                 if (scrolled >= 145) {
                     $('.fixed_menu').fadeIn(600);
@@ -394,6 +400,11 @@ function moreposts(url, category) {
             event.preventDefault();
             $('#header nav ul').slideToggle(300);
         });
+
+        /* Only to logged users */
+        if(window.app.userLoggedIn) {
+            appendAdminOptions();
+        }
         
         
     });
