@@ -1225,11 +1225,12 @@ div.parceiros {
     width: 100%;
     background: $marisa;
     p { 
-        font-size: 14px; 
+        font-size: 15px; 
         color: #fff; 
         font-family: 'verlagbook';
-        line-height: 42px;
+        line-height: 22px;
         text-align: right;
+        margin-top: 8px;
     }
     form {
         p {
@@ -1239,9 +1240,11 @@ div.parceiros {
     form {
         width: 60%;
         float: left;
+        margin-top: 8px;
+        margin-bottom: 6px;
     }
     form input {
-        width: 70%;
+        width: 74%;
         height: 37px;
         background: #fff;
         border: 0;
@@ -1261,14 +1264,22 @@ div.parceiros {
         overflow: hidden;
     }
     .container div {
-        width: 32%;
+        width: 29%;
         float: right;
+        border-left: 1px solid #fff;
+        margin-top: 13px;
+        min-height: 68px;
+        p { 
+            font-size: 16px;
+        }
     }
     .marisasite {
         display: block;
         text-align: right;
-        margin: 1% auto;
-        border-left: 1px solid #fff;
+        margin: 2% auto 0;
+        img {
+            max-width: 144px;
+        }
     }
     p.copyright { 
         line-height: 30px;
@@ -1277,7 +1288,7 @@ div.parceiros {
         font-size: 11px;
         clear: both;
         text-align: center;
-        margin-top: 20px;
+        margin-top: 10px;
         background: $marisa-dark;
     }
 }

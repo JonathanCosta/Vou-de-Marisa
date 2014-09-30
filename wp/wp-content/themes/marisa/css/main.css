@@ -1392,11 +1392,12 @@ div.parceiros .container {
   background: #de0084;
 }
 #footer p {
-  font-size: 14px;
+  font-size: 15px;
   color: #fff;
   font-family: 'verlagbook';
-  line-height: 42px;
+  line-height: 22px;
   text-align: right;
+  margin-top: 8px;
 }
 #footer form p {
   text-align: left;
@@ -1404,9 +1405,11 @@ div.parceiros .container {
 #footer form {
   width: 60%;
   float: left;
+  margin-top: 8px;
+  margin-bottom: 6px;
 }
 #footer form input {
-  width: 70%;
+  width: 74%;
   height: 37px;
   background: #fff;
   border: 0;
@@ -1426,14 +1429,22 @@ div.parceiros .container {
   overflow: hidden;
 }
 #footer .container div {
-  width: 32%;
+  width: 29%;
   float: right;
+  border-left: 1px solid #fff;
+  margin-top: 13px;
+  min-height: 68px;
+}
+#footer .container div p {
+  font-size: 16px;
 }
 #footer .marisasite {
   display: block;
   text-align: right;
-  margin: 1% auto;
-  border-left: 1px solid #fff;
+  margin: 2% auto 0;
+}
+#footer .marisasite img {
+  max-width: 144px;
 }
 #footer p.copyright {
   line-height: 30px;
@@ -1442,7 +1453,7 @@ div.parceiros .container {
   font-size: 11px;
   clear: both;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
   background: #cc0a7c;
 }
 

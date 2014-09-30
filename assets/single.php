@@ -4,8 +4,7 @@
 $args = array(
     'posts_per_page' => 10,
     'post_type' => 'post',
-    'meta_key' => 'cf_banner_exibirhome',
-    'meta_value' => '1'
+    'page' => getLastPathSegment($_SERVER['REQUEST_URI'])
 );
 query_posts($args);
 ?>
