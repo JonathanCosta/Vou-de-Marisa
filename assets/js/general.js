@@ -275,22 +275,6 @@ function appendAdminOptions() {
                 if ( scrolled >= $('#socials').position().top - $(window).outerHeight() + 150 ) {
                     //TWITTER
                     if (ajax === true) {
-                        ajax = false;
-                        $.ajax({
-                            url: themeurl+"/inc/facebook.php",
-                            dataType: "text/html",
-                            complete: function (data) {
-                                var $temp = $($.parseHTML( data.responseText )).find('li');
-                                $('.box_facebook_lis img').remove();
-                                $temp.prevObject.each(function( index ) {
-                                    $('.box_facebook_lis').append(this);
-                                });
-                                //ajax = true;
-                            },
-                            error: function () {
-
-                            }
-                        });
 
                         ajax = false;
                         $.ajax({

@@ -18,18 +18,34 @@ $theme_opts = get_option('marisa_options');
                 <img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader-dark.gif" style="margin: 30px auto;display: block;"/>
             </ul>
             
-            <!--<div id="fb-root"></div>
+            <div id="fb-root"></div>
             
-            <script>(function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1456387261271221&version=v2.0";
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-            
-            <div class="fb-like-box" data-href="https://www.facebook.com/<?php echo $theme_opts['marisa_facebook'] ?>" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
-            -->
+            <script>
+                (function() {
+                    var e = document.createElement('script'); e.async = true;
+                    e.src = document.location.protocol + '//connect.facebook.net/pt_BR/all.js';
+                    document.getElementById('fb-root').appendChild(e);
+                }());
+
+                window.fbAsyncInit = function() {
+                    FB.init({
+                        appId: '114269431990058',
+                        status: true,
+                        cookie: true,
+                        oauth : true
+                    });
+
+                    FB.api('/voudemarisa/posts?fields=id,message,picture,link&limit=3&access_token=CAABn7WznByoBAKzPq2dklJgIogTVLuhNpKVP2hJ1syB6HiAbZCRDBPa2RPYK3sE4Uc9OZCdeAU1JGGVqq25b1QOk8urrZAVotTaZBEKww6smBaffONjgTpA4Lp2ASoA4ZBjiLeAABjAmonWfrhzERioi9oIMn3XcVKsUng2cuiIyl185U08AyZAKJaXZCLwUDcZD', function(response) {
+                        var html = '';
+                        $.each(response.data, function(idx, p) {
+                            html += '<li><a title="' + p.message + '" href="' + p.link + '" target="_blank"><img src="' + p.picture + '"></a></li>';
+                        });
+                        $('.box_twitter_lis img').remove();
+                        $('.box_twitter_lis').append(html);
+                    });
+                };
+
+            </script>
             <footer>
                 <a taget="_blank" href="http://www.facebook.com/<?php echo $theme_opts['marisa_facebook']; ?>">VER MAIS</a>
             </footer>

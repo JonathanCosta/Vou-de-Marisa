@@ -113,13 +113,13 @@ function meusdados_entries( ) {
     $html .= "<label for=\"senha\">Nova senha: <input name=\"senha\" type=\"password\" class=\"half\"/></label>";
     $html .= "<label for=\"repetirsenha\">Repita a senha: <input name=\"repetirsenha\" type=\"password\" class=\"half\"/></label>";
     $html .= "<button type=\"submit\"><ico class=\"sprite-cadastrese\"></ico>SALVAR ALTERAÇÕES</button>";
-    $html .= "<button type=\"button\"><ico class=\"sprite-logoff\"></ico>FAZER LOGOFF</button>";
+    $html .= "<button type=\"button\" onclick=\"document.location='".wp_logout_url()."'\"><ico class=\"sprite-logoff\"></ico>FAZER LOGOFF</button>";
     $html .= "</form></div>";
     $html .= "<div class='col2'>";
     if ( isset($theme_opts[marisa_call_sign_fd]) && strlen($theme_opts[marisa_call_sign_fd]) > 0 ) {
         $html .= "<img src='".$theme_opts[marisa_call_sign_fd]."' title=''/>";
     }
-    $html .= "</div>";
+    $html .= "</div>"; 
     
     return $html;
 }

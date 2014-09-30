@@ -17,7 +17,7 @@
                     </header>
                     
                     <header class="mobile">
-                        <ico class="sprite-share-author author-share sprite-share-mobile mobile"></ico>
+                        <ico class="sprite-share-mobile mobile"></ico>
                     </header>
                     <?php 
 

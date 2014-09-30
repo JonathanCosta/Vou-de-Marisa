@@ -237,7 +237,7 @@ body {
   width: 100%;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0px -2px 30px 2px #aaaaaa;
+  box-shadow: 0px -2px 30px 2px #AAA;
 }
 #header h1 {
   display: block;
@@ -333,7 +333,7 @@ body {
   border-right: 0px solid #efefef;
 }
 #header nav ul li a {
-  font-family: "verlaglight", "Arial";
+  font-family: 'verlaglight', 'Arial';
   font-size: 15px;
   color: #000;
   text-transform: uppercase;
@@ -433,7 +433,7 @@ body {
   width: 15px;
   height: 15px;
   background: transparent;
-  border: 1px solid white;
+  border: 1px solid #fff;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   float: left;
@@ -476,7 +476,7 @@ body {
   bottom: 12px;
 }
 #artigos .artigo .call-box h2 {
-  border-top: 1px solid white;
+  border-top: 1px solid #fff;
   width: 90%;
   display: block;
   line-height: 20px;
@@ -596,12 +596,12 @@ body {
 #artigos .content_post .unlogged .text {
   padding-top: 50px;
   margin: 0px auto 14px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #fff;
   color: #fff;
   width: 230px;
 }
 #artigos .content_post .unlogged .text h4 {
-  border-top: 1px solid white;
+  border-top: 1px solid #fff;
   font-family: "archerbold";
   font-size: 15px;
   text-transform: uppercase;
@@ -1035,9 +1035,9 @@ body {
   margin-left: 21%;
 }
 .col1 .bolder, .col1.naoencontrado .bolder {
-  font-family: 'verlagbold'!important;
+  font-family: "verlagbold" !important;
   margin: 0 0 20px !important;
-  font-size: 16px!important;
+  font-size: 16px !important;
 }
 .col1 label, .col1.naoencontrado label {
   font-family: 'verlaglight';
@@ -1177,7 +1177,7 @@ body {
   bottom: 12px;
 }
 #relacionados .artigo .call-box h2 {
-  border-top: 1px solid white;
+  border-top: 1px solid #fff;
   width: 90%;
   display: block;
   line-height: 20px;
@@ -1288,7 +1288,7 @@ body {
 #socials .facebook ul li {
   padding: 2px 0;
   color: #CCC;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #CCC;
   font-size: 12px;
 }
 #socials .facebook ul li img {
@@ -1312,7 +1312,7 @@ body {
 #socials .twitter ul li {
   padding: 2px 0;
   color: #CCC;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #CCC;
   font-size: 12px;
 }
 #socials .twitter ul li img {
@@ -1445,7 +1445,7 @@ div.parceiros .container {
   float: right;
   width: 20%;
   height: 39px;
-  border: 1px solid white;
+  border: 1px solid #fff;
   text-indent: -99999px;
   margin-right: 4%;
 }
@@ -1455,8 +1455,9 @@ div.parceiros .container {
 }
 #footer .container div {
   width: 29%;
+  border: 0;
   float: right;
-  border-left: 1px solid white;
+  border-left: 1px solid #fff;
   margin-top: 13px;
   min-height: 68px;
 }
@@ -1539,8 +1540,8 @@ div.parceiros .container {
 }
 .formnewuser .right .text {
   margin: 20px 38px 12px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
 }
 .formnewuser .right .text h4 {
   font-family: "archerbold";
@@ -1570,8 +1571,8 @@ nav.fixed_menu {
   top: 0;
   left: 0;
   width: 100%;
-  -webkit-box-shadow: 0 -1px 6px 1px #3b3b3b;
-  box-shadow: 0 -1px 6px 1px #3b3b3b;
+  -webkit-box-shadow: 0 -1px 6px 1px #3B3B3B;
+  box-shadow: 0 -1px 6px 1px #3B3B3B;
   height: 45px;
 }
 nav.fixed_menu ul {
@@ -1593,15 +1594,15 @@ nav.fixed_menu ul li {
 }
 nav.fixed_menu ul li:first-child {
   border-right: 0px solid #efefef;
-  width: 76px!important;
+  width: 76px !important;
   min-width: 0;
 }
 nav.fixed_menu ul li:first-child a {
   padding-top: 10px;
-  height: 34px!important;
+  height: 34px !important;
 }
 nav.fixed_menu ul li.sprite-home-user:last-child {
-  width: 76px!important;
+  width: 76px !important;
   min-width: 0;
 }
 nav.fixed_menu ul li:last-child {
@@ -1622,7 +1623,7 @@ nav.fixed_menu ul li.sprite-home-user:hover {
   background: url("../images/sprite/home-user.png") !important;
 }
 nav.fixed_menu ul li a {
-  font-family: "verlaglight", "Arial";
+  font-family: 'verlaglight', 'Arial';
   font-size: 14px;
   color: #000;
   text-transform: uppercase;
@@ -1648,15 +1649,15 @@ nav.fixed_menu ul li ul.children li {
 }
 nav.fixed_menu ul li ul.children li:first-child {
   border-right: 0px solid #efefef;
-  width: 80%!important;
+  width: 80% !important;
   min-width: 0;
 }
 nav.fixed_menu ul li ul.children li:first-child a {
   padding-top: 10px;
-  height: 34px!important;
+  height: 34px !important;
 }
 nav.fixed_menu ul li ul.children li:last-child {
-  width: 80%!important;
+  width: 80% !important;
   border-right: 0px solid #efefef;
   min-width: 0;
 }
@@ -1793,7 +1794,7 @@ button {
 
 @media screen and (max-width: 995px) {
   #sup-header, .hidemobile, .fixed_menu, .parceiros, #socials {
-    display: none!important;
+    display: none !important;
   }
 
   .mobile {
@@ -1837,7 +1838,7 @@ button {
   }
 
   #header {
-    box-shadow: 0px -2px 12px 2px #aaaaaa;
+    box-shadow: 0px -2px 12px 2px #AAA;
   }
   #header h1 {
     display: block;
@@ -1862,7 +1863,7 @@ button {
     margin: 10px 10px 0 0;
   }
   #header nav ul li ul.children {
-    display: none!important;
+    display: none !important;
   }
   #header nav ul li:hover {
     background: #fff;
@@ -2144,16 +2145,23 @@ button {
     margin: 0 5%;
   }
   #single #sidebar {
-    width: 100%;
+    width: 90%;
+    border-bottom: 1px solid #afb0b2;
+    padding-bottom: 26px;
+    position: absolute;
+    margin-top: 6px;
   }
   #single #sidebar .author {
     width: 100%;
+    margin: 0;
   }
   #single #sidebar .author img {
     display: none;
   }
   #single #sidebar .author h4 {
     float: left;
+    padding: 32px 0 0;
+    font-size: 24px;
   }
   #single #sidebar .author h4 span {
     font-weight: 100;
@@ -2177,11 +2185,104 @@ button {
     width: 53px;
     height: 53px;
   }
+  #single #sidebar .author div.authorshare header ico {
+    width: 53px;
+    height: 53px;
+  }
   #single #sidebar .author div.authorshare a {
     text-indent: -999999px;
     float: left;
     margin-top: 0;
     width: 53px;
     height: 53px;
+  }
+  #single #artigos .content_post {
+    margin: 100px 0 40px 0;
+    width: 100%;
+  }
+  #single #artigos .content_post h3 {
+    padding-bottom: 10px;
+  }
+  #single #artigos .content_post div.postshare {
+    float: left;
+    border: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  #single #artigos .content_post div.postshare header {
+    text-indent: -999999px;
+    float: left;
+    margin-top: 0;
+    margin-right: 6px;
+    width: 53px;
+    height: 53px;
+  }
+  #single #artigos .content_post div.postshare header ico {
+    width: 53px;
+    height: 53px;
+  }
+  #single #artigos .content_post div.postshare a {
+    text-indent: -999999px;
+    float: left;
+    margin-top: 0;
+    width: 53px;
+    height: 53px;
+  }
+  #single #artigos .content_post .posttags {
+    font-size: 19px;
+  }
+  #single #artigos .content_post .posttags span {
+    padding: 6px 10px;
+  }
+  #single #artigos .content_post .posttags a {
+    padding: 6px 10px;
+  }
+
+  #relacionados .container {
+    width: 90%;
+    margin: 0 5%;
+  }
+  #relacionados .container header {
+    font-size: 30px;
+    line-height: 40px;
+  }
+  #relacionados .artigo.first {
+    margin: 12px 0%;
+  }
+  #relacionados .artigo {
+    margin: 12px 10%;
+    width: 80%;
+    height: 554px;
+  }
+  #relacionados .artigo a {
+    width: 100%;
+    height: 644px;
+  }
+  #relacionados .artigo a img {
+    width: 100%;
+    height: 100%;
+  }
+  #relacionados .artigo .call-box {
+    width: 100%;
+    bottom: 20px;
+  }
+  #relacionados .artigo .call-box h3 {
+    width: 90%;
+  }
+  #relacionados .artigo .call-box h3 ul li {
+    font-size: 18px;
+    line-height: 34px;
+  }
+  #relacionados .artigo .call-box h2 {
+    width: 90%;
+    font-size: 24px;
+    padding-top: 18px;
+    padding-bottom: 8px;
+    line-height: 28px;
+  }
+  #relacionados .artigo .call-box p {
+    width: 90%;
+    font-size: 17px;
+    line-height: 20px;
   }
 }
