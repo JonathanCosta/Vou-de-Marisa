@@ -14,8 +14,9 @@ if($_GET['category'] != 'undefined') {
 query_posts($args);
 global $count;
 $count = $_GET['loadeditems'];
+$totalposts = $wp_query->found_posts;
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-<div class="general">
+<div class="general" rel="<?php echo $totalposts; ?>">
     <div class="artigo <?php
         if ($count % 3 == 0) { echo "first"; }
     ?>" style="opacity:0;">

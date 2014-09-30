@@ -16,6 +16,9 @@ function moreposts(url, category) {
         },
         complete: function (data) {
             var $temp = $($.parseHTML( data.responseText )).find('div.artigo');
+            var $totalposts = $.parseHTML( data.responseText );
+                $totalposts = ($($totalposts).find('.general').attr('rel'));
+            
             $temp.each(function( index ) {
                 $('#artigos').append(  $(this).delay(index*150).animate({opacity:1, top:0}, 200)  );
             });
@@ -25,6 +28,10 @@ function moreposts(url, category) {
                 //$(".container.loader .mais").slideUp(200);
             } else {
                 
+            }
+            if ( $totalposts >= $('#artigos .artigo').length ) {
+                $('.loader').slideUp();
+                $('#artigos').css('margin','0 auto 60px');
             }
             $(".loaderPage").slideUp(200, function(){
                 loadedAjaxPage = false;
