@@ -41,7 +41,7 @@ if ($pos > -1) {
 
 $resultssingle = new WP_Query( $args );
 ?>
-    
+
 <section id="single">
 	<div class="container">
 		<div id="artigos">

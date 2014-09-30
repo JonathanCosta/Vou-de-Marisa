@@ -114,6 +114,7 @@ function moreposts(url, category) {
                 $self.timer = window.setInterval(function(){ $self.next(); },$self.interval);
                 $self[$(self).hasClass('previous') ? 'previous' : 'next']();
             });
+            
             $self.next();
             $self.timer();
         }
@@ -192,17 +193,22 @@ function moreposts(url, category) {
     BannerCarrossel.prototype.checkArrows = function() {
         $(this.$bulletsContainer).find('a').removeClass("active");
         $(this.$bulletsContainer).find('a').eq(this.actual).addClass("active");
-        if (this.actual <= 0 ) {
-            TweenLite.to(this.$sliderPrev, 0.5, {left:"-200px", opacity: 0});
-            TweenLite.to(this.$sliderNext, 0.5, {right:"10px", opacity: 1});
-            return false;
-        } else if (this.actual >= this.slides - 1 ) {
-            TweenLite.to(this.$sliderNext, 0.5, {right:"-200px", opacity: 0});
-            TweenLite.to(this.$sliderPrev, 0.5, {left:"10px", opacity: 1});
-            return false;
+        if (this.slides > 1) {
+            if (this.actual <= 0 ) {
+                TweenLite.to(this.$sliderPrev, 0.5, {left:"-200px", opacity: 0});
+                TweenLite.to(this.$sliderNext, 0.5, {right:"10px", opacity: 1});
+                return false;
+            } else if (this.actual >= this.slides - 1 ) {
+                TweenLite.to(this.$sliderNext, 0.5, {right:"-200px", opacity: 0});
+                TweenLite.to(this.$sliderPrev, 0.5, {left:"10px", opacity: 1});
+                return false;
+            } else {
+                TweenLite.to(this.$sliderNext, 0.5, {right:"10px", opacity: 1});
+                TweenLite.to(this.$sliderPrev, 0.5, {left:"10px", opacity: 1});
+            }
         } else {
-            TweenLite.to(this.$sliderNext, 0.5, {right:"10px", opacity: 1});
-            TweenLite.to(this.$sliderPrev, 0.5, {left:"10px", opacity: 1});
+            this.$slider.fadeOut();
+            this.$bulletsContainer.fadeOut();
         }
     }; 
 
@@ -210,9 +216,6 @@ function moreposts(url, category) {
         if( $('.film:visible').length < 1 && this.slides > 1 ) {
             var $this = this;
             this.timer = window.setInterval(function(){ $this.next(); },this.interval);
-        } else {
-            $('.bullets').hide();
-            $('.arrows').hide();
         }
     };
 
