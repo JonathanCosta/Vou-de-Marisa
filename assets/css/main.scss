@@ -2009,7 +2009,8 @@ button {
                         width: 53px;
                         height: 53px;
                         ico {
-                            
+                            width: image-width("sprite/share-mobile.png");
+                            height: image-height("sprite/share-mobile.png");
                         }
                     }
                     a {
