@@ -91,14 +91,14 @@ class JW_Options {
     public function marisa_logo_header_fn() {
         echo "<input type='file' name='marisa_logo_header_fd'/><br /><br />";
         if ( isset($this->options['marisa_logo_header_fd']) ) {
-            echo "<img src='{$this->options['marisa_logo_header_fd']}' alt=''/>";
+            echo "<img src='{$this->options['marisa_logo_header_fd']}' " . $this->logo_style() . " alt=''/>";
         }
     }
     
     public function marisa_logo_header_mobile_fn() {
         echo "<input type='file' name='marisa_logo_header_mobile_fd'/><br /><br />";
         if ( isset($this->options['marisa_logo_header_mobile_fd']) ) {
-            echo "<img src='{$this->options['marisa_logo_header_mobile_fd']}' alt=''/>";
+            echo "<img src='{$this->options['marisa_logo_header_mobile_fd']}' " . $this->logo_style() . " alt=''/>";
         }
     }
     
@@ -152,7 +152,7 @@ class JW_Options {
     public function marisa_logo_footer_fn() {
          echo "<input type='file' name='marisa_logo_footer_fd'/><br /><br />";
         if ( isset($this->options['marisa_logo_footer_fd']) ) {
-            echo "<img src='{$this->options['marisa_logo_footer_fd']}' alt=''/>";
+            echo "<img src='{$this->options['marisa_logo_footer_fd']}' " . $this->logo_style() . " alt=''/>";
         }
     }
     
@@ -224,6 +224,10 @@ class JW_Options {
         }
         
         return $options;
+    }
+
+    public function logo_style() {
+        return "style='padding: 10px; background: url(" . admin_url() . "/images/bg-logo-offset.png)'";        
     }
     
 }
