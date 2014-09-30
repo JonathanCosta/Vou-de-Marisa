@@ -1,5 +1,5 @@
-.sprite-sprite, .sprite-alert, .sprite-author-share, .sprite-cadastrese, .sprite-door, .sprite-email-menor-bt, .sprite-enviar-news, .sprite-facebook-author, .sprite-facebook-bt, .sprite-facebook-menor-bt, .sprite-footer-facebook, .sprite-footer-gplus, .sprite-footer-instagram, .sprite-footer-twitter, .sprite-form, .sprite-gplus-author, .sprite-home-user, .sprite-key, .sprite-lupa, .sprite-mais, .sprite-marisa-com-br, .sprite-monthyear, .sprite-next, .sprite-pencil, .sprite-people, .sprite-positive, .sprite-previous, .sprite-share-author, .sprite-sprite-busca, .sprite-sprite-facebook, .sprite-sprite-gplus, .sprite-sprite-instagram, .sprite-sprite-twitter, .sprite-sprite-vou-de-marisa, .sprite-sprite-youtube, .sprite-twitter-author, .sprite-twitter-bt, .sprite-unlogged, .sprite-user-site {
-  background: url('../images/sprite-s47b6e2222f.png') no-repeat;
+.sprite-sprite, .sprite-alert, .sprite-author-share, .sprite-cadastrese, .sprite-door, .sprite-email-menor-bt, .sprite-enviar-news, .sprite-facebook-author, .sprite-facebook-bt, .sprite-facebook-menor-bt, .sprite-footer-facebook, .sprite-footer-gplus, .sprite-footer-instagram, .sprite-footer-twitter, .sprite-form, .sprite-gplus-author, .sprite-home-user, .sprite-key, .sprite-logoff, .sprite-lupa, .sprite-mais, .sprite-marisa-com-br, .sprite-monthyear, .sprite-next, .sprite-pencil, .sprite-people, .sprite-positive, .sprite-previous, .sprite-share-author, .sprite-sprite-busca, .sprite-sprite-facebook, .sprite-sprite-gplus, .sprite-sprite-instagram, .sprite-sprite-twitter, .sprite-sprite-vou-de-marisa, .sprite-sprite-youtube, .sprite-twitter-author, .sprite-twitter-bt, .sprite-unlogged, .sprite-user-site {
+  background: url('../images/sprite-sa124468bbf.png') no-repeat;
 }
 
 .sprite-alert {
@@ -11,11 +11,11 @@
 }
 
 .sprite-cadastrese {
-  background-position: 0 -1260px;
+  background-position: 0 -1274px;
 }
 
 .sprite-door {
-  background-position: 0 -1219px;
+  background-position: 0 -1233px;
 }
 
 .sprite-email-menor-bt {
@@ -39,7 +39,7 @@
 }
 
 .sprite-footer-facebook {
-  background-position: 0 -1134px;
+  background-position: 0 -1148px;
 }
 
 .sprite-footer-gplus {
@@ -55,7 +55,7 @@
 }
 
 .sprite-form {
-  background-position: 0 -1245px;
+  background-position: 0 -1259px;
 }
 
 .sprite-gplus-author {
@@ -67,7 +67,11 @@
 }
 
 .sprite-key {
-  background-position: 0 -1208px;
+  background-position: 0 -1222px;
+}
+
+.sprite-logoff {
+  background-position: 0 -1134px;
 }
 
 .sprite-lupa {
@@ -75,7 +79,7 @@
 }
 
 .sprite-mais {
-  background-position: 0 -1304px;
+  background-position: 0 -1318px;
 }
 
 .sprite-marisa-com-br {
@@ -91,11 +95,11 @@
 }
 
 .sprite-pencil {
-  background-position: 0 -1164px;
+  background-position: 0 -1178px;
 }
 
 .sprite-people {
-  background-position: 0 -1179px;
+  background-position: 0 -1193px;
 }
 
 .sprite-positive {
@@ -115,7 +119,7 @@
 }
 
 .sprite-sprite-facebook {
-  background-position: 0 -1274px;
+  background-position: 0 -1288px;
 }
 
 .sprite-sprite-gplus {
@@ -123,7 +127,7 @@
 }
 
 .sprite-sprite-instagram {
-  background-position: 0 -1193px;
+  background-position: 0 -1207px;
 }
 
 .sprite-sprite-twitter {
@@ -135,7 +139,7 @@
 }
 
 .sprite-sprite-youtube {
-  background-position: 0 -1233px;
+  background-position: 0 -1247px;
 }
 
 .sprite-twitter-author {
@@ -151,7 +155,7 @@
 }
 
 .sprite-user-site {
-  background-position: 0 -1289px;
+  background-position: 0 -1303px;
 }
 
 @font-face {
@@ -1089,6 +1093,7 @@ body {
   padding: 7px 10px 7px;
   margin-left: 21%;
   margin-top: 10px;
+  float: left;
 }
 .col1 button ico, .col1.naoencontrado button ico {
   width: 11px;
@@ -1096,6 +1101,10 @@ body {
   display: inline-block;
   float: left;
   margin-right: 10px;
+}
+.col1 button ico.sprite-logoff, .col1.naoencontrado button ico.sprite-logoff {
+  width: 14px;
+  height: 14px;
 }
 .col1 .newuser .social-bt, .col1.naoencontrado .newuser .social-bt {
   display: block;
