@@ -1572,6 +1572,50 @@ button {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (max-width: 995px) {
     #sup-header, .hidemobile, .fixed_menu, .parceiros, #socials { display: none!important; }
     .mobile { display: block; }
@@ -1928,6 +1972,55 @@ button {
         }
         p.copyright {
             margin-top: 0;
+        }
+    }
+    #single {
+        width: 90%;
+        margin: 0 5%;
+        #sidebar {
+            width: 100%;
+            .author {
+                width: 100%;
+                img {
+                    display: none;
+                    
+                }
+                h4 {
+                    float: left;
+                    span {
+                        font-weight: 100;
+                        font-family: 'verlaglight';
+                        float: left;
+                        margin-right: 8px;
+                    }
+                }
+                p {
+                    display: none;
+                }
+                div.authorshare {
+                    float: right;
+                    border: 0;
+                    margin-top: 0px;
+                    header {
+                        text-indent: -999999px;
+                        float: left;
+                        margin-top: 0;
+                        margin-right: 6px;
+                        width: 53px;
+                        height: 53px;
+                        ico {
+                            
+                        }
+                    }
+                    a {
+                        text-indent: -999999px;
+                        float: left;
+                        margin-top: 0;
+                        width: 53px;
+                        height: 53px;
+                    }
+                }
+            }
         }
     }
 }

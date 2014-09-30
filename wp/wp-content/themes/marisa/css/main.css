@@ -1,21 +1,21 @@
-.sprite-sprite, .sprite-alert, .sprite-author-share, .sprite-cadastrese, .sprite-door, .sprite-email-menor-bt, .sprite-enviar-news, .sprite-facebook-author, .sprite-facebook-bt, .sprite-facebook-menor-bt, .sprite-footer-facebook, .sprite-footer-gplus, .sprite-footer-instagram, .sprite-footer-twitter, .sprite-form, .sprite-gplus-author, .sprite-home-user, .sprite-key, .sprite-logoff, .sprite-lupa, .sprite-mais, .sprite-marisa-com-br, .sprite-monthyear, .sprite-next, .sprite-pencil, .sprite-people, .sprite-positive, .sprite-previous, .sprite-share-author, .sprite-sprite-busca, .sprite-sprite-facebook, .sprite-sprite-gplus, .sprite-sprite-instagram, .sprite-sprite-twitter, .sprite-sprite-vou-de-marisa, .sprite-sprite-youtube, .sprite-twitter-author, .sprite-twitter-bt, .sprite-unlogged, .sprite-user-site {
-  background: url('../images/sprite-sa124468bbf.png') no-repeat;
+.sprite-sprite, .sprite-alert, .sprite-author-share, .sprite-cadastrese, .sprite-door, .sprite-email-menor-bt, .sprite-enviar-news, .sprite-facebook-author, .sprite-facebook-bt, .sprite-facebook-menor-bt, .sprite-facebook-mobile, .sprite-footer-facebook, .sprite-footer-gplus, .sprite-footer-instagram, .sprite-footer-twitter, .sprite-form, .sprite-gplus-author, .sprite-gplus-mobile, .sprite-home-user, .sprite-key, .sprite-logoff, .sprite-lupa, .sprite-mais, .sprite-marisa-com-br, .sprite-monthyear, .sprite-next, .sprite-pencil, .sprite-people, .sprite-positive, .sprite-previous, .sprite-share-author, .sprite-share-mobile, .sprite-sprite-busca, .sprite-sprite-facebook, .sprite-sprite-gplus, .sprite-sprite-instagram, .sprite-sprite-twitter, .sprite-sprite-vou-de-marisa, .sprite-sprite-youtube, .sprite-twitter-author, .sprite-twitter-bt, .sprite-twitter-mobile, .sprite-unlogged, .sprite-user-site {
+  background: url('../images/sprite-seab706861c.png') no-repeat;
 }
 
 .sprite-alert {
-  background-position: 0 -589px;
+  background-position: 0 -695px;
 }
 
 .sprite-author-share {
-  background-position: 0 -1044px;
+  background-position: 0 -1256px;
 }
 
 .sprite-cadastrese {
-  background-position: 0 -1274px;
+  background-position: 0 -1486px;
 }
 
 .sprite-door {
-  background-position: 0 -1233px;
+  background-position: 0 -1445px;
 }
 
 .sprite-email-menor-bt {
@@ -23,11 +23,11 @@
 }
 
 .sprite-enviar-news {
-  background-position: 0 -550px;
+  background-position: 0 -603px;
 }
 
 .sprite-facebook-author {
-  background-position: 0 -1003px;
+  background-position: 0 -1215px;
 }
 
 .sprite-facebook-bt {
@@ -38,48 +38,56 @@
   background-position: 0 -320px;
 }
 
+.sprite-facebook-mobile {
+  background-position: 0 -977px;
+}
+
 .sprite-footer-facebook {
-  background-position: 0 -1148px;
+  background-position: 0 -1360px;
 }
 
 .sprite-footer-gplus {
-  background-position: 0 -758px;
+  background-position: 0 -917px;
 }
 
 .sprite-footer-instagram {
-  background-position: 0 -954px;
+  background-position: 0 -1166px;
 }
 
 .sprite-footer-twitter {
-  background-position: 0 -788px;
+  background-position: 0 -947px;
 }
 
 .sprite-form {
-  background-position: 0 -1259px;
+  background-position: 0 -1471px;
 }
 
 .sprite-gplus-author {
-  background-position: 0 -818px;
+  background-position: 0 -1030px;
+}
+
+.sprite-gplus-mobile {
+  background-position: 0 -550px;
 }
 
 .sprite-home-user {
-  background-position: 0 -714px;
+  background-position: 0 -873px;
 }
 
 .sprite-key {
-  background-position: 0 -1222px;
+  background-position: 0 -1434px;
 }
 
 .sprite-logoff {
-  background-position: 0 -1134px;
+  background-position: 0 -1346px;
 }
 
 .sprite-lupa {
-  background-position: 0 -656px;
+  background-position: 0 -815px;
 }
 
 .sprite-mais {
-  background-position: 0 -1318px;
+  background-position: 0 -1530px;
 }
 
 .sprite-marisa-com-br {
@@ -87,51 +95,55 @@
 }
 
 .sprite-monthyear {
-  background-position: 0 -1088px;
+  background-position: 0 -1300px;
 }
 
 .sprite-next {
-  background-position: 0 -886px;
+  background-position: 0 -1098px;
 }
 
 .sprite-pencil {
-  background-position: 0 -1178px;
+  background-position: 0 -1390px;
 }
 
 .sprite-people {
-  background-position: 0 -1193px;
+  background-position: 0 -1405px;
 }
 
 .sprite-positive {
-  background-position: 0 -984px;
+  background-position: 0 -1196px;
 }
 
 .sprite-previous {
-  background-position: 0 -844px;
+  background-position: 0 -1056px;
 }
 
 .sprite-share-author {
-  background-position: 0 -1066px;
+  background-position: 0 -1278px;
+}
+
+.sprite-share-mobile {
+  background-position: 0 -642px;
 }
 
 .sprite-sprite-busca {
-  background-position: 0 -681px;
+  background-position: 0 -840px;
 }
 
 .sprite-sprite-facebook {
-  background-position: 0 -1288px;
+  background-position: 0 -1500px;
 }
 
 .sprite-sprite-gplus {
-  background-position: 0 -1029px;
+  background-position: 0 -1241px;
 }
 
 .sprite-sprite-instagram {
-  background-position: 0 -1207px;
+  background-position: 0 -1419px;
 }
 
 .sprite-sprite-twitter {
-  background-position: 0 -1120px;
+  background-position: 0 -1332px;
 }
 
 .sprite-sprite-vou-de-marisa {
@@ -139,15 +151,19 @@
 }
 
 .sprite-sprite-youtube {
-  background-position: 0 -1247px;
+  background-position: 0 -1459px;
 }
 
 .sprite-twitter-author {
-  background-position: 0 -928px;
+  background-position: 0 -1140px;
 }
 
 .sprite-twitter-bt {
   background-position: 0 -508px;
+}
+
+.sprite-twitter-mobile {
+  background-position: 0 -762px;
 }
 
 .sprite-unlogged {
@@ -155,7 +171,7 @@
 }
 
 .sprite-user-site {
-  background-position: 0 -1303px;
+  background-position: 0 -1515px;
 }
 
 @font-face {
@@ -2110,5 +2126,51 @@ button {
   }
   #footer p.copyright {
     margin-top: 0;
+  }
+
+  #single {
+    width: 90%;
+    margin: 0 5%;
+  }
+  #single #sidebar {
+    width: 100%;
+  }
+  #single #sidebar .author {
+    width: 100%;
+  }
+  #single #sidebar .author img {
+    display: none;
+  }
+  #single #sidebar .author h4 {
+    float: left;
+  }
+  #single #sidebar .author h4 span {
+    font-weight: 100;
+    font-family: 'verlaglight';
+    float: left;
+    margin-right: 8px;
+  }
+  #single #sidebar .author p {
+    display: none;
+  }
+  #single #sidebar .author div.authorshare {
+    float: right;
+    border: 0;
+    margin-top: 0px;
+  }
+  #single #sidebar .author div.authorshare header {
+    text-indent: -999999px;
+    float: left;
+    margin-top: 0;
+    margin-right: 6px;
+    width: 53px;
+    height: 53px;
+  }
+  #single #sidebar .author div.authorshare a {
+    text-indent: -999999px;
+    float: left;
+    margin-top: 0;
+    width: 53px;
+    height: 53px;
   }
 }

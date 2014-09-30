@@ -243,21 +243,26 @@ function moreposts(url, category) {
         //FIXED MENU ON SCROOL
         $(window).on( 'scroll', function(){
             scrolled = $('body').scrollTop();
-            if (scrolled >= 145) {
-                $('.fixed_menu').fadeIn(600);
-            } else {
-                $('.fixed_menu').fadeOut(600);
-            }
-            if ( $('body.single').length > 0 ) {
-                if ( scrolled >= $('#artigos').position().top && scrolled + ( $('.author').outerHeight() ) <= $('#relacionados').position().top - 70 ) {
-                    $('#sidebar .author').css('position','fixed');
-                    $('#sidebar .author').css('top','10px');
-                } else if ( scrolled + ( $('.author').outerHeight() ) > $('#relacionados').position().top - 70 ) {
-                    $('#sidebar .author').css('position','absolute');
-                    $('#sidebar .author').css('top',$('#relacionados').position().top - $('.author').outerHeight() - 70+'px');
+            
+            if ($(window).outerWidth() > 920) {
+                if (scrolled >= 145) {
+                    $('.fixed_menu').fadeIn(600);
                 } else {
-                    $('#sidebar .author').removeAttr('style');
+                    $('.fixed_menu').fadeOut(600);
                 }
+            
+                if ( $('body.single').length > 0 ) {
+                    if ( scrolled >= $('#artigos').position().top && scrolled + ( $('.author').outerHeight() ) <= $('#relacionados').position().top - 70 ) {
+                        $('#sidebar .author').css('position','fixed');
+                        $('#sidebar .author').css('top','10px');
+                    } else if ( scrolled + ( $('.author').outerHeight() ) > $('#relacionados').position().top - 70 ) {
+                        $('#sidebar .author').css('position','absolute');
+                        $('#sidebar .author').css('top',$('#relacionados').position().top - $('.author').outerHeight() - 70+'px');
+                    } else {
+                        $('#sidebar .author').removeAttr('style');
+                    }
+                }
+                
             }
             
             if ($('#socials:visible').length > 0) {
