@@ -334,7 +334,7 @@ function moreposts(url, category) {
                 $('#header nav ul li').css('min-width',x+'px');
                 $('#header nav ul li ul.children li, #header nav ul li ul.children').css('min-width',x+'px');
                 
-                banner.$el.find('li').each(function( index ) {
+                /*banner.$el.find('li').each(function( index ) {
                     var bg = $(this).data('bg'),
                         fg = $(this).data('fg'),
                         fgm = $(this).data('fgm'),
@@ -358,7 +358,7 @@ function moreposts(url, category) {
 
                     $self.numberofelements++;
 
-                });
+                });*/
             } else {
                 
             }

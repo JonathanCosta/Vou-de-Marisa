@@ -1,22 +1,30 @@
 <?php define("page", "single"); ?>
 <?php get_header(); ?>
-<?php 
-
-if ( get_field('imagem_do_header') ) {
-
-
-    if ( get_field('repetir_imagem_do_header') == "Sim" ) {
-        $repeatBGHeader = "repeat";
-    } else {
-        $repeatBGHeader = "no-repeat";
-    }
-
-
+<?php
+$args = array(
+    'posts_per_page' => 10,
+    'post_type' => 'post',
+    'meta_key' => 'cf_banner_exibirhome',
+    'meta_value' => '1'
+);
+query_posts($args);
 ?>
-<section id="banner" style="background: <?php echo get_field('cor_de_fundo_do_header'); ?> url(<?php echo get_field('imagem_do_header'); ?>) center center <?php echo $repeatBGHeader; ?>;">
-	
+<?php if ( have_posts() ) { ?>
+<section id="banner">
+    <!--div class="container"-->
+        <ul>
+            <?php while ( have_posts() ) { ?>
+            <?php the_post(); ?>
+            <?php $postid = get_the_ID(); ?>
+            <li id="<? echo $postid; ?>" data-title="<?php the_title(); ?>" data-link="<?php echo get_permalink(); ?>" data-window="_self" data-bg="<?php echo get_post_meta($postid, 'cf_banner_background', true); ?>" data-fg="<?php echo get_post_meta($postid, 'cf_banner_foreground', true); ?>" data-fgm="<?php echo get_post_meta($postid, 'cf_banner_foreground_mobile', true); ?>"></li>
+            <?php } //endwhile ?>
+        </ul>
+        <ico class="arrow previous sprite-previous"><</ico>
+        <ico class="arrow next sprite-next">></ico> 
+        <div class="bullets"></div>
+    <!--/div-->
 </section>
-<?php } ?>
+<?php } //endif; ?>
 
 <?php
 $args = array(

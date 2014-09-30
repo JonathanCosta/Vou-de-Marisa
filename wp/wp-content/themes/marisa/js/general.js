@@ -95,7 +95,7 @@ function moreposts(url, category) {
 
                 $(this).append('<a href="'+link+'" class="headerFg"></a>');
                 $(this).find('a').css( "background-image", "url('"+fg+"')" );
-                $(this).find('a').attr( "mobile", fgm)" );
+                $(this).find('a').attr( "mobile", fgm);
 
                 if ( target_window == 1 ) { $(this).find('a').attr('target','_blank'); }
                 //WIDTH OF UL ELEMENT
@@ -334,7 +334,7 @@ function moreposts(url, category) {
                 $('#header nav ul li').css('min-width',x+'px');
                 $('#header nav ul li ul.children li, #header nav ul li ul.children').css('min-width',x+'px');
                 
-                banner.$el.find('li').each(function( index ) {
+                /*banner.$el.find('li').each(function( index ) {
                     var bg = $(this).data('bg'),
                         fg = $(this).data('fg'),
                         fgm = $(this).data('fgm'),
@@ -358,7 +358,7 @@ function moreposts(url, category) {
 
                     $self.numberofelements++;
 
-                });
+                });*/
             } else {
                 
             }
