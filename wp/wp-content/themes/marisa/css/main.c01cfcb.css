@@ -1,21 +1,21 @@
-.sprite-sprite, .sprite-alert, .sprite-author-share, .sprite-cadastrese, .sprite-door, .sprite-email-menor-bt, .sprite-enviar-news, .sprite-facebook-author, .sprite-facebook-bt, .sprite-facebook-menor-bt, .sprite-facebook-mobile, .sprite-footer-facebook, .sprite-footer-gplus, .sprite-footer-instagram, .sprite-footer-twitter, .sprite-form, .sprite-gplus-author, .sprite-gplus-mobile, .sprite-home-user, .sprite-key, .sprite-logoff, .sprite-lupa, .sprite-mais, .sprite-marisa-com-br, .sprite-monthyear, .sprite-next, .sprite-pencil, .sprite-people, .sprite-positive, .sprite-previous, .sprite-share-author, .sprite-share-mobile, .sprite-sprite-busca, .sprite-sprite-facebook, .sprite-sprite-gplus, .sprite-sprite-instagram, .sprite-sprite-twitter, .sprite-sprite-vou-de-marisa, .sprite-sprite-youtube, .sprite-twitter-author, .sprite-twitter-bt, .sprite-twitter-mobile, .sprite-unlogged, .sprite-user-site {
-  background: url('../images/sprite-seab706861c.png') no-repeat;
+.sprite-sprite, .sprite-alert, .sprite-author-share, .sprite-cadastrese, .sprite-door, .sprite-email-menor-bt, .sprite-enviar-news, .sprite-facebook-author, .sprite-facebook-bt, .sprite-facebook-menor-bt, .sprite-footer-facebook, .sprite-footer-gplus, .sprite-footer-instagram, .sprite-footer-twitter, .sprite-form, .sprite-gplus-author, .sprite-home-user, .sprite-key, .sprite-lupa, .sprite-mais, .sprite-marisa-com-br, .sprite-monthyear, .sprite-next, .sprite-pencil, .sprite-people, .sprite-positive, .sprite-previous, .sprite-share-author, .sprite-sprite-busca, .sprite-sprite-facebook, .sprite-sprite-gplus, .sprite-sprite-instagram, .sprite-sprite-twitter, .sprite-sprite-vou-de-marisa, .sprite-sprite-youtube, .sprite-twitter-author, .sprite-twitter-bt, .sprite-unlogged, .sprite-user-site {
+  background: url('../images/sprite-s47b6e2222f.png') no-repeat;
 }
 
 .sprite-alert {
-  background-position: 0 -695px;
+  background-position: 0 -589px;
 }
 
 .sprite-author-share {
-  background-position: 0 -1256px;
+  background-position: 0 -1044px;
 }
 
 .sprite-cadastrese {
-  background-position: 0 -1486px;
+  background-position: 0 -1260px;
 }
 
 .sprite-door {
-  background-position: 0 -1445px;
+  background-position: 0 -1219px;
 }
 
 .sprite-email-menor-bt {
@@ -23,11 +23,11 @@
 }
 
 .sprite-enviar-news {
-  background-position: 0 -603px;
+  background-position: 0 -550px;
 }
 
 .sprite-facebook-author {
-  background-position: 0 -1215px;
+  background-position: 0 -1003px;
 }
 
 .sprite-facebook-bt {
@@ -38,56 +38,44 @@
   background-position: 0 -320px;
 }
 
-.sprite-facebook-mobile {
-  background-position: 0 -977px;
-}
-
 .sprite-footer-facebook {
-  background-position: 0 -1360px;
+  background-position: 0 -1134px;
 }
 
 .sprite-footer-gplus {
-  background-position: 0 -917px;
+  background-position: 0 -758px;
 }
 
 .sprite-footer-instagram {
-  background-position: 0 -1166px;
+  background-position: 0 -954px;
 }
 
 .sprite-footer-twitter {
-  background-position: 0 -947px;
+  background-position: 0 -788px;
 }
 
 .sprite-form {
-  background-position: 0 -1471px;
+  background-position: 0 -1245px;
 }
 
 .sprite-gplus-author {
-  background-position: 0 -1030px;
-}
-
-.sprite-gplus-mobile {
-  background-position: 0 -550px;
+  background-position: 0 -818px;
 }
 
 .sprite-home-user {
-  background-position: 0 -873px;
+  background-position: 0 -714px;
 }
 
 .sprite-key {
-  background-position: 0 -1434px;
-}
-
-.sprite-logoff {
-  background-position: 0 -1346px;
+  background-position: 0 -1208px;
 }
 
 .sprite-lupa {
-  background-position: 0 -815px;
+  background-position: 0 -656px;
 }
 
 .sprite-mais {
-  background-position: 0 -1530px;
+  background-position: 0 -1304px;
 }
 
 .sprite-marisa-com-br {
@@ -95,55 +83,51 @@
 }
 
 .sprite-monthyear {
-  background-position: 0 -1300px;
+  background-position: 0 -1088px;
 }
 
 .sprite-next {
-  background-position: 0 -1098px;
+  background-position: 0 -886px;
 }
 
 .sprite-pencil {
-  background-position: 0 -1390px;
+  background-position: 0 -1164px;
 }
 
 .sprite-people {
-  background-position: 0 -1405px;
+  background-position: 0 -1179px;
 }
 
 .sprite-positive {
-  background-position: 0 -1196px;
+  background-position: 0 -984px;
 }
 
 .sprite-previous {
-  background-position: 0 -1056px;
+  background-position: 0 -844px;
 }
 
 .sprite-share-author {
-  background-position: 0 -1278px;
-}
-
-.sprite-share-mobile {
-  background-position: 0 -642px;
+  background-position: 0 -1066px;
 }
 
 .sprite-sprite-busca {
-  background-position: 0 -840px;
+  background-position: 0 -681px;
 }
 
 .sprite-sprite-facebook {
-  background-position: 0 -1500px;
+  background-position: 0 -1274px;
 }
 
 .sprite-sprite-gplus {
-  background-position: 0 -1241px;
+  background-position: 0 -1029px;
 }
 
 .sprite-sprite-instagram {
-  background-position: 0 -1419px;
+  background-position: 0 -1193px;
 }
 
 .sprite-sprite-twitter {
-  background-position: 0 -1332px;
+  background-position: 0 -1120px;
 }
 
 .sprite-sprite-vou-de-marisa {
@@ -151,19 +135,15 @@
 }
 
 .sprite-sprite-youtube {
-  background-position: 0 -1459px;
+  background-position: 0 -1233px;
 }
 
 .sprite-twitter-author {
-  background-position: 0 -1140px;
+  background-position: 0 -928px;
 }
 
 .sprite-twitter-bt {
   background-position: 0 -508px;
-}
-
-.sprite-twitter-mobile {
-  background-position: 0 -762px;
 }
 
 .sprite-unlogged {
@@ -171,7 +151,7 @@
 }
 
 .sprite-user-site {
-  background-position: 0 -1515px;
+  background-position: 0 -1289px;
 }
 
 @font-face {
@@ -1109,7 +1089,6 @@ body {
   padding: 7px 10px 7px;
   margin-left: 21%;
   margin-top: 10px;
-  float: left;
 }
 .col1 button ico, .col1.naoencontrado button ico {
   width: 11px;
@@ -1117,10 +1096,6 @@ body {
   display: inline-block;
   float: left;
   margin-right: 10px;
-}
-.col1 button ico.sprite-logoff, .col1.naoencontrado button ico.sprite-logoff {
-  width: 14px;
-  height: 14px;
 }
 .col1 .newuser .social-bt, .col1.naoencontrado .newuser .social-bt {
   display: block;
@@ -1768,17 +1743,6 @@ button.mais ico {
   display: none;
 }
 
-#wpadminbar.visible {
-  display: block;
-  min-height: 0;
-  height: 32px;
-  overflow: hidden;
-  background-color: black;
-  min-width: 0px;
-  width: 280px;
-  position: absolute;
-}
-
 html {
   margin-top: 0px !important;
 }
@@ -2137,51 +2101,5 @@ button {
   }
   #footer p.copyright {
     margin-top: 0;
-  }
-
-  #single {
-    width: 90%;
-    margin: 0 5%;
-  }
-  #single #sidebar {
-    width: 100%;
-  }
-  #single #sidebar .author {
-    width: 100%;
-  }
-  #single #sidebar .author img {
-    display: none;
-  }
-  #single #sidebar .author h4 {
-    float: left;
-  }
-  #single #sidebar .author h4 span {
-    font-weight: 100;
-    font-family: 'verlaglight';
-    float: left;
-    margin-right: 8px;
-  }
-  #single #sidebar .author p {
-    display: none;
-  }
-  #single #sidebar .author div.authorshare {
-    float: right;
-    border: 0;
-    margin-top: 0px;
-  }
-  #single #sidebar .author div.authorshare header {
-    text-indent: -999999px;
-    float: left;
-    margin-top: 0;
-    margin-right: 6px;
-    width: 53px;
-    height: 53px;
-  }
-  #single #sidebar .author div.authorshare a {
-    text-indent: -999999px;
-    float: left;
-    margin-top: 0;
-    width: 53px;
-    height: 53px;
   }
 }
