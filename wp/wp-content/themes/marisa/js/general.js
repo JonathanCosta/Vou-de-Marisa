@@ -1,6 +1,42 @@
 function closelightbox(){
     $('.film').fadeOut(300);
-    $('.formnewuser').fadeOut(300);
+    $('.formnewuser').fadeOut(300, function(){
+        banner.timer();
+    });
+}
+
+function adjustMenu() {
+    var navwidth = $('#header nav').outerWidth();
+    var headeritens = $('#header nav ul li').length;
+    var childrenheaderitens = $('#header nav ul li ul.children li').length;
+    var x = ((navwidth)/(headeritens-childrenheaderitens-1))-1;
+    $('#header nav ul li').css('min-width',x+'px');
+    $('#header nav ul li ul.children li, #header nav ul li ul.children').css('min-width',x+'px');
+}
+
+function removeImageDimensions() {
+    $('.artigo img').each(function( index ) {
+        $(this).removeAttr('width');
+        $(this).removeAttr('height');
+    });
+}
+
+function adjustCarrossel() {
+    if ($(window).outerWidth() < 920) {
+        banner.$el.find('li').each(function( index ) {
+            var fg = $(this).data('fgm');
+            if ( fg.length < 1 ) {
+                fg = $(this).data('fg');
+            }
+            $(this).find('a').css('background-image','url('+fg+')');
+        });
+    } else {
+        banner.$el.find('li').each(function( index ) {
+            var fg = $(this).data('fg');
+            $(this).find('a').css('background-image','url('+fg+')');
+        });
+
+    }
 }
 
 //POSTS Infinite Scrool
@@ -77,7 +113,7 @@ function appendAdminOptions() {
 
     var BannerCarrossel = function BannerCarrossel($el) {
         this.$el = $el;
-        this.interval = 5000;
+        this.interval = 6000;
         this.actual = -1;
         this.slides = 0;
         this.width = 0;
@@ -113,13 +149,18 @@ function appendAdminOptions() {
 
                 if ( target_window == 1 ) { $(this).find('a').attr('target','_blank'); }
                 //WIDTH OF UL ELEMENT
-                $self.width += parseInt($(this).width(), 10);
-                $self.widthStep = parseInt($(this).width(), 10);
-                $self.slides = $self.$el.find('li').length;
                 
-                $self.$bulletsContainer.append("<a href='#' rel='"+index+"' onclick='banner.bullet(event, "+index+");'>'"+index+"'</a>");
+                if (bg.length > 0 && fg.length > 0) {
+                    $self.width += parseInt($(this).width(), 10);
+                    $self.widthStep = parseInt($(this).width(), 10);
+                    $self.slides = $self.$el.find('li').length;
+
+                    $self.$bulletsContainer.append("<a href='#' rel='"+index+"' onclick='banner.bullet(event, "+index+");'>'"+index+"'</a>");
+                    $self.numberofelements++;
+                } else {
+                    $(this).remove();
+                }
                 
-                $self.numberofelements++;
                 
             });
             this.$slider.on('click', function(e){
@@ -129,8 +170,12 @@ function appendAdminOptions() {
                 $self[$(self).hasClass('previous') ? 'previous' : 'next']();
             });
             
-            $self.next();
-            $self.timer();
+            if ( $self.$el.find('li').length > 0) {
+                $self.next();
+                $self.timer();
+            } else {
+                $self.$el.remove();
+            }
         }
     };
     
@@ -182,11 +227,11 @@ function appendAdminOptions() {
         }
         TweenLite.to(this.$el.find('li .headerFg').eq(index), 0.6, {opacity:0, left:param, onComplete: step2});
         function step2() {
-            TweenLite.to(self.$el.find('li .headerBg').eq(index), 0.5, {opacity: 0, oncomplete: displaynone(self)});
+            TweenLite.to(self.$el.find('li .headerBg').eq(index), 0.5, {opacity: 0, onComplete: displaynone(self)});
             TweenLite.to(self.$el.find('li .headerBg').eq(self.actual), 0.5, { opacity:1});
             
             function displaynone(el) {
-                el.$el.find('li').eq(index).css('display','none');
+                //el.$el.find('li').eq(index).css('display','none');
                 self.animaIn();
             }
         }
@@ -227,9 +272,9 @@ function appendAdminOptions() {
     }; 
 
     BannerCarrossel.prototype.timer = function() {
-        if( $('.film:visible').length < 1 && this.slides > 1 ) {
-            var $this = this;
-            this.timer = window.setInterval(function(){ $this.next(); },this.interval);
+        var $this = this;
+        if( $('.film:visible').length < 1 && this.slides > 0 ) {
+            this.timer = window.setInterval(function(){ $this.next(); },$this.interval);
         }
     };
 
@@ -245,12 +290,19 @@ function appendAdminOptions() {
         var banner = new BannerCarrossel($('#banner'));
         window.banner = banner;
         
+        adjustMenu();
+        adjustCarrossel();
+        removeImageDimensions();
+        
+        if ( $('#relacionados .artigo').length === 0 ) {
+            $('#relacionados').remove();
+        }
         
         //FIXED MENU ON SCROOL
         $(window).on( 'scroll', function(){
             scrolled = $('body').scrollTop();
 
-            if ($(window).outerWidth() > 920) {
+            if ($(window).outerWidth() > 940) {
                 if (scrolled >= 145) {
                     $('.fixed_menu').fadeIn(600);
                 } else {
@@ -269,6 +321,8 @@ function appendAdminOptions() {
                     }
                 }
                 
+            } else {
+                removeImageDimensions();
             }
             
             if ($('#socials:visible').length > 0) {
@@ -350,39 +404,26 @@ function appendAdminOptions() {
         });
         
         $(window).on( 'resize', function(){
-            if ($(window).outerWidth() < 920) {
-                //ADJUSTING MENU LI's WIDTH
-                var navwidth = $('#header nav').outerWidth();
-                var headeritens = $('#header nav ul li').length;
-                var childrenheaderitens = $('#header nav ul li ul.children li').length;
-                var x = ((navwidth)/(headeritens-childrenheaderitens-1))-1;
-                $('#header nav ul li').css('min-width',x+'px');
-                $('#header nav ul li ul.children li, #header nav ul li ul.children').css('min-width',x+'px');
-                banner.$el.find('li').each(function( index ) {
-                    var fg = $(this).data('fgm');
-                    if ( fg.length < 1 ) {
-                        fg = $(this).data('fg');
-                    }
-                    $(this).find('a').css('background-image','url('+fg+')');
-                });
-            } else {
-                banner.$el.find('li').each(function( index ) {
-                    var fg = $(this).data('fg');
-                    $(this).find('a').css('background-image','url('+fg+')');
-                });
-                
-            }
+            
+            //ADJUSTING MENU LI's WIDTH
+            adjustMenu();
+            adjustCarrossel();
+            
         });
         
         //INITIAL LIGHTBOX ENGINE
-        $('.closelightbox').on('click', closelightbox);
+        $('.closelightbox').on('click', function() { 
+            closelightbox(); 
+        });
+        
         if( $('.film:visible').length > 0 ) {
-            lightboxtimer = window.setTimeout(function(){ $('.closelightbox').click(); }, 5000);
+            lightboxtimer = window.setTimeout(function(){ $('.closelightbox').click(); }, 6000);
         }
+        
         $('.formnewuser').mouseenter(function(){
             clearTimeout(lightboxtimer);
         }).mouseleave(function(){
-            lightboxtimer = window.setTimeout(function(){ $('.closelightbox').click(); }, 5000);
+            lightboxtimer = window.setTimeout(function(){ $('.closelightbox').click(); }, 6000);
         });
         
         $('.menumobile').on('click', function(event){
@@ -399,9 +440,11 @@ function appendAdminOptions() {
     });
     
     (function() {
-        var e = document.createElement('script'); e.async = true;
-        e.src = document.location.protocol + '//connect.facebook.net/pt_BR/all.js';
-        document.getElementById('fb-root').appendChild(e);
+        if ( $('#fb-root').length > 0 ) {
+            var e = document.createElement('script'); e.async = true;
+            e.src = document.location.protocol + '//connect.facebook.net/pt_BR/all.js';
+            document.getElementById('fb-root').appendChild(e);
+        }
     }());
 
 })();

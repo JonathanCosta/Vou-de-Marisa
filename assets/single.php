@@ -55,10 +55,11 @@ $resultssingle = new WP_Query( $args );
                     <h3><?php the_field('texto_de_apoio'); ?></h3>
                     <?php the_content(); ?>
                     <?
+                    $current_post_id = get_the_id();
                     $current_user = wp_get_current_user();
                     if ( 0 < $current_user->ID ) {
                         echo get_post_meta($post->ID, 'restrict_field', true);
-                    } else {
+                    } else if ( strlen(get_post_meta($post->ID, 'restrict_field', true)) > 2 ) {
                         ?>
                     
                         <div class="unlogged sprite-unlogged">
@@ -119,7 +120,7 @@ $resultssingle = new WP_Query( $args );
                         ?>
                     </div>
                     
-                    <div class="facebook-comentarios">
+                    <div class="facebook-comentarios <?php if ( 0 >= $current_user->ID ) { echo "nonlogged"; } ?>">
                         <!--h3><?php comments_number('0 Mensagens', '1 Mensagem', '% Mensagens' );?></h3-->
                         
                         <?php comments_template(); ?>
@@ -148,9 +149,6 @@ $resultssingle = new WP_Query( $args );
 
 <section id="relacionados">
 	<div class="container">
-        <header>
-            POSTS <span>RELACIONADOS</span>
-        </header>
         <?php
         $categories = get_the_category();
         $category_id = $categories[0]->cat_ID;
@@ -164,6 +162,12 @@ $resultssingle = new WP_Query( $args );
         $count = 0;
         ?>
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+        <?php if ( $current_post_id != get_the_id() ) { ?>
+            <?php if ( $current_post_id != get_the_id() && $count < 1 ) { ?>
+                <header>
+                    POSTS <span>RELACIONADOS</span>
+                </header>
+            <?php } ?>
             <div class="artigo <?php
                 if ($count % 3 == 0) { echo "first"; }
             ?>">
@@ -173,7 +177,8 @@ $resultssingle = new WP_Query( $args );
                     <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
                     <p><a href="<?php the_permalink() ?>"><?php the_field('resumo_de_capa'); ?></a></p>
                 </div>
-            </div>			
+            </div>
+        <?php } ?>
         <?php 
             $count++; 
             endwhile; 

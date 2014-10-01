@@ -26,13 +26,13 @@ $theme_opts = get_option('marisa_options');
 </section>
 
 <script src="<?php echo get_template_directory_uri(); ?>/js/jquery-1.11.1.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenMax.min.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/general.js?33"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/TweenMax.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/general.js?43"></script>
 
 <?php
     
     $current_user = wp_get_current_user();
-    if ( 0 == $current_user->ID && strpos(getLastPathSegment($_SERVER['REQUEST_URI']),"cadastre-se") === false  ) {
+    if ( 0 == $current_user->ID && strpos(getLastPathSegment($_SERVER['REQUEST_URI']),"cadastre-se") === false && $_COOKIE['firsttime'] == "yes" ) {
         ?>
             <div class="film"></div>
             <div class="formnewuser">
@@ -54,11 +54,11 @@ $theme_opts = get_option('marisa_options');
                         </p>
                     </div>
 
-                    <a href="cadastre-se/" class="sprite-facebook-bt social-bt">
+                    <a href="<?php echo get_site_url(); ?>/cadastre-se/" class="sprite-facebook-bt social-bt">
                         Entrar com facebook
                     </a>
 
-                    <a href="cadastre-se/" class="sprite-twitter-bt social-bt">
+                    <a href="<?php echo get_site_url(); ?>/cadastre-se/" class="sprite-twitter-bt social-bt">
                         Entrar com Twitter
                     </a>
 
@@ -74,7 +74,7 @@ $theme_opts = get_option('marisa_options');
 <nav class="fixed_menu">
     <ul>
         <li>
-            <a href="index.php"><img src="<?php echo $theme_opts['marisa_logo_header_fd']; ?>" height="29" /></a>
+            <a href="index.php"><img src="<?php echo $theme_opts['marisa_logo_header_fd']; ?>" height="30" /></a>
         </li>
         <?php 
             $args = array(
