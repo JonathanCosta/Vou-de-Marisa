@@ -328,6 +328,10 @@ body {
         margin: 40px 2% 40px 0;
         overflow: hidden;
         color: #000;
+        font-family: 'verlaglight';
+        font-size: 14px;
+        line-height: 20px;
+        text-align: justify;
         h2 {
             font-family: 'verlagbold';
             font-weight: bold;
@@ -1964,6 +1968,7 @@ button {
                 margin: 0 auto;
                 float: none;
                 padding-top: 4px;
+                border: 0;
                 a {
                     border: 0;
                     float: left;
@@ -1980,6 +1985,9 @@ button {
                     line-height: 38px;
                 }
             }
+            .marisasite {
+                margin: 13px auto 0;
+            }
         }
         p.copyright {
             margin-top: 0;
@@ -1988,7 +1996,7 @@ button {
     #single {
         width: 90%;
         margin: 0 5%;
-        #sidebar {
+        #sidebarrrrr {
             width: 90%;
             border-bottom: 1px solid #afb0b2;
             padding-bottom: 26px;
@@ -2098,9 +2106,6 @@ button {
                 line-height: 40px;
             }
         }
-        .artigo.first {
-            margin: 0 5%;
-        }
         .artigo {
             margin: 12px 10%;
             width: 80%;
@@ -2138,6 +2143,9 @@ button {
                     line-height: 20px;
                 }
             }
+        }
+        .artigo.first {
+            margin: 12px 10%; 
         }
     }
 }

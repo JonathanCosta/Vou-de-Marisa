@@ -527,6 +527,10 @@ body {
   margin: 40px 2% 40px 0;
   overflow: hidden;
   color: #000;
+  font-family: 'verlaglight';
+  font-size: 14px;
+  line-height: 20px;
+  text-align: justify;
 }
 #artigos .content_post h2 {
   font-family: 'verlagbold';
@@ -2120,6 +2124,7 @@ button {
     margin: 0 auto;
     float: none;
     padding-top: 4px;
+    border: 0;
   }
   #footer .container div a {
     border: 0;
@@ -2136,6 +2141,9 @@ button {
     margin-right: 1%;
     line-height: 38px;
   }
+  #footer .container .marisasite {
+    margin: 13px auto 0;
+  }
   #footer p.copyright {
     margin-top: 0;
   }
@@ -2144,40 +2152,40 @@ button {
     width: 90%;
     margin: 0 5%;
   }
-  #single #sidebar {
+  #single #sidebarrrrr {
     width: 90%;
     border-bottom: 1px solid #afb0b2;
     padding-bottom: 26px;
     position: absolute;
     margin-top: 6px;
   }
-  #single #sidebar .author {
+  #single #sidebarrrrr .author {
     width: 100%;
     margin: 0;
   }
-  #single #sidebar .author img {
+  #single #sidebarrrrr .author img {
     display: none;
   }
-  #single #sidebar .author h4 {
+  #single #sidebarrrrr .author h4 {
     float: left;
     padding: 32px 0 0;
     font-size: 24px;
   }
-  #single #sidebar .author h4 span {
+  #single #sidebarrrrr .author h4 span {
     font-weight: 100;
     font-family: 'verlaglight';
     float: left;
     margin-right: 8px;
   }
-  #single #sidebar .author p {
+  #single #sidebarrrrr .author p {
     display: none;
   }
-  #single #sidebar .author div.authorshare {
+  #single #sidebarrrrr .author div.authorshare {
     float: right;
     border: 0;
     margin-top: 0px;
   }
-  #single #sidebar .author div.authorshare header {
+  #single #sidebarrrrr .author div.authorshare header {
     text-indent: -999999px;
     float: left;
     margin-top: 0;
@@ -2185,11 +2193,11 @@ button {
     width: 53px;
     height: 53px;
   }
-  #single #sidebar .author div.authorshare header ico {
+  #single #sidebarrrrr .author div.authorshare header ico {
     width: 53px;
     height: 53px;
   }
-  #single #sidebar .author div.authorshare a {
+  #single #sidebarrrrr .author div.authorshare a {
     text-indent: -999999px;
     float: left;
     margin-top: 0;
@@ -2246,9 +2254,6 @@ button {
     font-size: 30px;
     line-height: 40px;
   }
-  #relacionados .artigo.first {
-    margin: 12px 0%;
-  }
   #relacionados .artigo {
     margin: 12px 10%;
     width: 80%;
@@ -2284,5 +2289,8 @@ button {
     width: 90%;
     font-size: 17px;
     line-height: 20px;
+  }
+  #relacionados .artigo.first {
+    margin: 12px 10%;
   }
 }

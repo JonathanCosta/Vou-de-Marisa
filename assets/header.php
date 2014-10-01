@@ -16,9 +16,9 @@ $theme_opts = get_option('marisa_options');
 <script>
     window.app = {
         userLoggedIn: '<?php echo is_user_logged_in(); ?>',
-        templateUrl: '',
-        adminUrl: '',
-        siteUrl: ''
+        templateUrl: '<?php echo get_template_directory_uri(); ?>',
+        adminUrl: '<?php echo get_admin_url(); ?>',
+        siteUrl: '<?php echo get_site_url(); ?>'
     };
 </script>
 </head>

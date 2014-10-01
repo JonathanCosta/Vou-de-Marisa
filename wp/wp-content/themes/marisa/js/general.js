@@ -48,6 +48,7 @@ function moreposts(url, category) {
 function appendAdminOptions() {
     $('#wpadminbar')
         .addClass('visible')
+        .addClass('hidemobile')
         .find('#wp-admin-bar-top-secondary')
         .detach();
 }
