@@ -768,6 +768,9 @@ body {
                 text-transform: uppercase;
                 text-indent: 10px;
             }
+            header.mobile {
+                display: none;
+            }
         }
     }
 }
@@ -1996,7 +1999,7 @@ button {
     #single {
         width: 90%;
         margin: 0 5%;
-        #sidebarrrrr {
+        #sidebar {
             width: 90%;
             border-bottom: 1px solid #afb0b2;
             padding-bottom: 26px;
@@ -2034,6 +2037,7 @@ button {
                         margin-right: 6px;
                         width: 53px;
                         height: 53px;
+                        display: block;
                         ico {
                             width: image-width("sprite/share-mobile.png");
                             height: image-height("sprite/share-mobile.png");

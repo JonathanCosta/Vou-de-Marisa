@@ -965,6 +965,9 @@ body {
   text-transform: uppercase;
   text-indent: 10px;
 }
+#sidebar .author .authorshare header.mobile {
+  display: none;
+}
 
 .col1, .col1.naoencontrado {
   width: 49%;
@@ -2152,52 +2155,53 @@ button {
     width: 90%;
     margin: 0 5%;
   }
-  #single #sidebarrrrr {
+  #single #sidebar {
     width: 90%;
     border-bottom: 1px solid #afb0b2;
     padding-bottom: 26px;
     position: absolute;
     margin-top: 6px;
   }
-  #single #sidebarrrrr .author {
+  #single #sidebar .author {
     width: 100%;
     margin: 0;
   }
-  #single #sidebarrrrr .author img {
+  #single #sidebar .author img {
     display: none;
   }
-  #single #sidebarrrrr .author h4 {
+  #single #sidebar .author h4 {
     float: left;
     padding: 32px 0 0;
     font-size: 24px;
   }
-  #single #sidebarrrrr .author h4 span {
+  #single #sidebar .author h4 span {
     font-weight: 100;
     font-family: 'verlaglight';
     float: left;
     margin-right: 8px;
   }
-  #single #sidebarrrrr .author p {
+  #single #sidebar .author p {
     display: none;
   }
-  #single #sidebarrrrr .author div.authorshare {
+  #single #sidebar .author div.authorshare {
     float: right;
     border: 0;
     margin-top: 0px;
   }
-  #single #sidebarrrrr .author div.authorshare header {
+  #single #sidebar .author div.authorshare header {
     text-indent: -999999px;
     float: left;
     margin-top: 0;
     margin-right: 6px;
     width: 53px;
     height: 53px;
+    display: block;
   }
-  #single #sidebarrrrr .author div.authorshare header ico {
+  #single #sidebar .author div.authorshare header ico {
     width: 53px;
     height: 53px;
   }
-  #single #sidebarrrrr .author div.authorshare a {
+  #single #sidebar .author div.authorshare a {
     text-indent: -999999px;
     float: left;
     margin-top: 0;

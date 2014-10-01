@@ -9,7 +9,7 @@ function moreposts(url, category) {
     pageLoaded = $('#pagenumber').val();
     loadedAjaxPage = true;
     $.ajax({
-        url: url+"../../../../wp-content/themes/marisa/pagination.php?page="+pageLoaded+"&category="+category+"&loadeditems="+$("#artigos .artigo").length,
+        url: app.templateUrl+"/pagination.php?page="+pageLoaded+"&category="+category+"&loadeditems="+$("#artigos .artigo").length,
         dataType: "text/html",
         beforeSend: function() {
             $(".loaderPage").slideDown(200);
@@ -65,8 +65,7 @@ function appendAdminOptions() {
      */
     var scrolled = 0,
         lightboxtimer,
-        ajax = true,
-        themeurl = "http://vert.se/marisa/blog/wp-content/themes/marisa";
+        ajax = true;
 
     /*
      *
@@ -274,12 +273,32 @@ function appendAdminOptions() {
             
             if ($('#socials:visible').length > 0) {
                 if ( scrolled >= $('#socials').position().top - $(window).outerHeight() + 150 ) {
+                    
                     //TWITTER
                     if (ajax === true) {
 
                         ajax = false;
+                        
+                        window.fbAsyncInit = function() {
+                            FB.init({
+                                appId: '114269431990058',
+                                status: true,
+                                cookie: true,
+                                oauth : true
+                            });
+
+                            FB.api('/voudemarisa/posts?fields=id,message,picture,link&limit=3&access_token=CAABn7WznByoBAKzPq2dklJgIogTVLuhNpKVP2hJ1syB6HiAbZCRDBPa2RPYK3sE4Uc9OZCdeAU1JGGVqq25b1QOk8urrZAVotTaZBEKww6smBaffONjgTpA4Lp2ASoA4ZBjiLeAABjAmonWfrhzERioi9oIMn3XcVKsUng2cuiIyl185U08AyZAKJaXZCLwUDcZD', function(response) {
+                                var html = '';
+                                $.each(response.data, function(idx, p) {
+                                    html += '<li><a title="' + p.message + '" href="' + p.link + '" target="_blank"><img src="' + p.picture + '"></a></li>';
+                                });
+                                $('.box_twitter_lis img').remove();
+                                $('.box_twitter_lis').append(html);
+                            });
+                        };
+                        
                         $.ajax({
-                            url: themeurl+"/inc/tweets.php",
+                            url: app.templateUrl+"/inc/tweets.php",
                             dataType: "text/html",
                             complete: function (data) {
                                 var $temp = $($.parseHTML( data.responseText )).find('li');
@@ -295,7 +314,7 @@ function appendAdminOptions() {
                         });
 
                         $.ajax({
-                            url: themeurl+"/inc/instagram.php",
+                            url: app.templateUrl+"/inc/instagram.php",
                             dataType: "text/html",
                             complete: function (data) {
                                 var $temp = $($.parseHTML( data.responseText )).find('li');
@@ -311,7 +330,7 @@ function appendAdminOptions() {
                         });
 
                         $.ajax({
-                            url: themeurl+"/inc/gplus.php",
+                            url: app.templateUrl+"/inc/gplus.php",
                             dataType: "text/html",
                             complete: function (data) {
                                 var $temp = $($.parseHTML( data.responseText )).find('li');
@@ -339,33 +358,18 @@ function appendAdminOptions() {
                 var x = ((navwidth)/(headeritens-childrenheaderitens-1))-1;
                 $('#header nav ul li').css('min-width',x+'px');
                 $('#header nav ul li ul.children li, #header nav ul li ul.children').css('min-width',x+'px');
-                
-                /*banner.$el.find('li').each(function( index ) {
-                    var bg = $(this).data('bg'),
-                        fg = $(this).data('fg'),
-                        fgm = $(this).data('fgm'),
-                        link = $(this).data('link'),
-                        target_window = $(this).data('window');
-
-                    $(this).append('<div href="'+link+'" class="headerBg"></div>');
-                    $(this).find('.headerBg').css( "background-image", "url('"+bg+"')" );
-
-                    $(this).append('<a href="'+link+'" class="headerFg"></a>');
-                    $(this).find('a').css( "background-image", "url('"+fg+"')" );
-                    $(this).find('a').attr( "mobile", fgm)" );
-
-                    if ( target_window == 1 ) { $(this).find('a').attr('target','_blank'); }
-                    //WIDTH OF UL ELEMENT
-                    $self.width += parseInt($(this).width(), 10);
-                    $self.widthStep = parseInt($(this).width(), 10);
-                    $self.slides = $self.$el.find('li').length;
-
-                    $self.$bulletsContainer.append("<a href='#' rel='"+index+"' onclick='banner.bullet(event, "+index+");'>'"+index+"'</a>");
-
-                    $self.numberofelements++;
-
-                });*/
+                banner.$el.find('li').each(function( index ) {
+                    var fg = $(this).data('fgm');
+                    if ( fg.length < 1 ) {
+                        fg = $(this).data('fg');
+                    }
+                    $(this).find('a').css('background-image','url('+fg+')');
+                });
             } else {
+                banner.$el.find('li').each(function( index ) {
+                    var fg = $(this).data('fg');
+                    $(this).find('a').css('background-image','url('+fg+')');
+                });
                 
             }
         });
@@ -393,5 +397,11 @@ function appendAdminOptions() {
         
         
     });
+    
+    (function() {
+        var e = document.createElement('script'); e.async = true;
+        e.src = document.location.protocol + '//connect.facebook.net/pt_BR/all.js';
+        document.getElementById('fb-root').appendChild(e);
+    }());
 
 })();
