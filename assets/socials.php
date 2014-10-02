@@ -15,7 +15,7 @@ $theme_opts = get_option('marisa_options');
             
             <ul class="box_facebook_lis">
                 <li class="first">Últimas postagens</li>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader-dark.gif" style="margin: 30px auto;display: block;"/>
+                <img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif" style="margin: 30px auto;display: block;"/>
             </ul>
             
             <div id="fb-root"></div>
@@ -37,7 +37,7 @@ $theme_opts = get_option('marisa_options');
             </header>
             <ul class="box_twitter_lis">
                 <li class="first">Tweets</li>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader-dark.gif" style="margin: 30px auto;display: block;"/>
+                <img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif" style="margin: 30px auto;display: block;"/>
             </ul>
             <footer>
                 <a taget="_blank" href="http://www.twitter.com/<?php echo $theme_opts['marisa_twitter']; ?>">VER MAIS</a>
@@ -56,7 +56,7 @@ $theme_opts = get_option('marisa_options');
                 </a>
             </header>
             <ul class="box_instagram_lis">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader-dark.gif" style="margin: 30px auto;display: block;"/>
+                <img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif" style="margin: 30px auto;display: block;"/>
             </ul>
             <footer>
                 <a taget="_blank" href="http://www.instagram.com/<?php echo $theme_opts['marisa_instagram']; ?>">VER MAIS</a>

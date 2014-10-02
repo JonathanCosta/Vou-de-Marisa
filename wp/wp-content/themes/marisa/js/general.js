@@ -1,7 +1,9 @@
 function closelightbox(){
     $('.film').fadeOut(300);
     $('.formnewuser').fadeOut(300, function(){
-        banner.timer();
+        if (banner.slides > 1) {
+            banner.timer();
+        }
     });
 }
 
@@ -273,7 +275,7 @@ function appendAdminOptions() {
 
     BannerCarrossel.prototype.timer = function() {
         var $this = this;
-        if( $('.film:visible').length < 1 && this.slides > 0 ) {
+        if( $('.film:visible').length < 1 && this.slides > 1 ) {
             this.timer = window.setInterval(function(){ $this.next(); },$this.interval);
         }
     };
@@ -294,9 +296,16 @@ function appendAdminOptions() {
         adjustCarrossel();
         removeImageDimensions();
         
-        if ( $('#relacionados .artigo').length === 0 ) {
-            $('#relacionados').remove();
+        
+        window.ImageMarker && ImageMarker.format();
+        
+        if ( $('#relacionados .artigo').length < 1 ) {
+            $('#relacionados').css('padding', 0);
+            $('#relacionados').css('margin', 0);
         }
+        
+        //FIXED LAST MENU LI
+        $('#header nav ul li:visible').last().addClass('last');
         
         //FIXED MENU ON SCROOL
         $(window).on( 'scroll', function(){
@@ -332,24 +341,36 @@ function appendAdminOptions() {
                     if (ajax === true) {
 
                         ajax = false;
-                        
+                        if ( $('#fb-root') ) {
+                            var e = document.createElement('script'); e.async = true;
+                            e.src = document.location.protocol + '//connect.facebook.net/pt_BR/all.js';
+                            document.getElementById('fb-root').appendChild(e);
+                        }
+
                         window.fbAsyncInit = function() {
                             FB.init({
-                                appId: '114269431990058',
+                                appId: '241686319233509',
                                 status: true,
                                 cookie: true,
                                 oauth : true
                             });
 
-                            FB.api('/voudemarisa/posts?fields=id,message,picture,link&limit=3&access_token=CAABn7WznByoBAKzPq2dklJgIogTVLuhNpKVP2hJ1syB6HiAbZCRDBPa2RPYK3sE4Uc9OZCdeAU1JGGVqq25b1QOk8urrZAVotTaZBEKww6smBaffONjgTpA4Lp2ASoA4ZBjiLeAABjAmonWfrhzERioi9oIMn3XcVKsUng2cuiIyl185U08AyZAKJaXZCLwUDcZD', function(response) {
+                            FB.api('/voudemarisa/posts?fields=id,message,picture,link&limit=3&access_token=CAADbzZCs0eeUBAOfWrWBshxAPhXG9AdSWoQe6IqeGMbBiU7p0KuF9auZBL10Qr6WmVVvAj75pW6uVVR4fTLrAFPQKYYUuyZBNe74hlIVizUugI5CLPgZClEeIDFaxpPrDFOzlB6qb5S05eu0oOcNCU5hhDg0Rjggsb2OHyf5U65JPxRidnt6SL8bauZBzkHIiEdy0WR0YwNECroaKFnHZCerDbHo9QCZCIZD', function(response) {
                                 var html = '';
                                 $.each(response.data, function(idx, p) {
-                                    html += '<li><a title="' + p.message + '" href="' + p.link + '" target="_blank"><img src="' + p.picture + '"></a></li>';
+                                    if (p.message && p.message != undefined) {
+                                        $('.box_facebook_lis img').remove();
+                                        html += '<li><a title="' + p.message + '" href="' + p.link + '" target="_blank">';
+                                        if (p.picture && p.picture.length > 0) { html += '<img src="' + p.picture + '">'; }
+                                        html += '' + p.message + '</a></li>';
+                                        $('.box_facebook_lis').append(html);
+                                    }
                                 });
-                                $('.box_twitter_lis img').remove();
-                                $('.box_twitter_lis').append(html);
                             });
+                            
                         };
+                        
+                        
                         
                         $.ajax({
                             url: app.templateUrl+"/inc/tweets.php",
@@ -439,12 +460,6 @@ function appendAdminOptions() {
         
     });
     
-    (function() {
-        if ( $('#fb-root').length > 0 ) {
-            var e = document.createElement('script'); e.async = true;
-            e.src = document.location.protocol + '//connect.facebook.net/pt_BR/all.js';
-            document.getElementById('fb-root').appendChild(e);
-        }
-    }());
+    
 
 })();

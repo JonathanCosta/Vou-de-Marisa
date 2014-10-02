@@ -131,7 +131,7 @@ body {
     nav ul li:last-child {
         border-right: 0px solid #efefef;
     }
-    nav ul li.cat-item-5 {
+    nav ul li.last {
         border-right: 0px solid #efefef;
     }
     nav ul li a {
@@ -1110,21 +1110,26 @@ body {
         ul {
             padding: 0 10px;
             margin: 0 auto;
-            background: #333333;
+            background: #fff;
             height: 181px;
             overflow-x: auto;
             li {
                 padding: 2px 0;
-                color: #CCC;
+                color: #333;
                 border-bottom: 1px solid #CCC;
                 font-size: 12px;
+                overflow: hidden;
                 img {
                     display: block;
                     float: left;
                     margin: 4px 6px 0px 0px;
-                    width: 32px;
+                    width: 100px;
                     border-radius: 3px;
                     -webkit-border-radius: 3px;
+                }
+                a {
+                    color: #333;
+                    text-decoration: none;
                 }
             } 
             .first {
@@ -1137,12 +1142,12 @@ body {
         ul {
             padding: 0 10px;
             margin: 0 auto;
-            background: #333333;
+            background: #fff;
             height: 181px;
             overflow-x: auto;
             li {
                 padding: 2px 0;
-                color: #CCC;
+                color: #333;
                 border-bottom: 1px solid #CCC;
                 font-size: 12px;
                 img {
@@ -1163,7 +1168,7 @@ body {
         ul {
             padding: 4px 4px;
             margin: 0 auto;
-            background: #333333;
+            background: #fff;
             height: 173px;
             overflow-x: auto;
             li {
@@ -1712,6 +1717,14 @@ button {
         .sprite-twitter-bt {
         }
     }
+    #bot-header {
+        height: 34px; background-color: #000; margin-bottom: 1px solid #888888; z-index: 1; position: relative;
+        ul { display: block; max-width: 940px; width: 100%; margin: 0 auto; text-align: right; overflow: hidden; height: 100%; }
+        li { display: inline-block; margin: ($heightSupHeader - image-height("sprite/sprite-facebook.png"))/2 24px; overflow: hidden; }
+        li a { font-family: 'verlagbook'; font-size: 14px; font-weight: 100; color: #fff; font-size: 14px; }
+        li.box { margin: ($heightSupHeader + 5 - image-height("sprite/sprite-facebook.png"))/2 8px; }
+        li.box a { text-indent: -99999px; display: block; width: 100%; opacity: 0; }
+    }
     #header {
         box-shadow: 0px -2px 12px 2px #AAA;
         h1 {
@@ -2046,8 +2059,37 @@ button {
                 margin: 13px auto 0;
             }
         }
+        #bot-header {
+            height: 42px; 
+            background-color: $marisa-dark; 
+            margin-bottom: 1px solid #cc0a7c; 
+            z-index: 1; 
+            position: relative; 
+            ul { 
+                display: block; 
+                max-width: 940px; 
+                width: 100%; 
+                margin: 0 auto; 
+                text-align: center; 
+                overflow: hidden; 
+                height: 100%; 
+            }
+            li { 
+                display: inline-block; 
+                margin: 0 22px; 
+                overflow: hidden;
+                font-family: 'verlagbold';
+                font-size: 20px;
+                color: #fff;
+                line-height: 42px;
+            }
+            li a { font-family: 'verlagbook'; font-size: 14px; font-weight: 100; color: #fff; line-height: 42px; }
+            li.box { margin: 10px 8px 16px; }
+            li.box a { text-indent: -99999px; display: block; width: 100%; opacity: 0; }
+        }
         p.copyright {
             margin-top: 0;
+            background: $marisa;
         }
     }
     #single {

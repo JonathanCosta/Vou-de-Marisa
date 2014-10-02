@@ -5,7 +5,7 @@ $theme_opts = get_option('marisa_options');
 
 //VERIFICA SE USUÁRIO POSSUI COOKIE
 if ( strlen($_COOKIE['username']) < 1 ) {
-    $date_of_expiry = time() + 365 ;
+    $date_of_expiry =  mktime().time()+60*60*24*365;
     setcookie( "userlogin", "anonymous", $date_of_expiry );
     
     if ($_COOKIE['firsttime'] == "yes") {
@@ -14,7 +14,7 @@ if ( strlen($_COOKIE['username']) < 1 ) {
         setcookie( "firsttime", "yes", $date_of_expiry );
     }
 }
-
+ 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
@@ -27,7 +27,7 @@ if ( strlen($_COOKIE['username']) < 1 ) {
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); wp_head(); ?>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/main.css?21" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/main.css?27" />
 <script>
     window.app = {
         userLoggedIn: '<?php echo is_user_logged_in(); ?>',
@@ -126,7 +126,7 @@ if ( strlen($_COOKIE['username']) < 1 ) {
             <a href="<?php echo site_url(); ?>/parceiros/" class="nav hidemobile parceiros"><ico class="parceiros sprite-people"></ico> Parceiros</a>
             <?php if ( strlen($current_user->user_firstname) < 1 ) { ?>
             <a href="<?php echo site_url(); ?>/cadastre-se/" class="nav hidemobile cadastro"><ico class="cadastro sprite-form"></ico> Cadastre-se</a>
-            <a class="nav hidemobile entrar"><ico class="entrar sprite-door"></ico> Entrar</a>
+            <a  href="<?php echo site_url(); ?>/cadastre-se/" class="nav hidemobile entrar"><ico class="entrar sprite-door"></ico> Entrar</a>
             <?php } else { ?>
             <div class="sprite-home-user hidemobile">
                 Ol&aacute; 
