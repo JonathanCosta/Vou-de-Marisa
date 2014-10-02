@@ -6,7 +6,7 @@ $theme_opts = get_option('marisa_options');
 //VERIFICA SE USUÁRIO POSSUI COOKIE
 if ( strlen($_COOKIE['username']) < 1 ) {
     $date_of_expiry =  mktime().time()+60*60*24*365;
-    setcookie( "userlogin", "anonymous", $date_of_expiry );
+    setcookie( "userlogin", "guest", $date_of_expiry );
     
     if ($_COOKIE['firsttime'] == "yes") {
         setcookie( "firsttime", "no", $date_of_expiry );
