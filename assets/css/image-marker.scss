@@ -39,6 +39,15 @@
         margin-top: 10px;
     }
 
+    #success-message {
+        display: none;
+        position: absolute;
+        top: 20px;
+        left: 140px;
+        color: #006100;
+        font-weight: bold;
+    }
+
     .marker-form {
         display: none;
         input {
@@ -50,15 +59,6 @@
             margin-top: 10px;
             font-size: 14px; 
             font-weight: 300;    
-        }
-
-        #success-message {
-            display: none;
-            position: absolute;
-            top: 102px;
-            left: 140px;
-            color: #006100;
-            font-weight: bold;
         }
     }
 

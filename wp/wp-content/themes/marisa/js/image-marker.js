@@ -65,8 +65,8 @@
             var content = $('<div id="marker-manager-wrapper"></div>'),
                 formWrapper = '<div class="marker-form-wrapper">' +
                         '<button id="new-marker" class="add">+ Nova Etiqueta</button>' +
+                        '<span id="success-message">Etiqueta salva</span>' +
                         '<div id="marker-form" class="marker-form">' +
-                           '<span id="success-message">Etiqueta salva</span>' +
                            '<input type="text" id="marker-form-name" placeholder="Título">' +
                            '<input type="text" id="marker-form-url" placeholder="http://">' +
                            '<button id="save-marker" class="save">Salvar</button>' +
@@ -191,6 +191,7 @@
         saveMarker: function() {
             this.dataRebind();
             flashMessage(this.$successMsg);
+            this.deselectMarker();
         },
 
         selectMarker: function(marker) {

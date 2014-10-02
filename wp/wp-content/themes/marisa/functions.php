@@ -97,7 +97,13 @@ function create_category_taxonomies() {
 
 //add_action( 'init', 'create_category_taxonomies', 0 );
 
-<<<<<<< HEAD
+function words($value, $words=100, $end='...') {
+    preg_match('/^\s*+(?:\S++\s*+){1,'.$words.'}/u', $value, $matches);
+    if ( ! isset($matches[0])) return $value;
+    if (strlen($value) == strlen($matches[0])) return $value;
+    return rtrim($matches[0]).$end;
+}
+
 // CUSTOM CSS FROM TEMPLATE
 function custom_template_css() {
    echo '<link rel="stylesheet" href="'. get_template_directory_uri() .'/css/image-marker.css" type="text/css" media="all">';
@@ -112,13 +118,3 @@ function custom_template_js() {
 
 add_action('admin_head', 'custom_template_css');
 add_action('admin_footer', 'custom_template_js');
-=======
-
-
-function words($value, $words=100, $end='...') {
-    preg_match('/^\s*+(?:\S++\s*+){1,'.$words.'}/u', $value, $matches);
-    if ( ! isset($matches[0])) return $value;
-    if (strlen($value) == strlen($matches[0])) return $value;
-    return rtrim($matches[0]).$end;
-}
->>>>>>> d065af1631ee88db79c33a975db2de259127f912

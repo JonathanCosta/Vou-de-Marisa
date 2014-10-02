@@ -46,15 +46,10 @@ $theme_opts = get_option('marisa_options');
 </section>
 
 <script src="<?php echo get_template_directory_uri(); ?>/js/jquery-1.11.1.min.js"></script>
-<<<<<<< HEAD
-<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenMax.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/underscore.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/image-marker.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/general.js?30"></script>
-=======
 <script src="<?php echo get_template_directory_uri(); ?>/js/TweenMax.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/general.js?59"></script>
->>>>>>> d065af1631ee88db79c33a975db2de259127f912
 
 <?php
     

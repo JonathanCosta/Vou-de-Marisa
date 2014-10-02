@@ -43,6 +43,14 @@
   overflow: hidden;
   margin-top: 10px;
 }
+#marker-manager-wrapper #success-message {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 140px;
+  color: #006100;
+  font-weight: bold;
+}
 #marker-manager-wrapper .marker-form {
   display: none;
 }
@@ -55,14 +63,6 @@
   margin-top: 10px;
   font-size: 14px;
   font-weight: 300;
-}
-#marker-manager-wrapper .marker-form #success-message {
-  display: none;
-  position: absolute;
-  top: 102px;
-  left: 140px;
-  color: #006100;
-  font-weight: bold;
 }
 #marker-manager-wrapper .image-wrapper {
   margin: 10px 0;
