@@ -52,7 +52,7 @@
             }
             this.appendModalTemplate();
             this.onNextTick(function() {
-                tb_show(this.adminTitle, '#TB_inline?width=600&height=550&inlineId=marker-manager-modal');
+                tb_show(this.adminTitle, '#TB_inline?width=753&height=550&inlineId=marker-manager-modal');
 
                 this.onNextTick(function() {
                     this.parseManager();

@@ -111,7 +111,7 @@ function custom_template_css() {
 
 // CUSTOM JS FROM TEMPLATE
 function custom_template_js() {
-   echo '<script src="'. get_template_directory_uri() .'/js/jquery-1.11.1.min.js"></script>' .
+   echo /*'<script src="'. get_template_directory_uri() .'/js/jquery-1.11.1.min.js"></script>' .*/
         '<script src="'. get_template_directory_uri() .'/js/underscore.min.js"></script>' .
         '<script src="'. get_template_directory_uri() .'/js/image-marker.js"></script>';
 }
