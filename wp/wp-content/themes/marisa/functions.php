@@ -97,11 +97,24 @@ function create_category_taxonomies() {
 
 //add_action( 'init', 'create_category_taxonomies', 0 );
 
-
-
 function words($value, $words=100, $end='...') {
     preg_match('/^\s*+(?:\S++\s*+){1,'.$words.'}/u', $value, $matches);
     if ( ! isset($matches[0])) return $value;
     if (strlen($value) == strlen($matches[0])) return $value;
     return rtrim($matches[0]).$end;
 }
+
+// CUSTOM CSS FROM TEMPLATE
+function custom_template_css() {
+   echo '<link rel="stylesheet" href="'. get_template_directory_uri() .'/css/image-marker.css" type="text/css" media="all">';
+}
+
+// CUSTOM JS FROM TEMPLATE
+function custom_template_js() {
+   echo '<script src="'. get_template_directory_uri() .'/js/jquery-1.11.1.min.js"></script>' .
+        '<script src="'. get_template_directory_uri() .'/js/underscore.min.js"></script>' .
+        '<script src="'. get_template_directory_uri() .'/js/image-marker.js"></script>';
+}
+
+add_action('admin_head', 'custom_template_css');
+add_action('admin_footer', 'custom_template_js');

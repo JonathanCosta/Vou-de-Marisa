@@ -1,0 +1,99 @@
+/* ADMIN OVERWRITES */
+/* #wp-image-toolbar {
+    i {
+        width: 20px;
+        height: 20px;
+        font-size: 20px;        
+    }
+} */
+#marker-manager-modal {
+  display: none;
+}
+
+#marker-manager-wrapper button {
+  background: #de0084;
+  font-family: "Open Sans",sans-serif;
+  font-size: 12px;
+  color: #fff;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  border: 0px solid #c0c1c3;
+  outline: none;
+  display: inline-block;
+  padding: 7px 10px 7px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+#marker-manager-wrapper button.add {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#marker-manager-wrapper button.save {
+  background-color: #008800;
+}
+#marker-manager-wrapper button.remove {
+  background-color: #878787;
+}
+#marker-manager-wrapper .marker-form-wrapper {
+  min-height: 150px;
+  border-bottom: 1px solid #d8d8d8;
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+}
+#marker-manager-wrapper #success-message {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 140px;
+  color: #006100;
+  font-weight: bold;
+}
+#marker-manager-wrapper .marker-form {
+  display: none;
+}
+#marker-manager-wrapper .marker-form input {
+  height: 32px;
+  line-height: 32px;
+  width: 50%;
+  border: 1px solid #c0c1c3;
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 300;
+}
+#marker-manager-wrapper .image-wrapper {
+  margin: 10px 0;
+  height: 360px;
+}
+#marker-manager-wrapper .image-wrapper #image-canvas {
+  margin: 0 auto;
+  position: relative;
+}
+#marker-manager-wrapper .image-wrapper #image-canvas img {
+  max-height: 360px;
+  max-width: 600px;
+}
+#marker-manager-wrapper .image-wrapper #image-canvas .marker {
+  display: block;
+  width: 31px;
+  height: 31px;
+  background: url(../images/image-marker-tag.gif) no-repeat;
+  position: absolute;
+  z-index: 10;
+}
+#marker-manager-wrapper .image-wrapper #image-canvas .marker.selected {
+  outline: 3px solid white;
+  z-index: 20;
+}
+
+.image-marker .marker {
+  display: block;
+  width: 31px;
+  height: 31px;
+  background: url(../images/image-marker-tag.gif) no-repeat;
+  position: absolute;
+  z-index: 10;
+}
