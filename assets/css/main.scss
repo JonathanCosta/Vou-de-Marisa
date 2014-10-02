@@ -32,7 +32,7 @@ body {
     height: 34px; background-color: #000; margin-bottom: 1px solid #888888; z-index: 1; position: relative;
     ul { display: block; max-width: 940px; width: 100%; margin: 0 auto; text-align: right; overflow: hidden; height: 100%; }
     li { display: inline-block; margin: ($heightSupHeader - image-height("sprite/sprite-facebook.png"))/2 24px; overflow: hidden; }
-    li a { color: #fff; font-size: 14px; }
+    li a { font-family: 'verlagbook'; font-size: 14px; font-weight: 100; color: #fff; font-size: 14px; }
     li.box { margin: ($heightSupHeader + 5 - image-height("sprite/sprite-facebook.png"))/2 8px; }
     li.box a { text-indent: -99999px; display: block; width: 100%; opacity: 0; }
 }
@@ -131,7 +131,7 @@ body {
     nav ul li:last-child {
         border-right: 0px solid #efefef;
     }
-    nav ul li.cat-item-5 {
+    nav ul li.last {
         border-right: 0px solid #efefef;
     }
     nav ul li a {
@@ -250,7 +250,7 @@ body {
     /*padding-bottom: 25px;*/
 }
 #artigos {
-    margin: 0px auto;
+    margin: 0px auto 20px;
     overflow: hidden;
     /*background: rgba(255,255,255,.8);*/
     .artigo { 
@@ -312,6 +312,9 @@ body {
                 margin: 0 5%;
                 padding: 0 0px;
                 color: #fff;
+                font-family: 'Arial';
+                font-size: 12px;
+                font-weight: 100;
                 a {
                     color: #fff;
                     text-decoration: none;
@@ -339,7 +342,7 @@ body {
             text-transform: uppercase;
             line-height: 32px;
             margin-top: -4px;
-            text-indent: 14px;
+            padding-left: 73px;
             color: #000;
         }
         h3 {
@@ -454,6 +457,9 @@ body {
                 float: left;
                 padding-right: 7px;
                 margin-right: 7px;
+            }
+            header.mobile {
+                display: none;
             }
         }
         .posttags {
@@ -603,7 +609,16 @@ body {
                 display: none;
             }
         }
+        .nonlogged #respond {
+            display: none;
+        }
+        .nonlogged .reply {
+            display: none;
+        }
     }
+}
+.archive #artigos {
+    margin: 0px auto 52px;
 }
 .pagecontent {
     padding-bottom: 15px;
@@ -767,6 +782,9 @@ body {
                 color: $branco;
                 text-transform: uppercase;
                 text-indent: 10px;
+            }
+            header.mobile {
+                display: none;
             }
         }
     }
@@ -1056,6 +1074,7 @@ body {
                 text-transform: uppercase;
                 font-family: 'Arial';
                 line-height: 16px;
+                font-weight: 700;
                 ico {
                     width: 36px;
                     height: 30px;
@@ -1070,6 +1089,7 @@ body {
                     line-height: 14px;
                     display: block;
                     font-family: 'Arial';
+                    font-weight: 100;
                 }
             }
         }
@@ -1090,21 +1110,26 @@ body {
         ul {
             padding: 0 10px;
             margin: 0 auto;
-            background: #333333;
+            background: #fff;
             height: 181px;
             overflow-x: auto;
             li {
                 padding: 2px 0;
-                color: #CCC;
+                color: #333;
                 border-bottom: 1px solid #CCC;
                 font-size: 12px;
+                overflow: hidden;
                 img {
                     display: block;
                     float: left;
                     margin: 4px 6px 0px 0px;
-                    width: 32px;
+                    width: 100px;
                     border-radius: 3px;
                     -webkit-border-radius: 3px;
+                }
+                a {
+                    color: #333;
+                    text-decoration: none;
                 }
             } 
             .first {
@@ -1117,12 +1142,12 @@ body {
         ul {
             padding: 0 10px;
             margin: 0 auto;
-            background: #333333;
+            background: #fff;
             height: 181px;
             overflow-x: auto;
             li {
                 padding: 2px 0;
-                color: #CCC;
+                color: #333;
                 border-bottom: 1px solid #CCC;
                 font-size: 12px;
                 img {
@@ -1143,7 +1168,7 @@ body {
         ul {
             padding: 4px 4px;
             margin: 0 auto;
-            background: #333333;
+            background: #fff;
             height: 173px;
             overflow-x: auto;
             li {
@@ -1234,10 +1259,10 @@ div.parceiros {
     width: 100%;
     background: $marisa;
     p { 
-        font-size: 15px; 
+        font-size: 16px; 
         color: #fff; 
         font-family: 'verlagbook';
-        line-height: 22px;
+        line-height: 26px;
         text-align: right;
         margin-top: 8px;
     }
@@ -1376,7 +1401,7 @@ div.parceiros {
         display: block;
         text-indent: -99999px;
         width: image-width("sprite/facebook-bt.png");
-        height: image-height("sprite/facebook-bt.png");
+        height: 35px;
         margin: 12px auto;
     }
 }
@@ -1507,7 +1532,7 @@ button.mais {
     outline:none;
     display: block;
     padding: 10px;
-    margin: 30px auto 80px;
+    margin: 0px auto 80px;
     cursor: pointer;
     ico {
         width: image-width("sprite/mais.png");
@@ -1517,6 +1542,10 @@ button.mais {
         margin-right: 10px;
     }
 }
+body.index button.mais {
+    margin: 0px auto 20px;
+}
+
 .box { display: block; } //@include border-radius(20px); }
 .sprite-sprite-facebook {
     width: image-width("sprite/sprite-facebook.png");
@@ -1631,15 +1660,24 @@ button {
 
 
 
-@media screen and (max-width: 995px) {
+@media screen and (max-width: 966px) {
     #sup-header, .hidemobile, .fixed_menu, .parceiros, #socials { display: none!important; }
     .mobile { display: block; }
     .formnewuser {
         width: 90%;
-        top: calc(50% - 330px);
-        left: calc(50% - 230px);
         height: auto;
         max-width: 460px;
+        margin: 0 auto;
+        position: fixed;
+        top: 2%;
+        left: calc( 50% - 230px );
+        title {
+            a {
+                width: 30px;
+                cursor: pointer;
+                text-align: center;
+            }
+        }
         .left {
             width: 100%;
             height: auto;
@@ -1661,6 +1699,14 @@ button {
                     font-size: 13px;
                 }
             }
+            .sprite-facebook-bt {
+                background: url(../images/sprite/facebook-bt.png) no-repeat;
+                background-size: 100%;
+            }
+            .sprite-twitter-bt {
+                background: url(../images/sprite/twitter-bt.png) no-repeat;
+                background-size: 100%;
+            }
         }
         .social-bt {
             width: 45%;
@@ -1671,6 +1717,14 @@ button {
         .sprite-twitter-bt {
         }
     }
+    #bot-header {
+        height: 34px; background-color: #000; margin-bottom: 1px solid #888888; z-index: 1; position: relative;
+        ul { display: block; max-width: 940px; width: 100%; margin: 0 auto; text-align: right; overflow: hidden; height: 100%; }
+        li { display: inline-block; margin: ($heightSupHeader - image-height("sprite/sprite-facebook.png"))/2 24px; overflow: hidden; }
+        li a { font-family: 'verlagbook'; font-size: 14px; font-weight: 100; color: #fff; font-size: 14px; }
+        li.box { margin: ($heightSupHeader + 5 - image-height("sprite/sprite-facebook.png"))/2 8px; }
+        li.box a { text-indent: -99999px; display: block; width: 100%; opacity: 0; }
+    }
     #header {
         box-shadow: 0px -2px 12px 2px #AAA;
         h1 {
@@ -1679,6 +1733,7 @@ button {
             margin: 23px auto 0px;
             cursor: pointer;
             max-width: 50%;
+            width: 50%;
             img {
                 width: 100%;
             }
@@ -1693,7 +1748,7 @@ button {
                     background: #fff;
                     float: left;
                     width: 48%;
-                    margin: 10px 10px 0 0;
+                    margin: 10px 1.1% 0 0;
                     ul.children {
                         display: none!important;
                     }
@@ -1702,45 +1757,53 @@ button {
                     background: #fff;
                 }
                 li.cat-item-2 {
-                    margin: 10px 0 0 10px;
+                    margin: 10px 0 0 1.1%;
                 }
                 li.cat-item-4 {
-                    margin: 10px 0 0 10px;
+                    margin: 10px 0 0 1.1%;
                 }
                 li.cat-item-6 {
-                    margin: 10px 0 0 10px;
+                    margin: 10px 0 0 1.1%;
                     .sprite-people {
                         position: relative;
                         top: 6px;
-                        left: 79px;
+                        left: 26%;
                         -webkit-filter: contrast(0);
                     }
                 }
             }
         }
         .nav.mobile {
-            width: 61px;
+            width: 9.55%;
             height: 56px;
             margin-top: 6px;
             margin-left: 5%;
-            margin-right: 6%;
+            margin-right: 5%;
             text-indent: -99999px;
             margin-bottom: 8px;
+            padding: 0 2%;
             cursor: pointer;
         }
         .nav.mobile.menumobile {
             background: url(../images/menu-mobile.png) center center no-repeat;
         }
         .nav.mobile.entrar {
-            margin-left: 6%;
+            margin-left: 5%;
             margin-right: 0%;
             text-indent: 20px;
             line-height: 58px;
             position: relative;
+            padding: 0 3%;
+            text-align: right;
             ico {
                 position: absolute;
                 margin-top: 20px;
             }
+        }
+        .sprite-home-user {
+            width: 16%;
+            padding: 0 0 0 10px;
+            overflow: hidden;
         }
         form {
             width: 90%;
@@ -1793,13 +1856,15 @@ button {
         .artigo {
             margin: 12px 0%;
             width: 100%;
-            height: 644px;
+            height: 100%;
+            min-height: 490px;
             a {
                 width: 100%;
                 height: 644px;
                 img {
                     width: 100%;
-                    height: 100%;
+                    /*height: 100%;*/
+                    min-height: 100%;
                 }
             }
             .call-box {
@@ -1951,11 +2016,11 @@ button {
             width: 90%;
             margin: 0 5%;
             input {
-                width: 88%;
+                width: calc(96% - 50px);
                 font-size: 16px;
             }
             button {
-                width: 7%;
+                width: 42px;
             }
             p { 
                 text-align: center; 
@@ -1964,22 +2029,27 @@ button {
         }
         .container {
             div {
-                min-width: 50%;
-                margin: 0 auto;
-                float: none;
+                width: 90%;
+                margin: 0 5%;
+                float: left;
                 padding-top: 4px;
                 border: 0;
+                height: 10px;
+                text-align: center;
+                min-height: 56px;
                 a {
+                    display: inline-block;
                     border: 0;
-                    float: left;
+                    float: none;
                     img {
                         width: 144px;
                         margin-top: 5px;
                     }
                 }
                 p {
+                    display: inline-block;
                     width: auto;
-                    float: left;
+                    float: none;
                     font-size: 18px;
                     margin-right: 1%;
                     line-height: 38px;
@@ -1989,14 +2059,43 @@ button {
                 margin: 13px auto 0;
             }
         }
+        #bot-header {
+            height: 42px; 
+            background-color: $marisa-dark; 
+            margin-bottom: 1px solid #cc0a7c; 
+            z-index: 1; 
+            position: relative; 
+            ul { 
+                display: block; 
+                max-width: 940px; 
+                width: 100%; 
+                margin: 0 auto; 
+                text-align: center; 
+                overflow: hidden; 
+                height: 100%; 
+            }
+            li { 
+                display: inline-block; 
+                margin: 0 22px; 
+                overflow: hidden;
+                font-family: 'verlagbold';
+                font-size: 20px;
+                color: #fff;
+                line-height: 42px;
+            }
+            li a { font-family: 'verlagbook'; font-size: 14px; font-weight: 100; color: #fff; line-height: 42px; }
+            li.box { margin: 10px 8px 16px; }
+            li.box a { text-indent: -99999px; display: block; width: 100%; opacity: 0; }
+        }
         p.copyright {
             margin-top: 0;
+            background: $marisa;
         }
     }
     #single {
         width: 90%;
         margin: 0 5%;
-        #sidebarrrrr {
+        #sidebar {
             width: 90%;
             border-bottom: 1px solid #afb0b2;
             padding-bottom: 26px;
@@ -2034,6 +2133,7 @@ button {
                         margin-right: 6px;
                         width: 53px;
                         height: 53px;
+                        display: block;
                         ico {
                             width: image-width("sprite/share-mobile.png");
                             height: image-height("sprite/share-mobile.png");
@@ -2045,6 +2145,9 @@ button {
                         margin-top: 0;
                         width: 53px;
                         height: 53px;
+                    }
+                    a.sprite-gplus-mobile {
+                        margin-right: 0px;
                     }
                 }
             }
@@ -2069,6 +2172,7 @@ button {
                         margin-right: 6px;
                         width: 53px;
                         height: 53px;
+                        display: block;
                         ico {
                             width: image-width("sprite/share-mobile.png");
                             height: image-height("sprite/share-mobile.png");
@@ -2093,6 +2197,10 @@ button {
                     a:hover {
                         
                     }
+                }
+                .unlogged {
+                    width: 100%;
+                    background: url(../images/sprite/unlogged.png) no-repeat center center;
                 }
             }
         }
@@ -2146,6 +2254,75 @@ button {
         }
         .artigo.first {
             margin: 12px 10%; 
+        }
+    }
+    .container {
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #artigos {
+        .artigo {
+            margin: 12px 0%;
+            min-height: 390px;
+        }
+    }
+    .formnewuser {
+        left: calc(50% - 209px );
+    }
+    #header {
+        .nav.mobile.entrar {
+            line-height: 28px;
+            font-size: 15px;
+            text-align: center;
+            ico {
+                position: inherit;
+                margin: 10px auto 0px;
+                float: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #artigos {
+        .artigo {
+            margin: 10px 0%;
+            min-height: 290px;
+        }
+    }
+    .formnewuser {
+        left: calc(50% - 174px );
+    }
+}
+
+@media screen and (max-width: 320px) {
+    #header {
+        .nav.mobile.entrar {
+            padding: 0 1%;
+            width: 14%;
+        }
+    }
+}
+
+@media screen and (max-width: 300px) {
+    #artigos {
+        .artigo {
+            margin: 8px 0%;
+            min-height: 190px;
+        }
+    }
+    .formnewuser {
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 200px) {
+    #artigos {
+        .artigo {
+            margin: 6px 0%;
+            min-height: 90px;
         }
     }
 }

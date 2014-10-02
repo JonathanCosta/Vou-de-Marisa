@@ -17,7 +17,7 @@ query_posts($args);
         <?php while ( have_posts() ) { ?>
         <?php the_post(); ?>
         <?php $postid = get_the_ID(); ?>
-        <li id="<? echo $postid; ?>" data-title="<?php the_title(); ?>" data-link="<?php echo get_permalink(); ?>" data-window="_self" data-bg="<?php echo get_post_meta($postid, 'cf_banner_background', true); ?>" data-fg="<?php echo get_post_meta($postid, 'cf_banner_foreground', true); ?>"></li>
+        <li id="<? echo $postid; ?>" data-title="<?php the_title(); ?>" data-link="<?php echo get_permalink(); ?>" data-window="_self" data-bg="<?php echo get_post_meta($postid, 'cf_banner_background', true); ?>" data-fg="<?php echo get_post_meta($postid, 'cf_banner_foreground', true); ?>" data-fgm="<?php echo get_post_meta($postid, 'cf_banner_foreground_mobile', true); ?>"></li>
         <?php } //endwhile ?>
     </ul>
     <div class="container">
@@ -41,6 +41,7 @@ query_posts($args);
             query_posts($args);
             global $count;
             $count = 0;
+            $totalposts = $wp_query->found_posts;
             ?>
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
             
@@ -70,11 +71,13 @@ query_posts($args);
 			
 		</div>
         
+        <?php if ( $count < $totalposts ) { ?>
         <div class="container loader">
             <div class="loaderPage"><img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif"></div>
             <input type="hidden" id="pagenumber" value="2"/>
-            <button type="button" class="mais" onclick="moreposts('<?php echo get_template_directory_uri(); ?>', '<?php echo getLastPathSegment($_SERVER['REQUEST_URI']);?>');"><ico class="sprite-mais"></ico>Carregar Mais</button>
+            <button type="button" class="mais" onclick="moreposts('<?php echo get_template_directory_uri(); ?>');"><ico class="sprite-mais"></ico>Carregar Mais</button>
         </div>
+        <?php } ?>
 		
 		<?php //get_sidebar(); ?>
 	</div>

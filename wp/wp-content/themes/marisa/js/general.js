@@ -1,6 +1,44 @@
 function closelightbox(){
     $('.film').fadeOut(300);
-    $('.formnewuser').fadeOut(300);
+    $('.formnewuser').fadeOut(300, function(){
+        if (banner.slides > 1) {
+            banner.timer();
+        }
+    });
+}
+
+function adjustMenu() {
+    var navwidth = $('#header nav').outerWidth();
+    var headeritens = $('#header nav ul li').length;
+    var childrenheaderitens = $('#header nav ul li ul.children li').length;
+    var x = ((navwidth)/(headeritens-childrenheaderitens-1))-1;
+    $('#header nav ul li').css('min-width',x+'px');
+    $('#header nav ul li ul.children li, #header nav ul li ul.children').css('min-width',x+'px');
+}
+
+function removeImageDimensions() {
+    $('.artigo img').each(function( index ) {
+        $(this).removeAttr('width');
+        $(this).removeAttr('height');
+    });
+}
+
+function adjustCarrossel() {
+    if ($(window).outerWidth() < 920) {
+        banner.$el.find('li').each(function( index ) {
+            var fg = $(this).data('fgm');
+            if ( fg.length < 1 ) {
+                fg = $(this).data('fg');
+            }
+            $(this).find('a').css('background-image','url('+fg+')');
+        });
+    } else {
+        banner.$el.find('li').each(function( index ) {
+            var fg = $(this).data('fg');
+            $(this).find('a').css('background-image','url('+fg+')');
+        });
+
+    }
 }
 
 //POSTS Infinite Scrool
@@ -9,7 +47,7 @@ function moreposts(url, category) {
     pageLoaded = $('#pagenumber').val();
     loadedAjaxPage = true;
     $.ajax({
-        url: url+"../../../../wp-content/themes/marisa/pagination.php?page="+pageLoaded+"&category="+category+"&loadeditems="+$("#artigos .artigo").length,
+        url: app.templateUrl+"/pagination.php?page="+pageLoaded+"&category="+category+"&loadeditems="+$("#artigos .artigo").length,
         dataType: "text/html",
         beforeSend: function() {
             $(".loaderPage").slideDown(200);
@@ -65,8 +103,7 @@ function appendAdminOptions() {
      */
     var scrolled = 0,
         lightboxtimer,
-        ajax = true,
-        themeurl = "http://vert.se/marisa/blog/wp-content/themes/marisa";
+        ajax = true;
 
     /*
      *
@@ -78,7 +115,7 @@ function appendAdminOptions() {
 
     var BannerCarrossel = function BannerCarrossel($el) {
         this.$el = $el;
-        this.interval = 5000;
+        this.interval = 6000;
         this.actual = -1;
         this.slides = 0;
         this.width = 0;
@@ -114,13 +151,18 @@ function appendAdminOptions() {
 
                 if ( target_window == 1 ) { $(this).find('a').attr('target','_blank'); }
                 //WIDTH OF UL ELEMENT
-                $self.width += parseInt($(this).width(), 10);
-                $self.widthStep = parseInt($(this).width(), 10);
-                $self.slides = $self.$el.find('li').length;
                 
-                $self.$bulletsContainer.append("<a href='#' rel='"+index+"' onclick='banner.bullet(event, "+index+");'>'"+index+"'</a>");
+                if (bg.length > 0 && fg.length > 0) {
+                    $self.width += parseInt($(this).width(), 10);
+                    $self.widthStep = parseInt($(this).width(), 10);
+                    $self.slides = $self.$el.find('li').length;
+
+                    $self.$bulletsContainer.append("<a href='#' rel='"+index+"' onclick='banner.bullet(event, "+index+");'>'"+index+"'</a>");
+                    $self.numberofelements++;
+                } else {
+                    $(this).remove();
+                }
                 
-                $self.numberofelements++;
                 
             });
             this.$slider.on('click', function(e){
@@ -130,8 +172,12 @@ function appendAdminOptions() {
                 $self[$(self).hasClass('previous') ? 'previous' : 'next']();
             });
             
-            $self.next();
-            $self.timer();
+            if ( $self.$el.find('li').length > 0) {
+                $self.next();
+                $self.timer();
+            } else {
+                $self.$el.remove();
+            }
         }
     };
     
@@ -183,11 +229,11 @@ function appendAdminOptions() {
         }
         TweenLite.to(this.$el.find('li .headerFg').eq(index), 0.6, {opacity:0, left:param, onComplete: step2});
         function step2() {
-            TweenLite.to(self.$el.find('li .headerBg').eq(index), 0.5, {opacity: 0, oncomplete: displaynone(self)});
+            TweenLite.to(self.$el.find('li .headerBg').eq(index), 0.5, {opacity: 0, onComplete: displaynone(self)});
             TweenLite.to(self.$el.find('li .headerBg').eq(self.actual), 0.5, { opacity:1});
             
             function displaynone(el) {
-                el.$el.find('li').eq(index).css('display','none');
+                //el.$el.find('li').eq(index).css('display','none');
                 self.animaIn();
             }
         }
@@ -228,9 +274,9 @@ function appendAdminOptions() {
     }; 
 
     BannerCarrossel.prototype.timer = function() {
+        var $this = this;
         if( $('.film:visible').length < 1 && this.slides > 1 ) {
-            var $this = this;
-            this.timer = window.setInterval(function(){ $this.next(); },this.interval);
+            this.timer = window.setInterval(function(){ $this.next(); },$this.interval);
         }
     };
 
@@ -246,12 +292,26 @@ function appendAdminOptions() {
         var banner = new BannerCarrossel($('#banner'));
         window.banner = banner;
         
+        adjustMenu();
+        adjustCarrossel();
+        removeImageDimensions();
+        
+        
+        window.ImageMarker && ImageMarker.format();
+        
+        if ( $('#relacionados .artigo').length < 1 ) {
+            $('#relacionados').css('padding', 0);
+            $('#relacionados').css('margin', 0);
+        }
+        
+        //FIXED LAST MENU LI
+        $('#header nav ul li:visible').last().addClass('last');
         
         //FIXED MENU ON SCROOL
         $(window).on( 'scroll', function(){
             scrolled = $('body').scrollTop();
 
-            if ($(window).outerWidth() > 920) {
+            if ($(window).outerWidth() > 940) {
                 if (scrolled >= 145) {
                     $('.fixed_menu').fadeIn(600);
                 } else {
@@ -270,16 +330,50 @@ function appendAdminOptions() {
                     }
                 }
                 
+            } else {
+                removeImageDimensions();
             }
             
             if ($('#socials:visible').length > 0) {
                 if ( scrolled >= $('#socials').position().top - $(window).outerHeight() + 150 ) {
+                    
                     //TWITTER
                     if (ajax === true) {
 
                         ajax = false;
+                        if ( $('#fb-root') ) {
+                            var e = document.createElement('script'); e.async = true;
+                            e.src = document.location.protocol + '//connect.facebook.net/pt_BR/all.js';
+                            document.getElementById('fb-root').appendChild(e);
+                        }
+
+                        window.fbAsyncInit = function() {
+                            FB.init({
+                                appId: '241686319233509',
+                                status: true,
+                                cookie: true,
+                                oauth : true
+                            });
+
+                            FB.api('/voudemarisa/posts?fields=id,message,picture,link&limit=3&access_token=CAADbzZCs0eeUBAOfWrWBshxAPhXG9AdSWoQe6IqeGMbBiU7p0KuF9auZBL10Qr6WmVVvAj75pW6uVVR4fTLrAFPQKYYUuyZBNe74hlIVizUugI5CLPgZClEeIDFaxpPrDFOzlB6qb5S05eu0oOcNCU5hhDg0Rjggsb2OHyf5U65JPxRidnt6SL8bauZBzkHIiEdy0WR0YwNECroaKFnHZCerDbHo9QCZCIZD', function(response) {
+                                var html = '';
+                                $.each(response.data, function(idx, p) {
+                                    if (p.message && p.message != undefined) {
+                                        $('.box_facebook_lis img').remove();
+                                        html += '<li><a title="' + p.message + '" href="' + p.link + '" target="_blank">';
+                                        if (p.picture && p.picture.length > 0) { html += '<img src="' + p.picture + '">'; }
+                                        html += '' + p.message + '</a></li>';
+                                        $('.box_facebook_lis').append(html);
+                                    }
+                                });
+                            });
+                            
+                        };
+                        
+                        
+                        
                         $.ajax({
-                            url: themeurl+"/inc/tweets.php",
+                            url: app.templateUrl+"/inc/tweets.php",
                             dataType: "text/html",
                             complete: function (data) {
                                 var $temp = $($.parseHTML( data.responseText )).find('li');
@@ -295,7 +389,7 @@ function appendAdminOptions() {
                         });
 
                         $.ajax({
-                            url: themeurl+"/inc/instagram.php",
+                            url: app.templateUrl+"/inc/instagram.php",
                             dataType: "text/html",
                             complete: function (data) {
                                 var $temp = $($.parseHTML( data.responseText )).find('li');
@@ -311,7 +405,7 @@ function appendAdminOptions() {
                         });
 
                         $.ajax({
-                            url: themeurl+"/inc/gplus.php",
+                            url: app.templateUrl+"/inc/gplus.php",
                             dataType: "text/html",
                             complete: function (data) {
                                 var $temp = $($.parseHTML( data.responseText )).find('li');
@@ -331,54 +425,26 @@ function appendAdminOptions() {
         });
         
         $(window).on( 'resize', function(){
-            if ($(window).outerWidth() < 920) {
-                //ADJUSTING MENU LI's WIDTH
-                var navwidth = $('#header nav').outerWidth();
-                var headeritens = $('#header nav ul li').length;
-                var childrenheaderitens = $('#header nav ul li ul.children li').length;
-                var x = ((navwidth)/(headeritens-childrenheaderitens-1))-1;
-                $('#header nav ul li').css('min-width',x+'px');
-                $('#header nav ul li ul.children li, #header nav ul li ul.children').css('min-width',x+'px');
-                
-                /*banner.$el.find('li').each(function( index ) {
-                    var bg = $(this).data('bg'),
-                        fg = $(this).data('fg'),
-                        fgm = $(this).data('fgm'),
-                        link = $(this).data('link'),
-                        target_window = $(this).data('window');
-
-                    $(this).append('<div href="'+link+'" class="headerBg"></div>');
-                    $(this).find('.headerBg').css( "background-image", "url('"+bg+"')" );
-
-                    $(this).append('<a href="'+link+'" class="headerFg"></a>');
-                    $(this).find('a').css( "background-image", "url('"+fg+"')" );
-                    $(this).find('a').attr( "mobile", fgm)" );
-
-                    if ( target_window == 1 ) { $(this).find('a').attr('target','_blank'); }
-                    //WIDTH OF UL ELEMENT
-                    $self.width += parseInt($(this).width(), 10);
-                    $self.widthStep = parseInt($(this).width(), 10);
-                    $self.slides = $self.$el.find('li').length;
-
-                    $self.$bulletsContainer.append("<a href='#' rel='"+index+"' onclick='banner.bullet(event, "+index+");'>'"+index+"'</a>");
-
-                    $self.numberofelements++;
-
-                });*/
-            } else {
-                
-            }
+            
+            //ADJUSTING MENU LI's WIDTH
+            adjustMenu();
+            adjustCarrossel();
+            
         });
         
         //INITIAL LIGHTBOX ENGINE
-        $('.closelightbox').on('click', closelightbox);
+        $('.closelightbox').on('click', function() { 
+            closelightbox(); 
+        });
+        
         if( $('.film:visible').length > 0 ) {
-            lightboxtimer = window.setTimeout(function(){ $('.closelightbox').click(); }, 5000);
+            lightboxtimer = window.setTimeout(function(){ $('.closelightbox').click(); }, 6000);
         }
+        
         $('.formnewuser').mouseenter(function(){
             clearTimeout(lightboxtimer);
         }).mouseleave(function(){
-            lightboxtimer = window.setTimeout(function(){ $('.closelightbox').click(); }, 5000);
+            lightboxtimer = window.setTimeout(function(){ $('.closelightbox').click(); }, 6000);
         });
         
         $('.menumobile').on('click', function(event){
@@ -393,5 +459,7 @@ function appendAdminOptions() {
         
         
     });
+    
+    
 
 })();

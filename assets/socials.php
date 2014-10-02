@@ -15,37 +15,11 @@ $theme_opts = get_option('marisa_options');
             
             <ul class="box_facebook_lis">
                 <li class="first">Últimas postagens</li>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader-dark.gif" style="margin: 30px auto;display: block;"/>
+                <img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif" style="margin: 30px auto;display: block;"/>
             </ul>
             
             <div id="fb-root"></div>
             
-            <script>
-                (function() {
-                    var e = document.createElement('script'); e.async = true;
-                    e.src = document.location.protocol + '//connect.facebook.net/pt_BR/all.js';
-                    document.getElementById('fb-root').appendChild(e);
-                }());
-
-                window.fbAsyncInit = function() {
-                    FB.init({
-                        appId: '114269431990058',
-                        status: true,
-                        cookie: true,
-                        oauth : true
-                    });
-
-                    FB.api('/voudemarisa/posts?fields=id,message,picture,link&limit=3&access_token=CAABn7WznByoBAKzPq2dklJgIogTVLuhNpKVP2hJ1syB6HiAbZCRDBPa2RPYK3sE4Uc9OZCdeAU1JGGVqq25b1QOk8urrZAVotTaZBEKww6smBaffONjgTpA4Lp2ASoA4ZBjiLeAABjAmonWfrhzERioi9oIMn3XcVKsUng2cuiIyl185U08AyZAKJaXZCLwUDcZD', function(response) {
-                        var html = '';
-                        $.each(response.data, function(idx, p) {
-                            html += '<li><a title="' + p.message + '" href="' + p.link + '" target="_blank"><img src="' + p.picture + '"></a></li>';
-                        });
-                        $('.box_twitter_lis img').remove();
-                        $('.box_twitter_lis').append(html);
-                    });
-                };
-
-            </script>
             <footer>
                 <a taget="_blank" href="http://www.facebook.com/<?php echo $theme_opts['marisa_facebook']; ?>">VER MAIS</a>
             </footer>
@@ -63,7 +37,7 @@ $theme_opts = get_option('marisa_options');
             </header>
             <ul class="box_twitter_lis">
                 <li class="first">Tweets</li>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader-dark.gif" style="margin: 30px auto;display: block;"/>
+                <img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif" style="margin: 30px auto;display: block;"/>
             </ul>
             <footer>
                 <a taget="_blank" href="http://www.twitter.com/<?php echo $theme_opts['marisa_twitter']; ?>">VER MAIS</a>
@@ -82,7 +56,7 @@ $theme_opts = get_option('marisa_options');
                 </a>
             </header>
             <ul class="box_instagram_lis">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader-dark.gif" style="margin: 30px auto;display: block;"/>
+                <img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif" style="margin: 30px auto;display: block;"/>
             </ul>
             <footer>
                 <a taget="_blank" href="http://www.instagram.com/<?php echo $theme_opts['marisa_instagram']; ?>">VER MAIS</a>

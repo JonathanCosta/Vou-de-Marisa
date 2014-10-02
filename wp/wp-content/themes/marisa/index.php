@@ -48,6 +48,7 @@ query_posts($args);
             query_posts($args);
             global $count;
             $count = 0;
+            $totalposts = $wp_query->found_posts;
             ?>
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
             
@@ -58,7 +59,7 @@ query_posts($args);
                     <div class="call-box">
                         <h3><?php echo $first; ?><?php the_category(); ?></h3>
                         <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-                        <p><a href="<?php the_permalink() ?>"><?php the_field('resumo_de_capa'); ?></a></p>
+                        <p><a href="<?php the_permalink() ?>"><?php echo words(the_field('resumo_de_capa'), 3); ?></a></p>
                     </div>
                     
 				</div>
@@ -68,34 +69,20 @@ query_posts($args);
 			<?php else: ?>
 				<div class="artigo">
 					<h2>Nada Encontrado</h2>
-					<p>Erro 404</p>
-					<p>Lamentamos mas não foram encontrados artigos.</p>
 				</div>			
 			<?php endif; ?>
 			
 		</div>
+        <?php if ( $count < $totalposts ) { ?>
         <div class="container loader">
             <div class="loaderPage"><img src="<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif"></div>
             <input type="hidden" id="pagenumber" value="2"/>
             <button type="button" class="mais" onclick="moreposts('<?php echo get_template_directory_uri(); ?>');"><ico class="sprite-mais"></ico>Carregar Mais</button>
         </div>
+        <?php } ?>
 		
 		<?php //get_sidebar(); ?>
 	</div>
-    
-    <div class="parceiros">
-        <div class="container">
-            <h4>
-                <a href="parceiros/" title="Parceiros de conteúdo">
-                    Parceiros de conteúdo
-                    <span>Conhe&ccedil;a o perfil dos nossos parceiros</span>
-                </a>
-            </h4>
-            <a href="parceiros/" title="Parceiros de conteúdo">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/parceiros.png" alt="Parceiros de conteúdo" />
-            </a>
-        </div>
-    </div>
     
 </section>
 <?php include(TEMPLATEPATH . '/socials.php'); ?>

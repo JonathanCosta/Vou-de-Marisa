@@ -1,5 +1,20 @@
 <?php
 $theme_opts = get_option('marisa_options');
+
+
+
+//VERIFICA SE USUÁRIO POSSUI COOKIE
+if ( strlen($_COOKIE['username']) < 1 ) {
+    $date_of_expiry =  mktime().time()+60*60*24*365;
+    setcookie( "userlogin", "anonymous", $date_of_expiry );
+    
+    if ($_COOKIE['firsttime'] == "yes") {
+        setcookie( "firsttime", "no", $date_of_expiry );
+    } else if (strlen($_COOKIE['firsttime']) === 0 ) {
+        setcookie( "firsttime", "yes", $date_of_expiry );
+    }
+}
+ 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
@@ -7,13 +22,17 @@ $theme_opts = get_option('marisa_options');
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-<meta name="viewport" content="width=640, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title><?php wp_title(''); ?></title>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); wp_head(); ?>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/image-marker.css" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/main.css?7" />
+=======
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/main.css?27" />
+>>>>>>> d065af1631ee88db79c33a975db2de259127f912
 <script>
     window.app = {
         userLoggedIn: '<?php echo is_user_logged_in(); ?>',
@@ -112,7 +131,7 @@ $theme_opts = get_option('marisa_options');
             <a href="<?php echo site_url(); ?>/parceiros/" class="nav hidemobile parceiros"><ico class="parceiros sprite-people"></ico> Parceiros</a>
             <?php if ( strlen($current_user->user_firstname) < 1 ) { ?>
             <a href="<?php echo site_url(); ?>/cadastre-se/" class="nav hidemobile cadastro"><ico class="cadastro sprite-form"></ico> Cadastre-se</a>
-            <a class="nav hidemobile entrar"><ico class="entrar sprite-door"></ico> Entrar</a>
+            <a  href="<?php echo site_url(); ?>/cadastre-se/" class="nav hidemobile entrar"><ico class="entrar sprite-door"></ico> Entrar</a>
             <?php } else { ?>
             <div class="sprite-home-user hidemobile">
                 Ol&aacute; 
