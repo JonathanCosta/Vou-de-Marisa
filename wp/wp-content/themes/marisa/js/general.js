@@ -185,7 +185,6 @@ function appendAdminOptions() {
         var $self = this;
         e.preventDefault();
         window.clearInterval($self.timer);
-        $self.timer = window.setInterval(function(){ $self.next(); },$self.interval);
         if ($self.actual < index) {
             $self.actual++;
             $self.direction = 'foward';
@@ -195,6 +194,9 @@ function appendAdminOptions() {
             $self.direction = 'backward';
             $self.animaOut(this.actual+1);
         }
+        $self.actual=index;
+        $self.timer = window.setInterval(function(){ $self.next(); },$self.interval);
+        
     };
 
     BannerCarrossel.prototype.previous = function(e) {
@@ -296,6 +298,97 @@ function appendAdminOptions() {
         adjustCarrossel();
         removeImageDimensions();
         
+        $('#submenu input').on('click', function(e){
+            $('#submenu ul li a.active').click();
+        });
+        
+        //FIXED LAST MENU LI
+        $('#header nav ul li:visible').last().addClass('last');
+        
+        $('#submenu ul li a').on('click', function(e){
+            e.preventDefault();
+            $('#submenu ul li a').removeClass("active");
+            $(this).addClass("active");
+            if ($(this).html() != "Todas") {
+                app.filtercategory = $(this).html(); 
+            } else {
+                var aux = $('#submenu h5').html();
+                app.filtercategory = aux.trim(); 
+            }
+            app.filterorderby = $('.filtroposts:checked').val();
+            $("#artigos .artigo").fadeOut(200, function() {
+                $(this).remove();
+                var html = "<div class=\"loaderPage\"><img src=\"http://marisa/wp-content/themes/marisa/images/ajax-loader.gif\"></div>";
+                if ( $('#artigos .loaderPage').length < 1 ) {
+                    $('#artigos').append(html);
+                    $('#artigos .loaderPage').slideDown(300);
+                }
+            });
+            
+            
+            var pageLoaded = $('#pagenumber').val();
+            var loadedAjaxPage = true;
+            $.ajax({
+                url: app.templateUrl+"/pagination.php?page=1&category="+app.filtercategory+"&loadeditems=0&order="+app.filterorderby,
+                dataType: "text/html",
+                beforeSend: function() {
+                    $(".loaderPage").slideDown(200);
+                },
+                complete: function (data) {
+                    var $temp = $($.parseHTML( data.responseText )).find('div.artigo');
+                    var $totalposts = $.parseHTML( data.responseText );
+                        $totalposts = ($($totalposts).find('.general').attr('rel'));
+
+                    $('#artigos .loaderPage').remove();
+                    
+                    $temp.each(function( index ) {
+                        $('#artigos').append(  $(this).delay(index*150).animate({opacity:1, top:0}, 200)  );
+                    });
+
+                    if (data.responseText != "nothing") { 
+                        $('#pagenumber').val(++pageLoaded);
+                    } else {
+
+                    }
+                    if ( $totalposts >= $('#artigos .artigo').length ) {
+                        $('.loader').slideUp();
+                        $('#artigos').css('margin','0 auto 60px');
+                    }
+                    $(".loaderPage").slideUp(200, function(){
+                        loadedAjaxPage = false;
+                    });
+                },
+                error: function () {
+                    $(".loaderPage").slideUp(200, function(){ 
+                        loadedAjaxPage = false; 
+                    });
+                }
+            });
+        });
+        
+        var postShare, countImageMarker = 1;
+        $('.image_tag').each(function( index ) {
+            postShare = '';
+            postShare += '<div class="postshare">';
+            postShare += '    <header class="hidemobile">';
+            postShare += '    <ico class="sprite-share-author author-share hidemobile"></ico>';
+            postShare += '        COMPARTILHE';
+            postShare += '    </header>';
+            postShare += '    <header class="mobile">';
+            postShare += '        <ico class="sprite-share-mobile mobile"></ico>';
+            postShare += '    </header>';
+            postShare += '    <a href="http://www.facebook.com/sharer.php?u='+app.thisPageUrlEncoded+'#ImageMarker'+countImageMarker+'" target="_blank" title="Facebook do autor" class="sprite-facebook-author hidemobile">Facebook</a>';
+            postShare += '    <a href="http://www.twitter.com/share?text=Li+e+gostei+no+Blog+da+Marisa&url='+app.thisPageUrlEncoded+'#ImageMarker'+countImageMarker+'" target="_blank" title="Twitter do autor" class="sprite-twitter-author hidemobile">Twitter</a>';
+            postShare += '    <a href="http://plus.google.com/share?url='+app.thisPageUrlEncoded+'#ImageMarker'+countImageMarker+'" target="_blank" title="Google Plus do autor" class="sprite-gplus-author hidemobile">Google Plus</a>';
+            postShare += '    <a href="http://www.facebook.com/sharer.php?u='+app.thisPageUrlEncoded+'#ImageMarker'+countImageMarker+'" target="_blank" title="Facebook do autor" class="sprite-facebook-author sprite-facebook-mobile mobile\">Facebook</a>';
+            postShare += '    <a href="http://www.twitter.com/share?text=Li+e+gostei+no+Blog+da+Marisa&url='+app.thisPageUrlEncoded+'#ImageMarker'+countImageMarker+'" target="_blank" title="Twitter do autor" class="sprite-twitter-author sprite-twitter-mobile mobile">Twitter</a>';
+            postShare += '    <a href="http://plus.google.com/share?url="'+app.thisPageUrlEncoded+'#ImageMarker'+countImageMarker+'" target="_blank" title="Google Plus do autor" class="sprite-gplus-author sprite-gplus-mobile mobile">Google Plus</a>';
+            postShare += '</div>';
+            $(this).after(postShare);
+            $(this).before('<a name="ImageMarker'+countImageMarker+'"></a>');
+            countImageMarker++;
+        }); 
+        
         
         window.ImageMarker && ImageMarker.format();
         
@@ -303,9 +396,6 @@ function appendAdminOptions() {
             $('#relacionados').css('padding', 0);
             $('#relacionados').css('margin', 0);
         }
-        
-        //FIXED LAST MENU LI
-        $('#header nav ul li:visible').last().addClass('last');
         
         //FIXED MENU ON SCROOL
         $(window).on( 'scroll', function(){
@@ -345,30 +435,30 @@ function appendAdminOptions() {
                             var e = document.createElement('script'); e.async = true;
                             e.src = document.location.protocol + '//connect.facebook.net/pt_BR/all.js';
                             document.getElementById('fb-root').appendChild(e);
-                        }
 
-                        window.fbAsyncInit = function() {
-                            FB.init({
-                                appId: '241686319233509',
-                                status: true,
-                                cookie: true,
-                                oauth : true
-                            });
-
-                            FB.api('/voudemarisa/posts?fields=id,message,picture,link&limit=3&access_token=CAADbzZCs0eeUBAOfWrWBshxAPhXG9AdSWoQe6IqeGMbBiU7p0KuF9auZBL10Qr6WmVVvAj75pW6uVVR4fTLrAFPQKYYUuyZBNe74hlIVizUugI5CLPgZClEeIDFaxpPrDFOzlB6qb5S05eu0oOcNCU5hhDg0Rjggsb2OHyf5U65JPxRidnt6SL8bauZBzkHIiEdy0WR0YwNECroaKFnHZCerDbHo9QCZCIZD', function(response) {
-                                var html = '';
-                                $.each(response.data, function(idx, p) {
-                                    if (p.message && p.message != undefined) {
-                                        $('.box_facebook_lis img').remove();
-                                        html += '<li><a title="' + p.message + '" href="' + p.link + '" target="_blank">';
-                                        if (p.picture && p.picture.length > 0) { html += '<img src="' + p.picture + '">'; }
-                                        html += '' + p.message + '</a></li>';
-                                        $('.box_facebook_lis').append(html);
-                                    }
+                            window.fbAsyncInit = function() {
+                                FB.init({
+                                    appId: '241686319233509',
+                                    status: true,
+                                    cookie: true,
+                                    oauth : true
                                 });
-                            });
-                            
-                        };
+
+                                FB.api('/voudemarisa/posts?fields=id,message,picture,link&limit=3&access_token=CAADbzZCs0eeUBAJY8ZB57nAmJYZAeSQ7jc04XLtc3rsz4GbE8swA0gpFxvyZAyuy9acnVvuu1VwNemJ3k6BUxHmChm0Uk80VpkqBLP185zkg4L6OM1ZBNAu2ZC5Dt2ly1iLnGDr6saheMdVZAxRUak09JV0U6bed8sEeAQqEiFnz03d0L3tmJYQ9Qak0VCq69ZBX6RKG0K68lxMPpHkNZCefuwdUulZBgOdw4ZD', function(response) {
+                                    var html = '';
+                                    $.each(response.data, function(idx, p) {
+                                        if (p.message && p.message != undefined) {
+                                            $('.box_facebook_lis img').remove();
+                                            html += '<li><a title="' + p.message + '" href="' + p.link + '" target="_blank">';
+                                            if (p.picture && p.picture.length > 0) { html += '<img src="' + p.picture + '">'; }
+                                            html += '' + p.message + '</a></li>';
+                                            $('.box_facebook_lis').append(html);
+                                        }
+                                    });
+                                });
+
+                            };
+                        }
                         
                         
                         

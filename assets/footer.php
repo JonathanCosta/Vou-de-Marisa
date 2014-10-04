@@ -49,7 +49,7 @@ $theme_opts = get_option('marisa_options');
 <script src="<?php echo get_template_directory_uri(); ?>/js/underscore.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/image-marker.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/TweenMax.min.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/general.js?59"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/general.js?8"></script>
 
 <?php
     

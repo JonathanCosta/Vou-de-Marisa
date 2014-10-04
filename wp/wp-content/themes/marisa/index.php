@@ -39,9 +39,8 @@ query_posts($args);
                 'meta_key' => null,
                 'meta_value' => null
             );
-            $pos = strrpos($_SERVER['REQUEST_URI'], "/tags/");
-            if ($pos > -1) {
-                $args['tag'] = getLastPathSegment($_SERVER['REQUEST_URI']);
+            if ( isset($_GET["t"]) ) {
+                $args['tag'] = $_GET['t'];
             } else {
                 $args['tag'] = null;
             }

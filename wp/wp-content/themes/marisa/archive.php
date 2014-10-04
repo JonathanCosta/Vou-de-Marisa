@@ -1,4 +1,11 @@
 <?php define("page", "archive"); ?>
+<?php
+$pos = strpos($_SERVER['REQUEST_URI'], 'tags/');
+if ( $pos > -1 && !isset($_GET["t"]) ) {
+    header('Location: '.get_site_url().'/?t='.getLastPathSegment($_SERVER['REQUEST_URI']));
+    exit();
+}
+?>
 <?php get_header(); ?>
 
 <?php
@@ -27,6 +34,42 @@ query_posts($args);
     </div>
 </section>
 <?php } //endif; ?>
+    
+<nav id="submenu">
+    <div class="container">
+        <?php
+            $category = get_category_by_slug(getLastPathSegment($_SERVER['REQUEST_URI']));
+        ?>
+        <div>
+            <h5>
+                <?php echo $category->name; ?>
+            </h5>
+            <form method="post">
+                <label for="filtro">
+                    <input type="radio" value="date" class="filtroposts" name="filtroposts" checked="checked">
+                    Mais recentes
+                </label>
+                <label for="filtro">
+                    <input type="radio" value="comment_count" class="filtroposts" name="filtroposts">
+                    Mais vistos
+                </label>
+            </form>
+        </div>
+        <ul>
+            <li class="cat-item cat-item-0">
+                <a href="" class="active">Todas</a>
+            </li>
+            <?php 
+                $args_cat = array(
+                    'orderby' => 'id',
+                    'style'    => 'list',
+                    'title_li' => ''
+                );
+                wp_list_categories( $args_cat );
+            ?>
+        </ul>
+    </div>
+</nav>
 
 <section id="index">
     
@@ -45,9 +88,7 @@ query_posts($args);
             ?>
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
             
-				<div class="artigo <?php
-                    if ($count % 3 == 0) { echo "first"; }
-                ?>">
+				<div class="artigo <?php if ($count % 3 == 0) { echo "first"; } ?>">
 					<a href="<?php the_permalink() ?>"><?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?></a>
 					<div class="call-box">
                         <h3><?php echo $first; ?><?php the_category(); ?></h3>

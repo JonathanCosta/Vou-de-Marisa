@@ -1,8 +1,6 @@
 <?php
 $theme_opts = get_option('marisa_options');
 
-
-
 //VERIFICA SE USUÁRIO POSSUI COOKIE
 if ( strlen($_COOKIE['username']) < 1 ) {
     $date_of_expiry =  mktime().time()+60*60*24*365;
@@ -22,21 +20,24 @@ if ( strlen($_COOKIE['username']) < 1 ) {
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=600, initial-scale=1, maximum-scale=1">
 <title><?php wp_title(''); ?></title>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); wp_head(); ?>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/image-marker.css" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/main.css?7" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/main.css?27" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/main.css?37" />
 
 <script>
     window.app = {
         userLoggedIn: '<?php echo is_user_logged_in(); ?>',
         templateUrl: '<?php echo get_template_directory_uri(); ?>',
         adminUrl: '<?php echo get_admin_url(); ?>',
-        siteUrl: '<?php echo get_site_url(); ?>'
+        siteUrl: '<?php echo get_site_url(); ?>',
+        thisPageUrl: '<?php echo the_permalink(); ?>',
+        thisPageUrlEncoded: '<?php echo urlencode(the_permalink()); ?>',
+        filtercategory: '',
+        filterorderby: 'modified'
     };
 </script>
 </head>

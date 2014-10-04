@@ -249,9 +249,106 @@ body {
     overflow: hidden;
     /*padding-bottom: 25px;*/
 }
+#submenu {
+    background: #fff;
+    padding-top: 2px;
+    h5 {
+        font-family: 'verlaglight';
+        font-size: 15px;
+        text-transform: uppercase;
+        color: #58595b;
+        float: left;
+        line-height: 26px;
+        padding: 0 22px;
+        border-right: 1px solid #CCC;
+        margin: 5px 0;
+    }
+    form {
+        font-family: 'verlaglight';
+        font-size: 14px;
+        text-transform: none;
+        color: #58595b;
+        float: right;
+        label {
+            line-height: 36px;
+            padding: 0 22px;
+            display: block;
+            float: left;
+            input {
+                position: relative;
+                top: -2px;
+            }
+        }
+    }
+    ul {
+        display: block;
+        border-top: 1px solid #CCC;
+        width: 100%;
+        clear: both;
+        overflow: hidden;
+        height: 35px;
+        li {
+            display: none;
+            padding: 0 22px;
+            font-family: 'verlaglight';
+            font-size: 15px;
+            text-transform: none;
+            color: #58595b;
+        }
+        li.cat-item-0 {
+            display: inline-block;
+            padding: 0 18px 0 22px;
+            font-family: 'verlaglight';
+            font-size: 15px;
+            text-transform: none;
+            display: block;
+            float: left;
+            /*top: -12px;*/
+            line-height: 32px;
+            a {
+                color: #58595b;
+                line-height: 32px;
+                display: block;
+            }
+            a.active {
+                border-bottom: 3px solid #bcbec0;
+            }
+        }
+        li.current-cat {
+            display: inline-block;
+            a {
+                display: none;
+            }
+            a.active {
+                border-bottom: 3px solid #bcbec0;
+            }
+            .children {
+                border: 0;
+                a {
+                    display: block;
+                    float: left;
+                }
+                li {
+                    float: left;
+                    padding: 0 36px 0 0;
+                    display: block;
+                    margin-top: 1px;
+                    a {
+                        font-family: 'verlaglight';
+                        font-size: 14px;
+                        text-transform: none;
+                        color: #58595b;
+                        line-height: 31px;
+                    }
+                }
+            }
+        }
+    }
+}
 #artigos {
     margin: 0px auto 20px;
     overflow: hidden;
+    min-height: 355px;
     /*background: rgba(255,255,255,.8);*/
     .artigo { 
         position: relative;
@@ -353,7 +450,7 @@ body {
             padding-left: 74px;
             margin: 0;
             color: #000;
-            min-height: 44px;
+            min-height: 50px;
             border-bottom: 1px solid #afb0b2;
         }
         span.date {
@@ -444,7 +541,8 @@ body {
                 text-indent: -99999px;
             }
             text-indent: 10px;
-            margin-top: 14px;
+            margin-top: 0px;
+            margin-bottom: 18px;
             overflow: hidden;
             header {
                 background: $marisa;
@@ -461,6 +559,9 @@ body {
             header.mobile {
                 display: none;
             }
+        }
+        .image-marker {
+            margin-top: 14px;
         }
         .posttags {
             overflow: hidden;
@@ -620,6 +721,9 @@ body {
 .archive #artigos {
     margin: 0px auto 52px;
 }
+.archive #index {
+    /*background: #e6e7e8;*/
+}
 .pagecontent {
     padding-bottom: 15px;
     border-bottom: 1px solid #afb0b2;
@@ -739,7 +843,7 @@ body {
     .author {
         width: 225px;
         float: left;
-        margin: 40px 4% 40% 0;
+        margin: 20px 4% 40% 0;
         overflow: hidden;
         color: #000;
         img {
@@ -787,6 +891,63 @@ body {
                 display: none;
             }
         }
+    }
+    .brad {
+        width: 225px;
+        float: left;
+        overflow: hidden;
+        color: #000;
+        border-bottom: 1px solid #afb0b2;
+        padding-bottom: 17px;
+        header {
+            margin-top: 40px;
+            background: $marisa;
+            display: block;
+            height: 23px;
+            line-height: 23px;
+            color: $branco;
+            text-transform: uppercase;
+            text-indent: 10px;
+            ico {
+                margin: 5px 0 0 5px;
+                display: block;
+                float: left;
+                width: image-width("sprite/list.png");
+                height: image-height("sprite/list.png");
+            }
+        }
+        ul.post-categories {
+            margin-top: 6px;
+            background: #e5e5e5;
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            a {
+                font-family: 'verlagbook';
+                font-size: 16px;
+                line-height: 32px;
+                text-indent: 5px;
+                color: #000;
+                padding-left: 16px;
+            }
+            li {
+                height: 32px;
+                display: block;
+                float: left;
+                background: #e5e5e5;
+                padding: 0 6px 0 13px;
+                a {
+                    padding-left: 0px;
+                }
+            }
+            li:first-child {
+                background: #cecece;
+                background: #cecece url(../images/sprite/separator-1.png) center right no-repeat;
+                padding-right: image-width("sprite/separator-1.png")+8;
+                padding-left: 4px;
+            }
+        }
+        
     }
 }
 
@@ -1105,7 +1266,7 @@ body {
                 font-family: 'Arial';
             }
         }
-    }
+    } 
     .facebook {
         ul {
             padding: 0 10px;
@@ -1819,11 +1980,13 @@ button {
         }
         form.logged input {
             width: 94%;
+            width: calc(100% - 35px);
             font-size: 15px;
             font-family: 'verlaglight';
         }
         form.logged button {
-            width: 5%;
+            width: 30px;
+            min-width: 30px;
         }
         .sprite-home-user {
             font-size: 17px;

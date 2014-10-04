@@ -46,6 +46,7 @@
             this.$image.hasClass('image-marker');
         },
 
+
         manageMarkers: function() {
             if($('#marker-manager-modal').length) {
                 $('#marker-manager-modal').detach();

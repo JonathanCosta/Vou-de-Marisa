@@ -84,38 +84,15 @@ $resultssingle = new WP_Query( $args );
                         <?php
                     }
                     ?>
-                    <div class="postshare">
-                        
-                        
-                        <header class="hidemobile">
-                        <ico class="sprite-share-author author-share hidemobile"></ico>
-                            COMPARTILHE
-                        </header>
-
-                        <header class="mobile">
-                            <ico class="sprite-share-mobile mobile"></ico>
-                        </header>
-                        <?php 
-
-                        $actual_link = get_permalink();
-                        echo "<a href=\"http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)".urlencode($actual_link)."\" target=\"_blank\" title=\"Facebook do autor\" class=\"sprite-facebook-author hidemobile\">Facebook</a>";
-                        echo "<a href=\"http://www.twitter.com/share?text=Li+e+gostei+no+Blog+da+Marisa&url=".urlencode($actual_link)."\" target=\"_blank\" title=\"Twitter do autor\" class=\"sprite-twitter-author hidemobile\">Twitter</a>";
-                        echo "<a href=\"http://plus.google.com/share?url=".urlencode($actual_link)."\" target=\"_blank\" title=\"Google Plus do autor\" class=\"sprite-gplus-author hidemobile\">Google Plus</a>";
-
-
-                        echo "<a href=\"http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)".urlencode($actual_link)."\" target=\"_blank\" title=\"Facebook do autor\" class=\"sprite-facebook-author sprite-facebook-mobile mobile\">Facebook</a>";
-                        echo "<a href=\"http://www.twitter.com/share?text=Li+e+gostei+no+Blog+da+Marisa&url=".urlencode($actual_link)."\" target=\"_blank\" title=\"Twitter do autor\" class=\"sprite-twitter-author sprite-twitter-mobile mobile\">Twitter</a>";
-                        echo "<a href=\"http://plus.google.com/share?url=".urlencode($actual_link)."\" target=\"_blank\" title=\"Google Plus do autor\" class=\"sprite-gplus-author sprite-gplus-mobile mobile\">Google Plus</a>";
-
-                        
-                        ?>
-                    </div>
+                    
                     <div class="posttags">
                         <span>TAGS</span>
                         <?php
-                        $tags_array = get_tags( $args );
-                        foreach ($tags_array as $key => $value) {
-                            echo "<a href=\"".site_url()."/tags/".$value->name."/"."\" rel=\"tag\">".$value->name."</a>";
+                        $posttags = get_the_tags();
+                        if ($posttags) {
+                          foreach($posttags as $tag) {
+                            echo "<a href=\"".site_url()."/tags/".$tag->name."/"."\" rel=\"tag\">".$tag->name."</a>";
+                          }
                         }
                         ?>
                     </div>

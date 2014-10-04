@@ -4,11 +4,16 @@ $theme_opts = get_option('marisa_options');
 $args = array(
     'posts_per_page' => $theme_opts['marisa_logo_posts_page'],
     'post_type' => 'post',
-    'paged' => $_GET['page']
+    'paged' => $_GET['page'],
+    'order' => 'DESC'
 );
 
 if($_GET['category'] != 'undefined') {
     $args['category_name'] = $_GET['category'];
+}
+
+if($_GET['order'] != 'undefined') {
+    $args['orderby'] = $_GET['order'];
 }
 
 query_posts($args);

@@ -1,5 +1,5 @@
-.sprite-sprite, .sprite-alert, .sprite-author-share, .sprite-cadastrese, .sprite-door, .sprite-email-menor-bt, .sprite-enviar-news, .sprite-facebook-author, .sprite-facebook-bt, .sprite-facebook-menor-bt, .sprite-facebook-mobile, .sprite-footer-facebook, .sprite-footer-gplus, .sprite-footer-instagram, .sprite-footer-twitter, .sprite-form, .sprite-gplus-author, .sprite-gplus-mobile, .sprite-home-user, .sprite-key, .sprite-logoff, .sprite-lupa, .sprite-mais, .sprite-marisa-com-br, .sprite-monthyear, .sprite-next, .sprite-pencil, .sprite-people, .sprite-positive, .sprite-previous, .sprite-share-author, .sprite-share-mobile, .sprite-sprite-busca, .sprite-sprite-facebook, .sprite-sprite-gplus, .sprite-sprite-instagram, .sprite-sprite-twitter, .sprite-sprite-vou-de-marisa, .sprite-sprite-youtube, .sprite-twitter-author, .sprite-twitter-bt, .sprite-twitter-mobile, .sprite-unlogged, .sprite-user-site {
-  background: url('../images/sprite-seab706861c.png') no-repeat;
+.sprite-sprite, .sprite-alert, .sprite-author-share, .sprite-cadastrese, .sprite-door, .sprite-email-menor-bt, .sprite-enviar-news, .sprite-facebook-author, .sprite-facebook-bt, .sprite-facebook-menor-bt, .sprite-facebook-mobile, .sprite-footer-facebook, .sprite-footer-gplus, .sprite-footer-instagram, .sprite-footer-twitter, .sprite-form, .sprite-gplus-author, .sprite-gplus-mobile, .sprite-home-user, .sprite-key, .sprite-list, .sprite-logoff, .sprite-lupa, .sprite-mais, .sprite-marisa-com-br, .sprite-monthyear, .sprite-next, .sprite-pencil, .sprite-people, .sprite-positive, .sprite-previous, .sprite-separator-1, .sprite-share-author, .sprite-share-mobile, .sprite-sprite-busca, .sprite-sprite-facebook, .sprite-sprite-gplus, .sprite-sprite-instagram, .sprite-sprite-twitter, .sprite-sprite-vou-de-marisa, .sprite-sprite-youtube, .sprite-twitter-author, .sprite-twitter-bt, .sprite-twitter-mobile, .sprite-unlogged, .sprite-user-site {
+  background: url('../images/sprite-sc5554dda0d.png') no-repeat;
 }
 
 .sprite-alert {
@@ -11,11 +11,11 @@
 }
 
 .sprite-cadastrese {
-  background-position: 0 -1486px;
+  background-position: 0 -1530px;
 }
 
 .sprite-door {
-  background-position: 0 -1445px;
+  background-position: 0 -1489px;
 }
 
 .sprite-email-menor-bt {
@@ -59,7 +59,7 @@
 }
 
 .sprite-form {
-  background-position: 0 -1471px;
+  background-position: 0 -1515px;
 }
 
 .sprite-gplus-author {
@@ -75,7 +75,11 @@
 }
 
 .sprite-key {
-  background-position: 0 -1434px;
+  background-position: 0 -1478px;
+}
+
+.sprite-list {
+  background-position: 0 -1390px;
 }
 
 .sprite-logoff {
@@ -87,7 +91,7 @@
 }
 
 .sprite-mais {
-  background-position: 0 -1530px;
+  background-position: 0 -1574px;
 }
 
 .sprite-marisa-com-br {
@@ -103,11 +107,11 @@
 }
 
 .sprite-pencil {
-  background-position: 0 -1390px;
+  background-position: 0 -1402px;
 }
 
 .sprite-people {
-  background-position: 0 -1405px;
+  background-position: 0 -1417px;
 }
 
 .sprite-positive {
@@ -116,6 +120,10 @@
 
 .sprite-previous {
   background-position: 0 -1056px;
+}
+
+.sprite-separator-1 {
+  background-position: 0 -1431px;
 }
 
 .sprite-share-author {
@@ -131,7 +139,7 @@
 }
 
 .sprite-sprite-facebook {
-  background-position: 0 -1500px;
+  background-position: 0 -1544px;
 }
 
 .sprite-sprite-gplus {
@@ -139,7 +147,7 @@
 }
 
 .sprite-sprite-instagram {
-  background-position: 0 -1419px;
+  background-position: 0 -1463px;
 }
 
 .sprite-sprite-twitter {
@@ -151,7 +159,7 @@
 }
 
 .sprite-sprite-youtube {
-  background-position: 0 -1459px;
+  background-position: 0 -1503px;
 }
 
 .sprite-twitter-author {
@@ -171,7 +179,7 @@
 }
 
 .sprite-user-site {
-  background-position: 0 -1515px;
+  background-position: 0 -1559px;
 }
 
 @font-face {
@@ -452,9 +460,107 @@ body {
   /*padding-bottom: 25px;*/
 }
 
+#submenu {
+  background: #fff;
+  padding-top: 2px;
+}
+#submenu h5 {
+  font-family: 'verlaglight';
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #58595b;
+  float: left;
+  line-height: 26px;
+  padding: 0 22px;
+  border-right: 1px solid #CCC;
+  margin: 5px 0;
+}
+#submenu form {
+  font-family: 'verlaglight';
+  font-size: 14px;
+  text-transform: none;
+  color: #58595b;
+  float: right;
+}
+#submenu form label {
+  line-height: 36px;
+  padding: 0 22px;
+  display: block;
+  float: left;
+}
+#submenu form label input {
+  position: relative;
+  top: -2px;
+}
+#submenu ul {
+  display: block;
+  border-top: 1px solid #CCC;
+  width: 100%;
+  clear: both;
+  overflow: hidden;
+  height: 35px;
+}
+#submenu ul li {
+  display: none;
+  padding: 0 22px;
+  font-family: 'verlaglight';
+  font-size: 15px;
+  text-transform: none;
+  color: #58595b;
+}
+#submenu ul li.cat-item-0 {
+  display: inline-block;
+  padding: 0 18px 0 22px;
+  font-family: 'verlaglight';
+  font-size: 15px;
+  text-transform: none;
+  display: block;
+  float: left;
+  /*top: -12px;*/
+  line-height: 32px;
+}
+#submenu ul li.cat-item-0 a {
+  color: #58595b;
+  line-height: 32px;
+  display: block;
+}
+#submenu ul li.cat-item-0 a.active {
+  border-bottom: 3px solid #bcbec0;
+}
+#submenu ul li.current-cat {
+  display: inline-block;
+}
+#submenu ul li.current-cat a {
+  display: none;
+}
+#submenu ul li.current-cat a.active {
+  border-bottom: 3px solid #bcbec0;
+}
+#submenu ul li.current-cat .children {
+  border: 0;
+}
+#submenu ul li.current-cat .children a {
+  display: block;
+  float: left;
+}
+#submenu ul li.current-cat .children li {
+  float: left;
+  padding: 0 36px 0 0;
+  display: block;
+  margin-top: 1px;
+}
+#submenu ul li.current-cat .children li a {
+  font-family: 'verlaglight';
+  font-size: 14px;
+  text-transform: none;
+  color: #58595b;
+  line-height: 31px;
+}
+
 #artigos {
   margin: 0px auto 20px;
   overflow: hidden;
+  min-height: 355px;
   /*background: rgba(255,255,255,.8);*/
 }
 #artigos .artigo {
@@ -556,7 +662,7 @@ body {
   padding-left: 74px;
   margin: 0;
   color: #000;
-  min-height: 44px;
+  min-height: 50px;
   border-bottom: 1px solid #afb0b2;
 }
 #artigos .content_post span.date {
@@ -633,7 +739,8 @@ body {
 }
 #artigos .content_post .postshare {
   text-indent: 10px;
-  margin-top: 14px;
+  margin-top: 0px;
+  margin-bottom: 18px;
   overflow: hidden;
 }
 #artigos .content_post .postshare ico {
@@ -664,6 +771,9 @@ body {
 }
 #artigos .content_post .postshare header.mobile {
   display: none;
+}
+#artigos .content_post .image-marker {
+  margin-top: 14px;
 }
 #artigos .content_post .posttags {
   overflow: hidden;
@@ -816,6 +926,10 @@ body {
   margin: 0px auto 52px;
 }
 
+.archive #index {
+  /*background: #e6e7e8;*/
+}
+
 .pagecontent {
   padding-bottom: 15px;
   border-bottom: 1px solid #afb0b2;
@@ -938,7 +1052,7 @@ body {
 #sidebar .author {
   width: 225px;
   float: left;
-  margin: 40px 4% 40% 0;
+  margin: 20px 4% 40% 0;
   overflow: hidden;
   color: #000;
 }
@@ -986,6 +1100,62 @@ body {
 }
 #sidebar .author .authorshare header.mobile {
   display: none;
+}
+#sidebar .brad {
+  width: 225px;
+  float: left;
+  overflow: hidden;
+  color: #000;
+  border-bottom: 1px solid #afb0b2;
+  padding-bottom: 17px;
+}
+#sidebar .brad header {
+  margin-top: 40px;
+  background: #de0084;
+  display: block;
+  height: 23px;
+  line-height: 23px;
+  color: white;
+  text-transform: uppercase;
+  text-indent: 10px;
+}
+#sidebar .brad header ico {
+  margin: 5px 0 0 5px;
+  display: block;
+  float: left;
+  width: 14px;
+  height: 12px;
+}
+#sidebar .brad ul.post-categories {
+  margin-top: 6px;
+  background: #e5e5e5;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+#sidebar .brad ul.post-categories a {
+  font-family: 'verlagbook';
+  font-size: 16px;
+  line-height: 32px;
+  text-indent: 5px;
+  color: #000;
+  padding-left: 16px;
+}
+#sidebar .brad ul.post-categories li {
+  height: 32px;
+  display: block;
+  float: left;
+  background: #e5e5e5;
+  padding: 0 6px 0 13px;
+}
+#sidebar .brad ul.post-categories li a {
+  padding-left: 0px;
+}
+#sidebar .brad ul.post-categories li:first-child {
+  background: #cecece;
+  background: #cecece url(../images/sprite/separator-1.png) center right no-repeat;
+  padding-right: 21px;
+  padding-left: 4px;
 }
 
 .col1, .col1.naoencontrado {
@@ -2020,11 +2190,13 @@ button {
   }
   #header form.logged input {
     width: 94%;
+    width: calc(100% - 35px);
     font-size: 15px;
     font-family: 'verlaglight';
   }
   #header form.logged button {
-    width: 5%;
+    width: 30px;
+    min-width: 30px;
   }
   #header .sprite-home-user {
     font-size: 17px;
