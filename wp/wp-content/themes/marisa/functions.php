@@ -118,3 +118,56 @@ function custom_template_js() {
 
 add_action('admin_head', 'custom_template_css');
 add_action('admin_footer', 'custom_template_js');
+
+
+
+///FACEBOOK GETTING ACCESS TOKEN
+define("APP_ID", "241686319233509");
+define("APP_SECRET", "89d467e158e17da7dd7e148739c5e5ef");
+define("ACCESS_TOKEN", "CAADbzZCs0eeUBAKildbvoTy4ri1RsfYZAoY569W8HkBDLoPyu2FdhkKRGktA84yLiCO8zEusiSwgqgG8hSWlhWEr7TLTnvVUMu1ROqHeZCdI3HVtsGNm3b8BpwZBB7aaa0TDRJafI4U2fN1EowpA7jnPsUreezLVtZBzw4lGUhEKrtZAPvZChfUrdV6OF4ddFgztBJwMWNkZAHhdmiJp8eVrddf2YQ1O0FkZD");
+
+function get_resource($url) {
+    parse_str(file_get_contents($url), $output);
+    return $output;
+}
+ 
+function grant_app_token() {
+    $res = get_resource('https://graph.facebook.com/oauth/access_token?'.
+        http_build_query(array(
+            'client_id' => APP_ID,
+            'client_secret' => APP_SECRET,
+            'grant_type' => 'client_credentials'
+        ))
+    );
+    return $res['access_token'];
+}
+ 
+function grant_long_token($access_token) {
+    $res = get_resource('https://graph.facebook.com/oauth/access_token?'.
+        http_build_query(array(
+            'client_id' => APP_ID,
+            'client_secret' => APP_SECRET,
+            'grant_type' => 'fb_exchange_token',
+            'fb_exchange_token' => $access_token
+        ))
+    );
+    return $res['access_token'];
+}
+ 
+function get_token_info($access_token) {
+    $res = get_resource('https://graph.facebook.com/debug_token?'.
+        http_build_query(array(
+            'input_token' => $access_token,
+            'access_token' => grant_app_token(),
+        ))
+    );
+    return $res;
+}
+   
+function fb_sdk() {
+    include_once 'facebook.php';
+    return new Facebook(array(
+      'appId'  => APP_ID,
+      'secret' => APP_SECRET
+    ));
+}

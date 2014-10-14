@@ -1,5 +1,5 @@
 		<div id="sidebar">
-            <div class="brad">
+            <div class="brad hidemobile">
                 <header class="hidemobile">
                     <ico class="sprite-list hidemobile"></ico>
                     VOC&Ecirc; ESTÁ EM
@@ -9,10 +9,10 @@
                     $category = get_the_category();
                     $parent_id = $category[0]->category_parent;
                     $parent_cat = get_the_category_by_ID( $parent_id );
-                    echo '<li><a href="'.get_site_url().'/category/'.$category[0]->slug.'/" rel="category tag">'.$category[0]->name.'</a></li>';
                     if ( is_string($parent_cat) && $category[0]->name != $parent_cat ) {
                         echo '<li><a href="'.get_site_url().'/category/'.$parent_cat.'/" rel="category tag">'.$parent_cat.'</a></li>';
                     }
+                    echo '<li><a href="'.get_site_url().'/category/'.$category[0]->slug.'/" rel="category tag">'.$category[0]->name.'</a></li>';
                 ?>
                 </ul>
             </div>

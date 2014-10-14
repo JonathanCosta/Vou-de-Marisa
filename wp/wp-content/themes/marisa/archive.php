@@ -93,7 +93,7 @@ query_posts($args);
 					<div class="call-box">
                         <h3><?php echo $first; ?><?php the_category(); ?></h3>
                         <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-                        <p><a href="<?php the_permalink() ?>"><?php the_field('resumo_de_capa'); ?></a></p>
+                        <p><a href="<?php the_permalink() ?>"><?php echo words(get_field('resumo_de_capa'), 15); ?></a></p>
                     </div>
 				</div>
                 <?php $count++; ?>
@@ -125,7 +125,7 @@ query_posts($args);
     
     <div class="parceiros">
         <div class="container">
-            <h4>
+            <h4 class="sprite-parceiros-conteudo">
                 <a href="parceiros/" title="Parceiros de conteúdo">
                     Parceiros de conteúdo
                     <span>Conhe&ccedil;a o perfil dos nossos parceiros</span>

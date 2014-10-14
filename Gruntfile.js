@@ -35,7 +35,6 @@ module.exports = function (grunt) {
                 cascade: true
             }
         },
-
         clean: {
             // List of files that will be removed before the
             // build process is started

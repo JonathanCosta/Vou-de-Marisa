@@ -58,7 +58,7 @@ query_posts($args);
                     <div class="call-box">
                         <h3><?php echo $first; ?><?php the_category(); ?></h3>
                         <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-                        <p><a href="<?php the_permalink() ?>"><?php echo words(the_field('resumo_de_capa'), 3); ?></a></p>
+                        <p><a href="<?php the_permalink() ?>"><?php echo words(get_field('resumo_de_capa'), 15); ?></a></p>
                     </div>
                     
 				</div>

@@ -1,205 +1,222 @@
-.sprite-sprite, .sprite-alert, .sprite-author-share, .sprite-cadastrese, .sprite-door, .sprite-email-menor-bt, .sprite-enviar-news, .sprite-facebook-author, .sprite-facebook-bt, .sprite-facebook-menor-bt, .sprite-facebook-mobile, .sprite-footer-facebook, .sprite-footer-gplus, .sprite-footer-instagram, .sprite-footer-twitter, .sprite-form, .sprite-gplus-author, .sprite-gplus-mobile, .sprite-home-user, .sprite-key, .sprite-list, .sprite-logoff, .sprite-lupa, .sprite-mais, .sprite-marisa-com-br, .sprite-monthyear, .sprite-next, .sprite-pencil, .sprite-people, .sprite-positive, .sprite-previous, .sprite-separator-1, .sprite-share-author, .sprite-share-mobile, .sprite-sprite-busca, .sprite-sprite-facebook, .sprite-sprite-gplus, .sprite-sprite-instagram, .sprite-sprite-twitter, .sprite-sprite-vou-de-marisa, .sprite-sprite-youtube, .sprite-twitter-author, .sprite-twitter-bt, .sprite-twitter-mobile, .sprite-unlogged, .sprite-user-site {
-  background: url('../images/sprite-sc5554dda0d.png') no-repeat;
+.sprite-sprite, .sprite-alert, .sprite-author-share, .sprite-cadastrese, .sprite-door, .sprite-email-menor-bt, .sprite-enviar-news, .sprite-facebook-author, .sprite-facebook-bt, .sprite-facebook-menor-bt, .sprite-facebook-mobile, .sprite-footer-facebook, .sprite-footer-gplus, .sprite-footer-instagram, .sprite-footer-twitter, .sprite-form, .sprite-gplus-author, .sprite-gplus-mobile, .sprite-home-user, .sprite-key, .sprite-list, .sprite-logoff, .sprite-lupa, .sprite-mais, .sprite-marisa-com-br, .sprite-monthyear, .sprite-next, .sprite-parceiros-conteudo, .sprite-pencil, .sprite-people, .sprite-positive, .sprite-previous, .sprite-separator-1, .sprite-share-author, .sprite-share-mobile, .sprite-sprite-busca, .sprite-sprite-facebook, .sprite-sprite-gplus, .sprite-sprite-instagram, .sprite-sprite-twitter, .sprite-sprite-vou-de-marisa, .sprite-sprite-youtube, .sprite-subscribed, .sprite-twitter-author, .sprite-twitter-bt, .sprite-twitter-mobile, .sprite-unlogged-crm, .sprite-unlogged, .sprite-user-site {
+  background: url('../images/sprite-s05e2555974.png') no-repeat;
 }
 
 .sprite-alert {
-  background-position: 0 -695px;
+  background-position: 0 -1017px;
 }
 
 .sprite-author-share {
-  background-position: 0 -1256px;
+  background-position: 0 -1521px;
 }
 
 .sprite-cadastrese {
-  background-position: 0 -1530px;
+  background-position: 0 -1795px;
 }
 
 .sprite-door {
-  background-position: 0 -1489px;
+  background-position: 0 -1754px;
 }
 
 .sprite-email-menor-bt {
-  background-position: 0 -469px;
+  background-position: 0 -564px;
 }
 
 .sprite-enviar-news {
-  background-position: 0 -603px;
+  background-position: 0 -602px;
 }
 
 .sprite-facebook-author {
-  background-position: 0 -1215px;
+  background-position: 0 -792px;
 }
 
 .sprite-facebook-bt {
-  background-position: 0 -402px;
+  background-position: 0 -679px;
 }
 
 .sprite-facebook-menor-bt {
-  background-position: 0 -320px;
+  background-position: 0 -526px;
 }
 
 .sprite-facebook-mobile {
-  background-position: 0 -977px;
+  background-position: 0 -1320px;
 }
 
 .sprite-footer-facebook {
-  background-position: 0 -1360px;
+  background-position: 0 -1625px;
 }
 
 .sprite-footer-gplus {
-  background-position: 0 -917px;
+  background-position: 0 -1260px;
 }
 
 .sprite-footer-instagram {
-  background-position: 0 -1166px;
+  background-position: 0 -1457px;
 }
 
 .sprite-footer-twitter {
-  background-position: 0 -947px;
+  background-position: 0 -1290px;
 }
 
 .sprite-form {
-  background-position: 0 -1515px;
+  background-position: 0 -1780px;
 }
 
 .sprite-gplus-author {
-  background-position: 0 -1030px;
+  background-position: 0 -746px;
 }
 
 .sprite-gplus-mobile {
-  background-position: 0 -550px;
+  background-position: 0 -911px;
 }
 
 .sprite-home-user {
-  background-position: 0 -873px;
+  background-position: 0 -1216px;
 }
 
 .sprite-key {
-  background-position: 0 -1478px;
+  background-position: 0 -1743px;
 }
 
 .sprite-list {
-  background-position: 0 -1390px;
+  background-position: 0 -1655px;
 }
 
 .sprite-logoff {
-  background-position: 0 -1346px;
+  background-position: 0 -1611px;
 }
 
 .sprite-lupa {
-  background-position: 0 -815px;
+  background-position: 0 -1158px;
 }
 
 .sprite-mais {
-  background-position: 0 -1574px;
+  background-position: 0 -1839px;
 }
 
 .sprite-marisa-com-br {
-  background-position: 0 -444px;
+  background-position: 0 -721px;
 }
 
 .sprite-monthyear {
-  background-position: 0 -1300px;
+  background-position: 0 -1565px;
 }
 
 .sprite-next {
-  background-position: 0 -1098px;
+  background-position: 0 -1415px;
+}
+
+.sprite-parceiros-conteudo {
+  background-position: 0 -815px;
 }
 
 .sprite-pencil {
-  background-position: 0 -1402px;
+  background-position: 0 -1667px;
 }
 
 .sprite-people {
-  background-position: 0 -1417px;
+  background-position: 0 -1682px;
 }
 
 .sprite-positive {
-  background-position: 0 -1196px;
+  background-position: 0 -1487px;
 }
 
 .sprite-previous {
-  background-position: 0 -1056px;
+  background-position: 0 -1373px;
 }
 
 .sprite-separator-1 {
-  background-position: 0 -1431px;
+  background-position: 0 -1696px;
 }
 
 .sprite-share-author {
-  background-position: 0 -1278px;
+  background-position: 0 -1543px;
 }
 
 .sprite-share-mobile {
-  background-position: 0 -642px;
+  background-position: 0 -964px;
 }
 
 .sprite-sprite-busca {
-  background-position: 0 -840px;
+  background-position: 0 -1183px;
 }
 
 .sprite-sprite-facebook {
-  background-position: 0 -1544px;
+  background-position: 0 -1809px;
 }
 
 .sprite-sprite-gplus {
-  background-position: 0 -1241px;
+  background-position: 0 -1506px;
 }
 
 .sprite-sprite-instagram {
-  background-position: 0 -1463px;
+  background-position: 0 -1728px;
 }
 
 .sprite-sprite-twitter {
-  background-position: 0 -1332px;
+  background-position: 0 -1597px;
 }
 
 .sprite-sprite-vou-de-marisa {
-  background-position: 0 -358px;
+  background-position: 0 -635px;
 }
 
 .sprite-sprite-youtube {
-  background-position: 0 -1503px;
+  background-position: 0 -1768px;
+}
+
+.sprite-subscribed {
+  background-position: 0 -1137px;
 }
 
 .sprite-twitter-author {
-  background-position: 0 -1140px;
+  background-position: 0 -769px;
 }
 
 .sprite-twitter-bt {
-  background-position: 0 -508px;
+  background-position: 0 -869px;
 }
 
 .sprite-twitter-mobile {
-  background-position: 0 -762px;
+  background-position: 0 -1084px;
 }
 
-.sprite-unlogged {
+.sprite-unlogged-crm {
   background-position: 0 0;
 }
 
+.sprite-unlogged {
+  background-position: 0 -206px;
+}
+
 .sprite-user-site {
-  background-position: 0 -1559px;
+  background-position: 0 -1824px;
 }
 
 @font-face {
   font-family: "verlaglight";
-  src: url('../fonts/verlaglight.woff') format('woff');
+  src: url('../fonts/verlaglight.ttf') format('truetype'), url('../fonts/verlaglight.eot') format('embedded-opentype'), url('../fonts/verlaglight.woff') format('woff');
 }
 
 @font-face {
   font-family: "verlagbook";
-  src: url('../fonts/verlagbook.woff') format('woff');
+  src: url('../fonts/verlagbook.ttf') format('truetype'), url('../fonts/verlagbook.eot') format('embedded-opentype'), url('../fonts/verlagbook.woff') format('woff');
 }
 
 @font-face {
   font-family: "verlagbold";
-  src: url('../fonts/verlagbook.woff') format('woff');
+  src: url('../fonts/verlagbook.ttf') format('truetype'), url('../fonts/verlagbook.eot') format('embedded-opentype'), url('../fonts/verlagbook.woff') format('woff');
 }
 
 @font-face {
   font-family: "archerbold";
-  src: url('../fonts/archer-bold-opentype.woff') format('woff');
+  src: url('../fonts/archer-bold-opentype.ttf') format('truetype'), url('../fonts/archer-bold-opentype.eot') format('embedded-opentype'), url('../fonts/archer-bold-opentype.woff') format('woff');
+}
+
+div, p, a, span {
+  /*-webkit-font-smoothing: antialiased;*/
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -207,7 +224,7 @@ body {
 }
 
 #sup-header {
-  height: 34px;
+  height: 30px;
   background-color: #000;
   margin-bottom: 1px solid #888888;
   z-index: 1;
@@ -224,18 +241,18 @@ body {
 }
 #sup-header li {
   display: inline-block;
-  margin: 7.5px 24px;
+  margin: 5.5px 24px;
   overflow: hidden;
 }
 #sup-header li a {
   font-family: 'verlagbook';
   font-size: 14px;
-  font-weight: 100;
+  font-weight: 300;
   color: #fff;
   font-size: 14px;
 }
 #sup-header li.box {
-  margin: 10px 8px;
+  margin: 8.5px 6px;
 }
 #sup-header li.box a {
   text-indent: -99999px;
@@ -295,11 +312,11 @@ body {
   background: transparent;
   text-indent: 10px;
   float: left;
-  margin: 16px 5px;
-  height: 29px;
+  margin: 16px 10px 16px 0;
+  height: 31px;
   padding: 0 12px;
   color: #a7a9ac;
-  line-height: 30px;
+  line-height: 33px;
 }
 #header .sprite-home-user {
   text-indent: 20px;
@@ -321,7 +338,7 @@ body {
   display: block;
   float: left;
   cursor: pointer;
-  margin-top: 7px;
+  margin-top: 9px;
 }
 #header nav ul {
   clear: both;
@@ -336,6 +353,7 @@ body {
   text-align: center;
   border-right: 1px solid #efefef;
   z-index: 1;
+  height: 44px;
 }
 #header nav ul li:last-child {
   border-right: 0px solid #efefef;
@@ -344,7 +362,9 @@ body {
   border-right: 0px solid #efefef;
 }
 #header nav ul li a {
-  font-family: 'verlaglight', 'Arial';
+  font-family: 'verlaglight';
+  font-weight: 300;
+  font-style: normal;
   font-size: 15px;
   color: #000;
   text-transform: uppercase;
@@ -374,6 +394,11 @@ body {
 #header nav ul li ul.children li a {
   text-transform: capitalize;
   display: block;
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 1px solid #bebec0;
+  height: 43px;
+  text-indent: 18px;
 }
 
 #banner {
@@ -443,7 +468,7 @@ body {
   display: block;
   width: 15px;
   height: 15px;
-  background: transparent;
+  background: #bbb;
   border: 1px solid #fff;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -452,7 +477,7 @@ body {
   text-indent: -99999px;
 }
 #banner .bullets a.active {
-  background: #fff;
+  background: #de0084;
 }
 
 #index {
@@ -491,6 +516,20 @@ body {
 #submenu form label input {
   position: relative;
   top: -2px;
+}
+#submenu form label input[type=radio] {
+  -webkit-appearance: none;
+  display: block;
+  float: left;
+  width: 20px;
+  height: 20px;
+  background: url(../images/radio.png) no-repeat;
+  background-position: top right;
+  margin-top: 8px;
+  margin-right: 4px;
+}
+#submenu form label input[type=radio]:checked {
+  background-position: top left;
 }
 #submenu ul {
   display: block;
@@ -561,6 +600,7 @@ body {
   margin: 0px auto 20px;
   overflow: hidden;
   min-height: 355px;
+  position: relative;
   /*background: rgba(255,255,255,.8);*/
 }
 #artigos .artigo {
@@ -582,7 +622,7 @@ body {
 }
 #artigos .artigo .call-box {
   position: absolute;
-  bottom: 12px;
+  top: 210px;
 }
 #artigos .artigo .call-box h2 {
   border-top: 1px solid #fff;
@@ -737,6 +777,51 @@ body {
   height: 38px;
   margin: 8px auto;
 }
+#artigos .content_post .unlogged-crm {
+  width: 696px;
+  height: 206px;
+  display: block;
+  clear: both;
+  position: relative;
+  margin-bottom: 20px;
+}
+#artigos .content_post .unlogged-crm .text {
+  padding-top: 18px;
+  margin: 0px 30px;
+  border-bottom: 1px solid #000;
+  color: #000;
+  width: 240px;
+  float: right;
+}
+#artigos .content_post .unlogged-crm .text h4 {
+  border-top: 1px solid #000;
+  font-family: "archerbold";
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #000;
+  padding: 10px 0 6px;
+}
+#artigos .content_post .unlogged-crm .text p {
+  font-family: "verlaglight";
+  font-size: 13px;
+  padding-bottom: 0px;
+  margin: 0 0 10px 0;
+}
+#artigos .content_post .unlogged-crm .buttons {
+  width: 240px;
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+  border: 0px;
+}
+#artigos .content_post .unlogged-crm .buttons .social-bt {
+  display: block;
+  text-indent: -99999px;
+  width: 187px;
+  height: 38px;
+  margin: 8px auto;
+  border: 0px;
+}
 #artigos .content_post .postshare {
   text-indent: 10px;
   margin-top: 0px;
@@ -746,21 +831,21 @@ body {
 #artigos .content_post .postshare ico {
   display: block;
   float: left;
-  margin-top: 2px;
+  margin-top: 1px;
   width: 17px;
   height: 22px;
 }
 #artigos .content_post .postshare a {
-  width: 26px;
-  height: 26px;
+  width: 23px;
+  height: 23px;
   float: left;
-  margin: 0px 7px 0 0;
+  margin: 0px 6px 0 0;
   text-indent: -99999px;
 }
 #artigos .content_post .postshare header {
   background: #de0084;
   display: block;
-  height: 26px;
+  height: 23px;
   line-height: 26px;
   color: white;
   text-transform: uppercase;
@@ -768,6 +853,7 @@ body {
   float: left;
   padding-right: 7px;
   margin-right: 7px;
+  font-size: 12px;
 }
 #artigos .content_post .postshare header.mobile {
   display: none;
@@ -920,6 +1006,9 @@ body {
 }
 #artigos .content_post .nonlogged .reply {
   display: none;
+}
+#artigos .content_post .content-box {
+  margin-bottom: 16px;
 }
 
 .archive #artigos {
@@ -1082,8 +1171,8 @@ body {
   height: 22px;
 }
 #sidebar .author .authorshare a {
-  width: 26px;
-  height: 26px;
+  width: 23px;
+  height: 23px;
   float: left;
   margin: 6px 6px 0 0;
   text-indent: -99999px;
@@ -1494,7 +1583,7 @@ body {
   display: block;
   float: left;
   margin: 4px 6px 0px 0px;
-  width: 100px;
+  width: 100%;
   border-radius: 3px;
   -webkit-border-radius: 3px;
 }
@@ -1584,27 +1673,34 @@ body {
 div.parceiros {
   padding: 8px 0;
   background: #d1d3d4;
-  height: 52px;
+  height: 54px;
   position: relative;
 }
 div.parceiros h4 {
   text-align: center;
   width: 202px;
-  border-top: 1px solid #97999c;
+  /*border-top: 1px solid #97999c;
   border-bottom: 1px solid #97999c;
   font-family: 'verlaglight';
-  font-size: 13px;
+  font-size: 14px;
   text-transform: uppercase;
-  line-height: 25px;
-  color: #000;
+  line-height: 22px;
+  color: #000;*/
+  width: 182px;
+  height: 54px;
+  text-indent: -99999px;
 }
 div.parceiros h4 a {
   color: #000;
+  padding-top: 6px;
+  display: block;
 }
 div.parceiros h4 span {
   display: block;
   font-size: 11px;
   text-transform: none;
+  padding-top: 0px;
+  display: block;
 }
 div.parceiros img {
   position: absolute;
@@ -1620,9 +1716,9 @@ div.parceiros .container {
   background: #de0084;
 }
 #footer p {
-  font-size: 16px;
+  font-size: 15.1px;
   color: #fff;
-  font-family: 'verlagbook';
+  font-family: 'verlaglight';
   line-height: 26px;
   text-align: right;
   margin-top: 8px;
@@ -1637,8 +1733,8 @@ div.parceiros .container {
   margin-bottom: 6px;
 }
 #footer form input {
-  width: 74%;
-  height: 37px;
+  width: 73.4%;
+  height: 33px;
   background: #fff;
   border: 0;
   float: left;
@@ -1647,7 +1743,7 @@ div.parceiros .container {
 #footer form button {
   float: right;
   width: 20%;
-  height: 39px;
+  height: 35px;
   border: 1px solid #fff;
   text-indent: -99999px;
   margin-right: 4%;
@@ -1665,8 +1761,16 @@ div.parceiros .container {
   min-height: 68px;
 }
 #footer .container div p {
-  font-size: 16px;
+  font-size: 16.4px;
   margin-top: 11px;
+}
+#footer #disabled {
+  border: 1px solid #fff;
+  background: #de0084;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  background: url(../images/sprite/subscribed.png) 28% center no-repeat;
 }
 #footer .marisasite {
   display: block;
@@ -1801,7 +1905,7 @@ nav.fixed_menu ul li:first-child {
   min-width: 0;
 }
 nav.fixed_menu ul li:first-child a {
-  padding-top: 10px;
+  padding-top: 6px;
   height: 34px !important;
 }
 nav.fixed_menu ul li.sprite-home-user:last-child {
@@ -1856,8 +1960,8 @@ nav.fixed_menu ul li ul.children li:first-child {
   min-width: 0;
 }
 nav.fixed_menu ul li ul.children li:first-child a {
-  padding-top: 10px;
-  height: 34px !important;
+  padding-top: 0px;
+  height: 44px !important;
 }
 nav.fixed_menu ul li ul.children li:last-child {
   width: 80% !important;
@@ -1867,9 +1971,17 @@ nav.fixed_menu ul li ul.children li:last-child {
 nav.fixed_menu ul li ul.children li:hover {
   background: #fff;
 }
+nav.fixed_menu ul li ul.children li {
+  width: auto;
+}
 nav.fixed_menu ul li ul.children li a {
   text-transform: capitalize;
   display: block;
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 1px solid #bebec0;
+  height: 43px;
+  text-indent: 8px;
 }
 
 #hiddenDIV {
@@ -1979,7 +2091,7 @@ body.index button.mais {
 #wpadminbar.visible {
   display: block;
   min-height: 0;
-  height: 32px;
+  height: 30px;
   overflow: hidden;
   background-color: black;
   min-width: 0px;
@@ -2183,7 +2295,13 @@ button {
     margin: 0px 5% 10px;
   }
   #header form input {
-    width: calc(100% - 35px);
+    width: calc(98% - 40px);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+  }
+  #header form button {
+    height: 37px;
   }
   #header form.logged {
     width: 90%;
@@ -2378,11 +2496,18 @@ button {
     margin: 0 5%;
   }
   #footer form input {
-    width: calc(96% - 50px);
+    width: calc(93% - 51px);
     font-size: 16px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
   }
   #footer form button {
     width: 42px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    height: 45px;
   }
   #footer form p {
     text-align: center;
@@ -2411,12 +2536,15 @@ button {
     display: inline-block;
     width: auto;
     float: none;
-    font-size: 18px;
+    font-size: 16px;
     margin-right: 1%;
     line-height: 38px;
   }
   #footer .container .marisasite {
     margin: 13px auto 0;
+  }
+  #footer .container .marisasite img {
+    width: 100%;
   }
   #footer #bot-header {
     height: 42px;
@@ -2443,6 +2571,13 @@ button {
     color: #fff;
     line-height: 42px;
   }
+  #footer #bot-header li.first {
+    line-height: 42px;
+    height: 42px;
+    top: 0;
+    display: block;
+    float: left;
+  }
   #footer #bot-header li a {
     font-family: 'verlagbook';
     font-size: 14px;
@@ -2462,6 +2597,8 @@ button {
   #footer p.copyright {
     margin-top: 0;
     background: #de0084;
+    line-height: 18px;
+    padding: 6px 0;
   }
 
   #single {
@@ -2469,15 +2606,16 @@ button {
     margin: 0 5%;
   }
   #single #sidebar {
-    width: 90%;
+    width: 100%;
     border-bottom: 1px solid #afb0b2;
-    padding-bottom: 26px;
+    padding-bottom: 12px;
     position: absolute;
-    margin-top: 6px;
+    top: 0px;
+    margin-top: 0px;
   }
   #single #sidebar .author {
     width: 100%;
-    margin: 0;
+    margin: 12px 0 0 0;
   }
   #single #sidebar .author img {
     display: none;
@@ -2497,9 +2635,10 @@ button {
     display: none;
   }
   #single #sidebar .author div.authorshare {
-    float: right;
+    right: 0;
     border: 0;
     margin-top: 0px;
+    position: absolute;
   }
   #single #sidebar .author div.authorshare header {
     text-indent: -999999px;
@@ -2532,7 +2671,6 @@ button {
     padding-bottom: 10px;
   }
   #single #artigos .content_post div.postshare {
-    float: left;
     border: 0;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -2559,6 +2697,8 @@ button {
   }
   #single #artigos .content_post .posttags {
     font-size: 19px;
+    width: 94%;
+    margin: 20px auto;
   }
   #single #artigos .content_post .posttags span {
     padding: 6px 10px;
@@ -2569,6 +2709,9 @@ button {
   #single #artigos .content_post .unlogged {
     width: 100%;
     background: url(../images/sprite/unlogged.png) no-repeat center center;
+  }
+  #single #artigos .content_post .unlogged-crm {
+    margin: 0 auto 20px;
   }
 
   #relacionados .container {
@@ -2643,6 +2786,23 @@ button {
     margin: 10px auto 0px;
     float: none;
   }
+
+  #single #artigos .content_post {
+    margin: 155px 0 40px 0;
+    width: 100%;
+  }
+
+  #single #sidebar .author div.authorshare {
+    margin-top: 10px;
+  }
+
+  #single #sidebar {
+    padding-bottom: 16px;
+  }
+
+  #artigos .pagecontent h1 {
+    font-size: 20px;
+  }
 }
 @media screen and (max-width: 400px) {
   #artigos .artigo {
@@ -2652,6 +2812,14 @@ button {
 
   .formnewuser {
     left: calc(50% - 174px );
+  }
+
+  #footer .container .marisasite {
+    margin: 13px auto 0;
+    width: calc(100% - 162px );
+  }
+  #footer .container .marisasite img {
+    width: 100%;
   }
 }
 @media screen and (max-width: 320px) {

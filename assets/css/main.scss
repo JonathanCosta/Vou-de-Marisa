@@ -6,11 +6,12 @@ $toolbar-layout: 'smart';
 
 //WEB-FONTS
 @import "compass/css3";
-@include font-face("verlaglight", font-files("verlaglight.woff"));
-@include font-face("verlagbook", font-files("verlagbook.woff"));
-@include font-face("verlagbold", font-files("verlagbook.woff"));
-@include font-face("archerbold", font-files("archer-bold-opentype.woff"));
-
+@include font-face("verlaglight", font-files("verlaglight.ttf","verlaglight.eot","verlaglight.woff"));
+@include font-face("verlagbook", font-files("verlagbook.ttf","verlagbook.eot","verlagbook.woff"));
+@include font-face("verlagbold", font-files("verlagbook.ttf","verlagbook.eot","verlagbook.woff"));
+@include font-face("archerbold", font-files("archer-bold-opentype.ttf","archer-bold-opentype.eot","archer-bold-opentype.woff"));
+ 
+div, p , a, span { /*-webkit-font-smoothing: antialiased;*/ text-rendering: optimizeLegibility; }
 
 //COLORS & VARS
 $marisa: #de0084;
@@ -29,11 +30,15 @@ body {
 }
 
 #sup-header {
-    height: 34px; background-color: #000; margin-bottom: 1px solid #888888; z-index: 1; position: relative;
+    height: 30px; 
+    background-color: #000; 
+    margin-bottom: 1px solid #888888; 
+    z-index: 1; 
+    position: relative;
     ul { display: block; max-width: 940px; width: 100%; margin: 0 auto; text-align: right; overflow: hidden; height: 100%; }
-    li { display: inline-block; margin: ($heightSupHeader - image-height("sprite/sprite-facebook.png"))/2 24px; overflow: hidden; }
-    li a { font-family: 'verlagbook'; font-size: 14px; font-weight: 100; color: #fff; font-size: 14px; }
-    li.box { margin: ($heightSupHeader + 5 - image-height("sprite/sprite-facebook.png"))/2 8px; }
+    li { display: inline-block; margin: ($heightSupHeader - 4 - image-height("sprite/sprite-facebook.png"))/2 24px; overflow: hidden; }
+    li a { font-family: 'verlagbook'; font-size: 14px; font-weight: 300; color: #fff; font-size: 14px; }
+    li.box { margin: ($heightSupHeader + 2 - image-height("sprite/sprite-facebook.png"))/2 6px; }
     li.box a { text-indent: -99999px; display: block; width: 100%; opacity: 0; }
 }
 #header {
@@ -86,11 +91,11 @@ body {
         background: transparent;
         text-indent: 10px;
         float: left;
-        margin: 16px 5px;
-        height: 29px;
+        margin: 16px 10px 16px 0;
+        height: 31px;
         padding: 0 12px;
         color: #a7a9ac;
-        line-height: 30px;
+        line-height: 33px;
     }
     .sprite-home-user {
         text-indent: 20px;
@@ -112,7 +117,7 @@ body {
         display: block;
         float: left;
         cursor: pointer;
-        margin-top: 7px;
+        margin-top: 9px;
     }
     nav ul {
         clear: both;
@@ -127,6 +132,7 @@ body {
         text-align: center;
         border-right: 1px solid #efefef;
         z-index: 1;
+        height: 44px;
     }
     nav ul li:last-child {
         border-right: 0px solid #efefef;
@@ -135,7 +141,7 @@ body {
         border-right: 0px solid #efefef;
     }
     nav ul li a {
-        font-family: 'verlaglight', 'Arial';
+        font-family: 'verlaglight'; font-weight: 300; font-style: normal;
         font-size: 15px;
         color: #000;
         text-transform: uppercase;
@@ -165,6 +171,11 @@ body {
     nav ul li ul.children li a {
         text-transform: capitalize;
         display: block;
+        width: 90%;
+        margin: 0 auto;
+        border-bottom: 1px solid #bebec0;
+        height: 43px;
+        text-indent: 18px;
     }
 }
 #banner {
@@ -232,7 +243,7 @@ body {
             display: block;
             width: 15px;
             height: 15px;
-            background: transparent;
+            background: #bbb;
             border: 1px solid #fff;
             -webkit-border-radius: 3px;
             border-radius: 3px;
@@ -241,7 +252,7 @@ body {
             text-indent: -99999px;
         }
         a.active {
-            background: #fff;
+            background: $marisa;
         }
     }
 }
@@ -277,6 +288,20 @@ body {
             input {
                 position: relative;
                 top: -2px;
+            }
+            input[type=radio] {
+                -webkit-appearance: none;
+                display: block;
+                float: left;
+                width: 20px;
+                height: 20px;
+                background: url(../images/radio.png) no-repeat;
+                background-position: top right;
+                margin-top: 8px;
+                margin-right: 4px;
+            }
+            input[type=radio]:checked {
+                background-position: top left;
             }
         }
     }
@@ -349,6 +374,7 @@ body {
     margin: 0px auto 20px;
     overflow: hidden;
     min-height: 355px;
+    position: relative;
     /*background: rgba(255,255,255,.8);*/
     .artigo { 
         position: relative;
@@ -368,7 +394,7 @@ body {
         }
         .call-box {
             position: absolute;
-            bottom: 12px;
+            top: 210px;
             h2 {
                 border-top: 1px solid #fff;
                 width: 90%;
@@ -525,11 +551,56 @@ body {
                 margin: 8px auto;
             }
         }
+        .unlogged-crm {
+            width: image-width("sprite/unlogged-crm.png");
+            height: image-height("sprite/unlogged-crm.png");
+            display: block;
+            clear: both;
+            position: relative;
+            margin-bottom: 20px;
+            .text {
+                padding-top: 18px;
+                margin: 0px 30px;
+                border-bottom: 1px solid #000;
+                color: #000;
+                width: 240px;
+                float: right;
+                h4 {
+                    border-top: 1px solid #000;
+                    font-family: "archerbold";
+                    font-size: 15px;
+                    text-transform: uppercase;
+                    color: #000;
+                    padding: 10px 0 6px;
+                }
+                p {
+                    font-family: "verlaglight";
+                    font-size: 13px;
+                    padding-bottom: 0px;
+                    margin: 0 0 10px 0;
+                }
+            }
+            .buttons {
+                width: 240px;
+                position: absolute;
+                bottom: 0;
+                right: 30px;
+                border: 0px;
+                .social-bt {
+                    display: block;
+                    text-indent: -99999px;
+                    width: image-width("sprite/facebook-menor-bt.png");
+                    height: image-height("sprite/facebook-menor-bt.png");
+                    margin: 8px auto;
+                    border: 0px;
+                }
+            }
+        }
         .postshare {
             ico {
                 display: block;
                 float: left;
-                margin-top: 2px;
+                margin-top: 1px;
                 width: image-width("sprite/author-share.png");
                 height: image-height("sprite/author-share.png");
             }
@@ -537,7 +608,7 @@ body {
                 width: image-width("sprite/facebook-author.png");
                 height: image-height("sprite/facebook-author.png");
                 float: left;
-                margin: 0px 7px 0 0;
+                margin: 0px 6px 0 0;
                 text-indent: -99999px;
             }
             text-indent: 10px;
@@ -545,16 +616,17 @@ body {
             margin-bottom: 18px;
             overflow: hidden;
             header {
-                background: $marisa;
+                background: #de0084;
                 display: block;
-                height: image-height("sprite/facebook-author.png");
-                line-height: image-height("sprite/facebook-author.png");
-                color: $branco;
+                height: 23px;
+                line-height: 26px;
+                color: white;
                 text-transform: uppercase;
                 text-indent: 10px;
                 float: left;
                 padding-right: 7px;
                 margin-right: 7px;
+                font-size: 12px;
             }
             header.mobile {
                 display: none;
@@ -715,6 +787,9 @@ body {
         }
         .nonlogged .reply {
             display: none;
+        }
+        .content-box {
+            margin-bottom: 16px;
         }
     }
 }
@@ -1284,7 +1359,7 @@ body {
                     display: block;
                     float: left;
                     margin: 4px 6px 0px 0px;
-                    width: 100px;
+                    width: 100%;
                     border-radius: 3px;
                     -webkit-border-radius: 3px;
                 }
@@ -1386,25 +1461,32 @@ body {
 div.parceiros {
     padding: 8px 0;
     background: #d1d3d4;
-    height: 52px;
+    height: 54px;
     position: relative;
     h4 {
         a {
             color: #000;
+            padding-top: 6px;
+            display: block;
         }
         text-align: center;
         width: 202px;
-        border-top: 1px solid #97999c;
+        /*border-top: 1px solid #97999c;
         border-bottom: 1px solid #97999c;
         font-family: 'verlaglight';
-        font-size: 13px;
+        font-size: 14px;
         text-transform: uppercase;
-        line-height: 25px;
-        color: #000;
+        line-height: 22px;
+        color: #000;*/
+        width: image-width("sprite/parceiros-conteudo.png");
+        height: image-height("sprite/parceiros-conteudo.png");
+        text-indent: -99999px;
         span {
             display: block;
             font-size: 11px;
             text-transform: none;
+            padding-top: 0px;
+            display: block;
         }
     }
     img {
@@ -1420,9 +1502,9 @@ div.parceiros {
     width: 100%;
     background: $marisa;
     p { 
-        font-size: 16px; 
+        font-size: 15.1px; 
         color: #fff; 
-        font-family: 'verlagbook';
+        font-family: 'verlaglight';
         line-height: 26px;
         text-align: right;
         margin-top: 8px;
@@ -1439,8 +1521,8 @@ div.parceiros {
         margin-bottom: 6px;
     }
     form input {
-        width: 74%;
-        height: 37px;
+        width: 73.4%;
+        height: 33px;
         background: #fff;
         border: 0;
         float: left;
@@ -1449,7 +1531,7 @@ div.parceiros {
     form button {
         float: right;
         width: 20%;
-        height: 39px;
+        height: 35px;
         border: 1px solid #fff;
         text-indent: -99999px;
         margin-right: 4%;
@@ -1466,9 +1548,17 @@ div.parceiros {
         margin-top: 13px;
         min-height: 68px;
         p { 
-            font-size: 16px;
+            font-size: 16.4px;
             margin-top: 11px; 
         }
+    }
+    #disabled {
+        border: 1px solid #fff;
+        background: $marisa;
+        color: #fff;
+        text-align: center;
+        font-size: 12px;
+        background: url(../images/sprite/subscribed.png) 28% center no-repeat;
     }
     .marisasite {
         display: block;
@@ -1599,7 +1689,7 @@ nav.fixed_menu {
         width: 76px!important;
         min-width: 0;
         a {
-            padding-top: 10px;
+            padding-top: 6px;
             height: 34px!important;
         }
     }
@@ -1654,8 +1744,8 @@ nav.fixed_menu {
         width: 80%!important;
         min-width: 0;
         a {
-            padding-top: 10px;
-            height: 34px!important;
+            padding-top: 0px;
+            height: 44px!important;
         }
     }
     ul li ul.children li:last-child {
@@ -1666,9 +1756,18 @@ nav.fixed_menu {
     ul li ul.children li:hover {
         background: #fff;
     }
+    ul li ul.children li {
+        width: auto;
+        
+    }
     ul li ul.children li a {
         text-transform: capitalize;
         display: block;
+        width: 90%;
+        margin: 0 auto;
+        border-bottom: 1px solid #bebec0;
+        height: 43px;
+        text-indent: 8px;
     }
 }
 #hiddenDIV { display: none; }
@@ -1754,7 +1853,7 @@ body.index button.mais {
 #wpadminbar.visible {
     display: block;
     min-height: 0;
-    height: 32px;
+    height: 30px;
     overflow: hidden;
     background-color: rgb(0, 0, 0);
     min-width: 0px;
@@ -1972,7 +2071,13 @@ button {
             float: left;
             margin: 0px 5% 10px;
             input {
-                width: calc(100% - 35px);
+                width: calc(98% - 40px);
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                border-radius: 0;
+            }
+            button {
+                height: 37px;
             }
         }
         form.logged {
@@ -2179,11 +2284,18 @@ button {
             width: 90%;
             margin: 0 5%;
             input {
-                width: calc(96% - 50px);
+                width: calc(93% - 51px);
                 font-size: 16px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                border-radius: 0;
             }
             button {
                 width: 42px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                border-radius: 0;
+                height: 45px;
             }
             p { 
                 text-align: center; 
@@ -2213,13 +2325,16 @@ button {
                     display: inline-block;
                     width: auto;
                     float: none;
-                    font-size: 18px;
+                    font-size: 16px;
                     margin-right: 1%;
                     line-height: 38px;
                 }
             }
             .marisasite {
                 margin: 13px auto 0;
+                img {
+                    width: 100%;
+                }
             }
         }
         #bot-header {
@@ -2246,6 +2361,13 @@ button {
                 color: #fff;
                 line-height: 42px;
             }
+            li.first {
+                line-height: 42px;
+                height: 42px;
+                top: 0;
+                display: block;
+                float: left;
+            }
             li a { font-family: 'verlagbook'; font-size: 14px; font-weight: 100; color: #fff; line-height: 42px; }
             li.box { margin: 10px 8px 16px; }
             li.box a { text-indent: -99999px; display: block; width: 100%; opacity: 0; }
@@ -2253,20 +2375,23 @@ button {
         p.copyright {
             margin-top: 0;
             background: $marisa;
+            line-height: 18px;
+            padding: 6px 0;
         }
     }
     #single {
         width: 90%;
         margin: 0 5%;
         #sidebar {
-            width: 90%;
+            width: 100%;
             border-bottom: 1px solid #afb0b2;
-            padding-bottom: 26px;
+            padding-bottom: 12px;
             position: absolute;
-            margin-top: 6px;
+            top: 0px;
+            margin-top: 0px;
             .author {
                 width: 100%;
-                margin: 0;
+                margin: 12px 0 0 0;
                 img {
                     display: none;
                     
@@ -2286,9 +2411,10 @@ button {
                     display: none;
                 }
                 div.authorshare {
-                    float: right;
+                    right: 0;
                     border: 0;
                     margin-top: 0px;
+                    position: absolute;
                     header {
                         text-indent: -999999px;
                         float: left;
@@ -2324,7 +2450,6 @@ button {
                     padding-bottom: 10px;
                 }
                 div.postshare {
-                    float: left;
                     border: 0;
                     margin-top: 10px;
                     margin-bottom: 10px;
@@ -2351,6 +2476,8 @@ button {
                 }
                 .posttags {
                     font-size: 19px;
+                    width: 94%;
+                    margin: 20px auto;
                     span {
                         padding: 6px 10px;
                     }
@@ -2364,6 +2491,12 @@ button {
                 .unlogged {
                     width: 100%;
                     background: url(../images/sprite/unlogged.png) no-repeat center center;
+                }
+                .unlogged-crm {
+                    margin: 0 auto 20px;
+                }
+                #single #artigos .content_post .posttags {
+                    
                 }
             }
         }
@@ -2446,6 +2579,19 @@ button {
             }
         }
     }
+    #single #artigos .content_post {
+        margin: 155px 0 40px 0;
+        width: 100%;
+    }
+    #single #sidebar .author div.authorshare {
+        margin-top: 10px;
+    }
+    #single #sidebar {
+        padding-bottom: 16px;
+    }
+    #artigos .pagecontent h1 {
+        font-size: 20px;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -2457,6 +2603,14 @@ button {
     }
     .formnewuser {
         left: calc(50% - 174px );
+    }
+    
+    #footer .container .marisasite {
+        margin: 13px auto 0;
+        width: calc( 100% - 162px );
+        img {
+            width: 100%;
+        }
     }
 }
 

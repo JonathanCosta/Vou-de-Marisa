@@ -3,7 +3,7 @@ $theme_opts = get_option('marisa_options');
 
 //VERIFICA SE USUÁRIO POSSUI COOKIE
 if ( strlen($_COOKIE['username']) < 1 ) {
-    $date_of_expiry =  mktime().time()+60*60*24*365;
+    $date_of_expiry =  time()+60*60*24*365;
     setcookie( "userlogin", "guest", $date_of_expiry );
     
     if ($_COOKIE['firsttime'] == "yes") {
@@ -20,13 +20,14 @@ if ( strlen($_COOKIE['username']) < 1 ) {
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-<meta name="viewport" content="width=600, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title><?php wp_title(''); ?></title>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); wp_head(); ?>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+<!--link rel="stylesheet" type="text/css" href="//cloud.typography.com/6567712/703586/css/fonts.css" /-->
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/image-marker.css" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/main.css?37" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/main.css?125" />
 
 <script>
     window.app = {
@@ -70,7 +71,6 @@ if ( strlen($_COOKIE['username']) < 1 ) {
 ?>
     
 <body class="<?php echo constant("page"); ?>" <?php echo $backg; ?>>
-
     <section id="sup-header" class="hidemobile">
         <ul>
             <?php if (isset($theme_opts['marisa_cartao_marisa']) && strlen($theme_opts['marisa_cartao_marisa']) > 0) { ?>

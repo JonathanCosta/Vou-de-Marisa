@@ -97,6 +97,40 @@ $resultssingle = new WP_Query( $args );
                         ?>
                     </div>
                     
+                    <?
+                    $current_post_id = get_the_id();
+                    $current_user = wp_get_current_user();
+                    if ( 0 < $current_user->ID ) {
+                        echo "<div class='content-box'>";
+                        echo get_post_meta($post->ID, 'restrict_field_CRM', true);
+                        echo "</div>";
+                    } else if ( strlen(get_post_meta($post->ID, 'restrict_field_CRM', true)) > 2 ) {
+                        ?>
+                    
+                        <div class="unlogged-crm  sprite-unlogged-crm">
+                            <div class="text">
+                                <h4>
+                                    Este post possui conteúdo exclusivo
+                                </h4>
+                                <p>
+                                   Cadastre-se agora ou faça login para acessar.
+                                </p>
+                            </div>
+                            <div class="buttons">
+                                <a href="cadastre-se/" class="sprite-facebook-menor-bt social-bt">
+                                    Entrar com facebook
+                                </a>
+
+                                <a href="cadastre-se/" class="sprite-email-menor-bt social-bt">
+                                    Entrar com E-mail
+                                </a>
+                            </div>
+                        </div>
+                    
+                        <?php
+                    }
+                    ?>
+                    
                     <div class="facebook-comentarios <?php if ( 0 >= $current_user->ID ) { echo "nonlogged"; } ?>">
                         <!--h3><?php comments_number('0 Mensagens', '1 Mensagem', '% Mensagens' );?></h3-->
                         
@@ -135,18 +169,18 @@ $resultssingle = new WP_Query( $args );
             'cat' => $category_id
         );
         query_posts($args);
-        global $count;
+        global $count_rel;
         $count = 0;
         ?>
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <?php if ( $current_post_id != get_the_id() ) { ?>
-            <?php if ( $current_post_id != get_the_id() && $count < 1 ) { ?>
+            <?php if ( $count == 0 ) { ?>
                 <header>
                     POSTS <span>RELACIONADOS</span>
                 </header>
             <?php } ?>
             <div class="artigo <?php
-                if ($count % 3 == 0) { echo "first"; }
+                if ($count % 3 === 0 || $count === 0) { echo "first"; }
             ?>">
                 <a href="<?php the_permalink() ?>"><?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?></a>
                 <div class="call-box">
@@ -157,7 +191,7 @@ $resultssingle = new WP_Query( $args );
             </div>
         <?php } ?>
         <?php 
-            $count++; 
+            if ( $current_post_id != get_the_id() ) { $count++; }
             endwhile; 
         ?>
         <?php endif; ?>

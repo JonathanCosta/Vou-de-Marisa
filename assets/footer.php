@@ -7,7 +7,7 @@ $theme_opts = get_option('marisa_options');
             <p>Assine nossa Newsletter e fique por dentro de todas as nossas novidades.</p>
             <?php
             if (isset($_GET["news"]) && $_GET["news"]=="success") {
-                echo '<input type="text" placeholder="Obrigado por se cadastrar!" name="email" disabled="disabled">';
+                echo '<input type="text" placeholder="Obrigado por se cadastrar!" name="email" disabled="disabled" id="disabled" value="Obrigado por se cadastrar!">';
             } else {
                 echo '<input type="text" placeholder="Digite seu e-mail" name="email">';
                 echo '<button name="Enviar" class="sprite-enviar-news">ENVIAR</button>';
@@ -24,7 +24,7 @@ $theme_opts = get_option('marisa_options');
 	</div>
     <section id="bot-header" class="mobile">
         <ul>
-            <li>RECOMENDAR</li>
+            <li class="first">RECOMENDAR</li>
             <?php if (isset($theme_opts['marisa_facebook']) && strlen($theme_opts['marisa_facebook']) > 0) { ?>
             <li class="sprite-sprite-facebook box"><a href="http://www.facebook.com/<?php echo $theme_opts['marisa_facebook']; ?>" target="_blank" class="">Facebook</a></li>
             <?php } ?>
@@ -49,7 +49,7 @@ $theme_opts = get_option('marisa_options');
 <script src="<?php echo get_template_directory_uri(); ?>/js/underscore.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/image-marker.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/TweenMax.min.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/general.js?8"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/general.js?117"></script>
 
 <?php
     
@@ -96,7 +96,7 @@ $theme_opts = get_option('marisa_options');
 <nav class="fixed_menu">
     <ul>
         <li>
-            <a href="index.php"><img src="<?php echo $theme_opts['marisa_logo_header_fd']; ?>" height="30" /></a>
+            <a href="<?php echo site_url(); ?>"><img src="<?php echo $theme_opts['marisa_logo_header_fd']; ?>" height="30" /></a>
         </li>
         <?php 
             $args = array(

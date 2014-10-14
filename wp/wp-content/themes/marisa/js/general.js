@@ -12,8 +12,11 @@ function adjustMenu() {
     var headeritens = $('#header nav ul li').length;
     var childrenheaderitens = $('#header nav ul li ul.children li').length;
     var x = ((navwidth)/(headeritens-childrenheaderitens-1))-1;
-    $('#header nav ul li').css('min-width',x+'px');
-    $('#header nav ul li ul.children li, #header nav ul li ul.children').css('min-width',x+'px');
+    var x_fixed_menu = ((navwidth-(76*2))/(headeritens-childrenheaderitens-1))-1;
+    $('#header nav ul li, #header nav ul li ul.children li, #header nav ul li ul.children').css('width',x+'px');
+    $('.fixed_menu ul li, .fixed_menu ul li ul.children li, .fixed_menu ul li ul.children').css('width',x_fixed_menu+'px');
+    $('#header nav ul.children li').css('min-width',x+'px');
+    $('.fixed_menu ul.children li').css('min-width',x_fixed_menu+'px');
 }
 
 function removeImageDimensions() {
@@ -40,6 +43,8 @@ function adjustCarrossel() {
 
     }
 }
+
+function fixlink(event){ event.preventDefault(); }
 
 //POSTS Infinite Scrool
 function moreposts(url, category) {
@@ -272,6 +277,8 @@ function appendAdminOptions() {
         } else {
             this.$slider.fadeOut();
             this.$bulletsContainer.fadeOut();
+            this.$el.find('a').on('click', fixlink);
+            this.$el.find('a').css('cursor','default');
         }
     }; 
 
@@ -297,6 +304,8 @@ function appendAdminOptions() {
         adjustMenu();
         adjustCarrossel();
         removeImageDimensions();
+        
+        $('.children li:last-child').find('a').css('border-bottom', '0px');
         
         $('#submenu input').on('click', function(e){
             $('#submenu ul li a.active').click();
@@ -409,12 +418,12 @@ function appendAdminOptions() {
                 }
             
                 if ( $('body.single').length > 0 ) {
-                    if ( scrolled >= $('#artigos').position().top && scrolled + ( $('.author').outerHeight() ) <= $('#relacionados').position().top - 70 ) {
+                    if ( scrolled >= $('#artigos').position().top + 90 && scrolled + ( $('.author').outerHeight() ) <= $('#relacionados').position().top - 110 ) {
                         $('#sidebar .author').css('position','fixed');
-                        $('#sidebar .author').css('top','10px');
-                    } else if ( scrolled + ( $('.author').outerHeight() ) > $('#relacionados').position().top - 70 ) {
+                        $('#sidebar .author').css('top','30px');
+                    } else if ( scrolled + $('.author').outerHeight() > $('#relacionados').position().top - 120 ) {
                         $('#sidebar .author').css('position','absolute');
-                        $('#sidebar .author').css('top',$('#relacionados').position().top - $('.author').outerHeight() - 70+'px');
+                        $('#sidebar .author').css('top',($('#relacionados').position().top - $('#artigos').position().top - $('.author').outerHeight() - 80)+'px');
                     } else {
                         $('#sidebar .author').removeAttr('style');
                     }
@@ -425,7 +434,7 @@ function appendAdminOptions() {
             }
             
             if ($('#socials:visible').length > 0) {
-                if ( scrolled >= $('#socials').position().top - $(window).outerHeight() + 150 ) {
+                if ( scrolled >= 10 ) {
                     
                     //TWITTER
                     if (ajax === true) {
@@ -444,13 +453,15 @@ function appendAdminOptions() {
                                     oauth : true
                                 });
 
-                                FB.api('/voudemarisa/posts?fields=id,message,picture,link&limit=3&access_token=CAADbzZCs0eeUBAJY8ZB57nAmJYZAeSQ7jc04XLtc3rsz4GbE8swA0gpFxvyZAyuy9acnVvuu1VwNemJ3k6BUxHmChm0Uk80VpkqBLP185zkg4L6OM1ZBNAu2ZC5Dt2ly1iLnGDr6saheMdVZAxRUak09JV0U6bed8sEeAQqEiFnz03d0L3tmJYQ9Qak0VCq69ZBX6RKG0K68lxMPpHkNZCefuwdUulZBgOdw4ZD', function(response) {
+                                FB.api('/voudemarisa/posts?fields=id,message,picture,link&limit=3&access_token=CAADbzZCs0eeUBADCyq7ZBHy3s2d9rdZAqR4gEB94sLnF6FFoI7ebPFGyqgo6HW1YZArag5XjQL3nTNInKkviIozS5ph7aynuuqd7NgzzdQs4fNZBgcS1bzZCo3RBxyVBzDZBD2drZBpqVED3n6h3O2OucaRRZAxj0hrcKGuSSK9f7PQobU5Dkk1gk2fUsFsawLZBgZD', function(response) {
                                     var html = '';
+                                    $('.box_facebook_lis img').remove();
                                     $.each(response.data, function(idx, p) {
-                                        if (p.message && p.message != undefined) {
-                                            $('.box_facebook_lis img').remove();
+                                        if (p.message && p.message != undefined && p.picture.length > 0) {
+                                            
+                                            html = '';
                                             html += '<li><a title="' + p.message + '" href="' + p.link + '" target="_blank">';
-                                            if (p.picture && p.picture.length > 0) { html += '<img src="' + p.picture + '">'; }
+                                            html += '<img src="' + p.picture + '">';
                                             html += '' + p.message + '</a></li>';
                                             $('.box_facebook_lis').append(html);
                                         }
