@@ -17,15 +17,19 @@
 // ** Configurações do MySQL - Você pode pegar essas informações com o serviço de hospedagem ** //
 /** O nome do banco de dados do WordPress */
 define('DB_NAME', 'marisawp');
+//define('DB_NAME', 'vert255');
 
 /** Usuário do banco de dados MySQL */
 define('DB_USER', 'root');
+//define('DB_USER', 'vert255');
 
 /** Senha do banco de dados MySQL */
 define('DB_PASSWORD', 'root');
+//define('DB_PASSWORD', 'vert123');
 
 /** nome do host do MySQL */
 define('DB_HOST', 'localhost');
+//define('DB_HOST', 'mysql56.vert.se');
 
 /** Conjunto de caracteres do banco de dados a ser usado na criação das tabelas. */
 define('DB_CHARSET', 'utf8');
@@ -79,6 +83,16 @@ define('WPLANG', 'pt_BR');
  * em seus ambientes de desenvolvimento.
  */
 define('WP_DEBUG', false);
+
+/* custom Settings */
+define('FB_APP_ID', 241686319233509);
+
+/* Encryption Salt */
+define("SALT", "\xc8\xd9\xb9\x06\xd9\xe8\xc9\xd2");
+
+/* Logger Base URL */
+//define("LOGGER_BASE_URL", "http://ec2-54-94-184-27.sa-east-1.compute.amazonaws.com/");
+define("LOGGER_BASE_URL", "http://local.vert/marisa/blog/log/");
 
 /* Isto é tudo, pode parar de editar! :) */
 

@@ -31,7 +31,7 @@
   left: 0;
 }
 #marker-manager-wrapper button.save {
-  background-color: #008800;
+  background-color: #080;
 }
 #marker-manager-wrapper button.remove {
   background-color: #878787;
@@ -85,7 +85,7 @@
   z-index: 10;
 }
 #marker-manager-wrapper .image-wrapper #image-canvas .marker.selected {
-  outline: 3px solid white;
+  outline: 3px solid #fff;
   z-index: 20;
 }
 

@@ -43,21 +43,52 @@ $resultssingle = new WP_Query( $args );
 ?>
 
 <section id="single">
-	<div class="container">
-		<div id="artigos">
-			<?php if ( $resultssingle->have_posts() ) : while ( $resultssingle->have_posts() ) : $resultssingle->the_post(); ?>
-				<div class="content_post">
+    <div class="container">
+        <div id="artigos">
+            <?php if ( $resultssingle->have_posts() ) : while ( $resultssingle->have_posts() ) : $resultssingle->the_post(); ?>
+                <div class="content_post">
                     <span class="date">
                         <span><?php the_time('d') ?></span>
                         <b class="sprite-monthyear"><?php the_time('F') ?><br><?php the_time('Y') ?></b>
                     </span>
-					<h2><?php the_title(); ?></h2>
+                    <h2><?php the_title(); ?></h2>
                     <h3><?php the_field('texto_de_apoio'); ?></h3>
                     <?php the_content(); ?>
+
+
+                    
+                    <div class="posttags">
+                        <span>TAGS</span>
+                        <?php
+                        $tag_list = array();
+                        $handShake = array(
+                            'action' => 'update_log',
+                            'user_id' => FrontUser::id(),
+                            'post_id' => get_the_id()
+                        );
+
+                        $posttags = get_the_tags();
+                        if ($posttags) {
+                          foreach($posttags as $tag) {
+                            $tag_list[] = $tag->name;
+                            echo "<a href=\"".site_url()."/tags/".$tag->name."/"."\" rel=\"tag\">".$tag->name."</a>";
+                          }
+                        }
+                        $handShake['tags'] = implode(',', $tag_list);
+
+                        $handShake = getPayload($handShake);
+                        ?>
+                    </div>
+
                     <?
                     $current_post_id = get_the_id();
-                    $current_user = wp_get_current_user();
-                    if ( 0 < $current_user->ID ) {
+
+                    $isLoggedIn = FrontUser::isLoggedIn();
+
+                    //$current_user = wp_get_current_user();
+
+                    if ($isLoggedIn) {
+                        echo "<h1 class=\"divisor\"><span>Este conteúdo é <span class=\"light\">exclusivo</span></span></h1>";
                         echo get_post_meta($post->ID, 'restrict_field', true);
                     } else if ( strlen(get_post_meta($post->ID, 'restrict_field', true)) > 2 ) {
                         ?>
@@ -72,40 +103,43 @@ $resultssingle = new WP_Query( $args );
                                 </p>
                             </div>
 
-                            <a href="cadastre-se/" class="sprite-facebook-menor-bt social-bt">
-                                Entrar com facebook
-                            </a>
+                            <form id="signup-form" action="./" method="post">
+                                <a href="<?php echo get_site_url(); ?>/cadastre-se" class="facebook-login-btn sprite-facebook-menor-bt social-bt">
+                                    Entrar com facebook
+                                </a>
 
-                            <a href="cadastre-se/" class="sprite-email-menor-bt social-bt">
-                                Entrar com E-mail
-                            </a>
+                                <a href="<?php echo site_url() ?>/login" class="sprite-email-menor-bt social-bt">
+                                    Entrar com e-mail
+                                </a>
+
+                                <input name="front_login" type="hidden" value="1"/>
+                                <input name="facebook" type="hidden" value="0"/>                      
+
+                            </form>                            
                         </div>
                     
                         <?php
                     }
                     ?>
                     
-                    <div class="posttags">
-                        <span>TAGS</span>
-                        <?php
-                        $posttags = get_the_tags();
-                        if ($posttags) {
-                          foreach($posttags as $tag) {
-                            echo "<a href=\"".site_url()."/tags/".$tag->name."/"."\" rel=\"tag\">".$tag->name."</a>";
-                          }
-                        }
-                        ?>
-                    </div>
-                    
                     <?
-                    $current_post_id = get_the_id();
-                    $current_user = wp_get_current_user();
-                    if ( 0 < $current_user->ID ) {
-                        echo "<div class='content-box'>";
-                        echo get_post_meta($post->ID, 'restrict_field_CRM', true);
-                        echo "</div>";
-                    } else if ( strlen(get_post_meta($post->ID, 'restrict_field_CRM', true)) > 2 ) {
-                        ?>
+                    /*$current_post_id = get_the_id();
+                    $current_user = wp_get_current_user();*/
+                    if ($isLoggedIn):
+
+                    ?>
+
+                        <!-- Personalized Products -->
+                        <h1 class="divisor"><span>Ofertas exclusivas <span class="light">pra você</span></span></h1>
+                        <div class="products">
+                            <div class="loading"></div>
+                        </div>
+                        <input type="hidden" id="fetch_custom_products_handshake" value="<?php echo $handShake ?>">
+
+                        <div class='content-box'>
+                        <?php echo get_post_meta($post->ID, 'restrict_field_CRM', true); ?>
+                        </div>
+                    <? elseif( strlen(get_post_meta($post->ID, 'restrict_field_CRM', true)) > 2 ): ?>
                     
                         <div class="unlogged-crm  sprite-unlogged-crm">
                             <div class="text">
@@ -127,11 +161,9 @@ $resultssingle = new WP_Query( $args );
                             </div>
                         </div>
                     
-                        <?php
-                    }
-                    ?>
+                    <?php endif; ?>
                     
-                    <div class="facebook-comentarios <?php if ( 0 >= $current_user->ID ) { echo "nonlogged"; } ?>">
+                    <div class="facebook-comentarios <?php if ($isLoggedIn) { echo "nonlogged"; } ?>">
                         <!--h3><?php comments_number('0 Mensagens', '1 Mensagem', '% Mensagens' );?></h3-->
                         
                         <?php comments_template(); ?>
@@ -147,19 +179,19 @@ $resultssingle = new WP_Query( $args );
                         }(document, 'script', 'facebook-jssdk'));</script-->
                         <!--div class="fb-comments" data-href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" data-width="100%" data-numposts="5" data-colorscheme="light"></div-->
                     </div>
-				</div>
+                </div>
                 <?php get_sidebar(); ?>
-			<?php endwhile?>
-				
-			<?php else: ?>
+            <?php endwhile?>
+                
+            <?php else: ?>
             
-			<?php endif; ?>
-		</div>
-	</div>
+            <?php endif; ?>
+        </div>
+    </div>
 </section>
 
 <section id="relacionados">
-	<div class="container">
+    <div class="container">
         <?php
         $categories = get_the_category();
         $category_id = $categories[0]->cat_ID;

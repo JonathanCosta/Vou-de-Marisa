@@ -96,6 +96,156 @@ function appendAdminOptions() {
         .detach();
 }
 
+/* Check Facebook Login Status */
+function checkFbLoginStatus(cb) {
+    if(!window.app.fbInitialized) {
+        var checkFbInterval =  window.setInterval(function() {
+            if(window.app.fbInitialized) {
+                window.clearInterval(checkFbInterval);
+                checkFbLoginStatus(cb);
+            }
+        }, 50);
+        return;
+    }
+    FB.getLoginStatus(function(response) {
+        var loggedIn = response.status === 'connected';
+
+        if (loggedIn) {
+            window.app.uid = response.authResponse.userID;
+            window.app.accessToken = response.authResponse.accessToken;
+        }
+        cb(loggedIn);
+    });    
+}
+
+/* Connect with Facebook */
+function fbConnect(perms, cb) {
+    FB.login(function(response) {
+        cb(response.authResponse);
+    }, {'scope': perms.join(',')});
+}
+
+
+/* Fetch Facebook User Info */
+function fetchFbInfo(cb) {
+    FB.api('me', function(resp) {
+        cb(resp);
+    });
+}
+
+function checkIfUserGrantedEmail(cb) {
+    FB.api('me/permissions', function(resp) {
+        cb(_.any(resp.data, function(p) {
+            return p.permission == 'email' && p.status == 'granted';
+        }));
+    });
+}
+
+function removeAllFbPermissions() {
+    FB.api('me/permissions', 'delete', function() {});
+}
+
+/* Updates signup form with Facebook Info */
+function updateForm(form, data) {
+    console.log(form, data);
+}
+
+function registerUserWithFb(form) {
+    form.find('[name=facebook]').val(1);
+    form.submit();
+}
+
+function showSignupLoading() {
+    if(!$('#signup-loading').length) {
+        $('#page').append('<div id="signup-loading"><div class="inner"><div class="spinner">' +
+            '<div class="double-bounce1"></div><div class="double-bounce2"></div></div>' +
+            '<div class="label">Autenticando...</div></div></div>');
+        return window.setTimeout(function() {
+            showSignupLoading();
+        }, 0);
+    }
+
+    $('#signup-loading').fadeIn(300);
+}
+
+function hideSignupLoading() {
+    $('#signup-loading').fadeOut(300);
+}
+
+/* Fetch result from logger */
+function getPayload(payload, cb) {
+    $.ajax({
+
+        url: app.loggerUrl,
+        jsonp: "callback",
+        dataType: "jsonp",
+        data: {
+            payload: payload
+        },
+        success: function(response) {
+            cb && cb(response);
+        }
+    });
+}
+
+function formatPrice(num) {
+    var preco = (num / 100 + '').split('.');
+    return '<span class="crifrao">R$</span><span class="reais">' + preco[0] + '</span><span class="centavos">,' + preco[1] + '</span>';
+}
+
+function getRightImgUrl(url) {
+    return url.replace(/v\.jpg/, '.jpg');
+    //return url;
+}
+
+function charLimit(text, max) {
+    if(text.length > max) {
+        text = text.slice(0, max);
+        text = text.slice(0, _.lastIndexOf(text, ' ')) + '...';
+    }
+
+    return text;
+}
+
+function fetchProducts(el, data) {
+    var gallery = '<div class="gallery"><ul>', li;
+    _.each(data, function(prod) {
+        li = '<li title="' + prod.nome_produto + '" class="item">' + 
+            '<div class="img-wrapper"><img src="' + prod.imagem + '"></div>' + 
+            '<div class="info"><div class="nome">' + charLimit(prod.nome_produto, 30) + '</div>' + 
+            '<div class="descricao">' + charLimit(prod.descricao, 100) + '</div>' +
+            '<div class="preco-e-link">' +
+                '<div class="preco">' + formatPrice(prod.precode) + '</div>' +
+                '<a target="_blank" href="' + prod.link_produto + '" class="link">Comprar</a>' +
+            '</div></div></li>';
+        gallery += li;
+    });
+
+    el.html(gallery + '</ul></div>');
+
+    window.setTimeout(function() {
+        var carroussel = new Carroussel(el, 4);
+        carroussel.load();
+    }, 0);
+}
+
+function fetchCustomProducts(el, data) {
+    var gallery = '<div class="gallery"><ul>', li;
+    _.each(data, function(prod) {
+        li = '<li title="' + prod.nome_produto + '" class="item">' + 
+            '<div class="img-wrapper"><img src="' + getRightImgUrl(prod.imagem) + '"></div>' + 
+            '<div class="info"><div class="nome">' + charLimit(prod.nome_produto, 30) + '</div>' + 
+            '<div class="descricao">' + charLimit(prod.descricao, 100) + '</div>' +
+            '<div class="preco-e-link">' +
+                '<div class="preco">' + formatPrice(prod.precode) + '</div>' +
+                '<a target="_blank" href="' + prod.link_produto + '" class="link">Comprar</a>' +
+            '</div></div></li>';
+        gallery += li;
+    });
+
+    el.html(gallery + '</ul></div>');
+}
+
 (function(){
     'use strict';
 
@@ -299,11 +449,32 @@ function appendAdminOptions() {
     
     $(function(){
         var banner = new BannerCarrossel($('#banner'));
+        var signupForm = $('#signup-form');
         window.banner = banner;
         
         adjustMenu();
         adjustCarrossel();
         removeImageDimensions();
+
+        /* FACEBOOK CONNECT */
+        if ( $('#fb-rootz') ) {
+            var e = document.createElement('script'); e.async = true;
+            e.src = document.location.protocol + '//connect.facebook.net/pt_BR/sdk.js#version=v2.1&xfbml=1&appId=' + window.fbAppId;
+            document.getElementById('fb-rootz').appendChild(e);
+
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId  : window.fbAppId,
+                    status: true, 
+                    cookie: true,
+                    oauth : true,
+                    version: 'v2.1'
+                });
+
+                window.app.fbInitialized = true;
+
+            };
+        }        
         
         $('.children li:last-child').find('a').css('border-bottom', '0px');
         
@@ -440,38 +611,34 @@ function appendAdminOptions() {
                     if (ajax === true) {
 
                         ajax = false;
-                        if ( $('#fb-root') ) {
-                            var e = document.createElement('script'); e.async = true;
-                            e.src = document.location.protocol + '//connect.facebook.net/pt_BR/all.js';
-                            document.getElementById('fb-root').appendChild(e);
-
-                            window.fbAsyncInit = function() {
-                                FB.init({
-                                    appId: '241686319233509',
-                                    status: true,
-                                    cookie: true,
-                                    oauth : true
+                        
+                        var createWidgets = function() {
+                            FB.api('/voudemarisa/posts?fields=id,message,picture,link&limit=3&access_token=CAADbzZCs0eeUBADCyq7ZBHy3s2d9rdZAqR4gEB94sLnF6FFoI7ebPFGyqgo6HW1YZArag5XjQL3nTNInKkviIozS5ph7aynuuqd7NgzzdQs4fNZBgcS1bzZCo3RBxyVBzDZBD2drZBpqVED3n6h3O2OucaRRZAxj0hrcKGuSSK9f7PQobU5Dkk1gk2fUsFsawLZBgZD', function(response) {
+                                var html = '';
+                                $('.box_facebook_lis img').remove();
+                                $.each(response.data, function(idx, p) {
+                                    if (p.message && p.message != undefined && p.picture.length > 0) {
+                                        
+                                        html = '';
+                                        html += '<li><a title="' + p.message + '" href="' + p.link + '" target="_blank">';
+                                        html += '<img src="' + p.picture + '">';
+                                        html += '' + p.message + '</a></li>';
+                                        $('.box_facebook_lis').append(html);
+                                    }
                                 });
-
-                                FB.api('/voudemarisa/posts?fields=id,message,picture,link&limit=3&access_token=CAADbzZCs0eeUBADCyq7ZBHy3s2d9rdZAqR4gEB94sLnF6FFoI7ebPFGyqgo6HW1YZArag5XjQL3nTNInKkviIozS5ph7aynuuqd7NgzzdQs4fNZBgcS1bzZCo3RBxyVBzDZBD2drZBpqVED3n6h3O2OucaRRZAxj0hrcKGuSSK9f7PQobU5Dkk1gk2fUsFsawLZBgZD', function(response) {
-                                    var html = '';
-                                    $('.box_facebook_lis img').remove();
-                                    $.each(response.data, function(idx, p) {
-                                        if (p.message && p.message != undefined && p.picture.length > 0) {
-                                            
-                                            html = '';
-                                            html += '<li><a title="' + p.message + '" href="' + p.link + '" target="_blank">';
-                                            html += '<img src="' + p.picture + '">';
-                                            html += '' + p.message + '</a></li>';
-                                            $('.box_facebook_lis').append(html);
-                                        }
-                                    });
-                                });
-
-                            };
+                            });                            
                         }
-                        
-                        
+
+                        if(!window.app.fbInitialized) {
+                            var checkFbInterval =  window.setInterval(function() {
+                                if(window.app.fbInitialized) {
+                                    window.clearInterval(checkFbInterval);
+                                    createWidgets();
+                                }
+                            }, 50);
+                        } else {
+                            createWidgets();
+                        }              
                         
                         $.ajax({
                             url: app.templateUrl+"/inc/tweets.php",
@@ -557,7 +724,128 @@ function appendAdminOptions() {
         if(window.app.userLoggedIn) {
             appendAdminOptions();
         }
-        
+
+        /* LOGIN MODAL*/
+        $('body').on('click', '#modal-email-login-btn', function(e) {
+            e.preventDefault();
+            $(this).hide();
+            $('.fields-wrapper').show();
+            $('#email').trigger('focus');
+
+        });
+
+        /* REGISTER  FORM*/
+        if(signupForm.length) app.signingUp = true;
+
+        if(app.signingUp) {
+            checkFbLoginStatus(function(isLoggedIn) {
+                if(isLoggedIn) {
+
+                }
+            });
+        }
+
+        var isStrongPassword = function(value) {
+           return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) && // consists of only these
+               /[A-Za-z]/.test(value) && // has a lowercase letter
+               /\d/.test(value) && // has a digit            
+               value.length > 5;
+        };
+
+        var printSignupError = function(msg, form) {
+            var lastInput = form.find('label[for=repetirsenha]');
+            $('<p class="error mtop">' + msg + '</p>').insertAfter(lastInput);
+        };
+
+        $('.signup-form').submit(function(e) {
+            // If anthenticating using Facebook
+            if($('[name=facebook]').val() == 1) return;
+
+            var form = $(this),
+                pass1 = $('#senha').val(),
+                pass2 = $('#repetirsenha').val(),
+                msg;
+
+            form.find('.error').remove();
+            if(pass1 != pass2) {
+                printSignupError('As senhas não conferem', form);
+                e.preventDefault();
+                return;
+            }
+            if(!isStrongPassword(pass1)) {
+                printSignupError('A senha deve conter no mínimo 6 caracteres, e ao menos 1 letra e 1 número', form);
+                e.preventDefault();
+                return;
+            }
+        });
+
+        $('.edit-info-form').submit(function(e) {
+            var form = $(this),
+                acualPass = $('#senha_atual').val(),
+                pass1 = $('#senha').val(),
+                pass2 = $('#repetirsenha').val(),
+                msg;
+
+            form.find('.error').remove();
+            if(pass1 || pass2) {
+                if(!acualPass) {
+                    printSignupError('Digite a senha atual para criar nova senha', form);
+                    e.preventDefault();
+                    return;
+                }
+                if(pass1 != pass2) {
+                    printSignupError('As senhas não conferem', form);
+                    e.preventDefault();
+                    return;
+                }
+                if(!isStrongPassword(pass1)) {
+                    printSignupError('A nova senha deve conter no mínimo 6 caracteres, e ao menos 1 letra e 1 número', form);
+                    e.preventDefault();
+                    return;
+                }
+            }
+        });
+
+        /* FETCH SUCCESS PROCUCTS */
+        if($('#fetch_products_handshake').length) {
+            getPayload($('#fetch_products_handshake').val(), function(resp) {
+                if(resp && resp.length) {
+                    fetchProducts($('.cadastro-sucesso .products'), resp);
+                }
+            });
+        } 
+
+        /* FETCH SINGLE POST PROCUCTS */
+        if($('#fetch_custom_products_handshake').length) {
+            console.log($('#fetch_custom_products_handshake').val());
+            getPayload($('#fetch_custom_products_handshake').val(), function(resp) {
+                if(resp && resp.length) {
+                    fetchCustomProducts($('.products'), resp);
+                }
+            });
+        } 
+
+        /* FACEBOOK CONNECT */
+        $('body').on('click', '.facebook-login-btn', function(e) {
+            e.preventDefault();
+            /* Tries to get user permissions */
+            fbConnect(['email'], function(resp) {
+                if(resp) {
+                    showSignupLoading();
+                    /* Check if User granted Email */
+                    checkIfUserGrantedEmail(function(granted) {
+                        if(!granted) {
+                            hideSignupLoading();
+                            // Unauthorize app to give user another chance
+                            removeAllFbPermissions();
+                        } else {
+                            registerUserWithFb(signupForm);
+                        }
+                    });
+                }
+            });
+            
+        });
         
     });
     

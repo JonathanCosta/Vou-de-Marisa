@@ -21,12 +21,39 @@ $branco: #fff;
 $heightSupHeader: 30px;
 $cinza: #a9aaad;
 $cinzaclaro: #e6e7e8;
+$gray_overlay: rgba(0, 0, 0, .7);
 
 //MIXINS
+.absolute-full {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
 
 //ELEMENTS
 body {
     background: #FFF;
+}
+
+.divisor {
+    font-family: 'verlagbold';
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 22px;
+    margin: 45px 0 30px;
+    border-bottom: 1px solid #a9aaad;
+    padding: 6px 0;
+    a, span {
+        line-height: 22px;
+        color: #000;
+        border-bottom: 3px solid #a9aaad;
+        padding: 6px 0;
+
+        .light { font-family: 'verlaglight'; }
+    }
 }
 
 #sup-header {
@@ -77,6 +104,7 @@ body {
             height: image-height("sprite/sprite-busca.png");
             text-indent: -9999px;
             float: left;
+            background-color: transparent;
             cursor: pointer;
         }
     }
@@ -458,6 +486,10 @@ body {
         font-size: 14px;
         line-height: 20px;
         text-align: justify;
+        h1.divisor {
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
         h2 {
             font-family: 'verlagbold';
             font-weight: bold;
@@ -646,6 +678,9 @@ body {
             font-family: 'verlagbold';
             font-size: 14px;
             text-transform: uppercase;
+            padding-bottom: 19px;
+            border-bottom: 1px solid #a9aaad;
+
             span {
                 width: 50px;
                 height: 28px;
@@ -804,20 +839,7 @@ body {
     border-bottom: 1px solid #afb0b2;
     overflow: hidden;
     h1 {
-        font-family: 'verlagbold';
-        font-size: 18px;
-        text-transform: uppercase;
-        color: #000;
-        line-height: 22px;
-        margin: 45px 0 30px;
-        border-bottom: 1px solid #a9aaad;
-        padding: 6px 0;
-        a {
-            line-height: 22px;
-            color: #000;
-            border-bottom: 3px solid #a9aaad;
-            padding: 6px 0;
-        }
+        @extend .divisor;
     }
     p {
         font-family: 'verlaglight';
@@ -1043,6 +1065,27 @@ body {
             height: image-height("sprite/alert.png");
         }
     }
+
+    .error, .success {
+        border: 1px solid #de0084;
+        color: #de0084;
+        font-size: 16px;
+        margin-top: 10px;
+        padding: 10px 12px;
+        background-color: #FFF4FB;
+        overflow: hidden;
+
+        &.mtop {
+            margin-top: 20px;
+        }
+
+        &.success {
+            background-color: #F5FFF4;
+            border: 1px solid #007C0B;
+            color: #007C0B;
+        }
+    }
+
     .busca-box {
         border: 1px solid #a9aaad;
         padding: 0 0 42px 0;
@@ -1118,6 +1161,7 @@ body {
         width: 78%;
         border: 1px solid #c0c1c3;
         float: right;
+        padding: 0 4px;
         margin-top: 10px;
     }
     #estado {
@@ -1159,7 +1203,7 @@ body {
         width: 14px;
         height: 14px;
     }
-    button {
+    button, a.button {
         background: $marisa;
         font-family: 'verlagbold';
         font-size: 12px;
@@ -1185,6 +1229,10 @@ body {
             width: image-width("sprite/logoff.png");
             height: image-height("sprite/logoff.png");
         }
+    }
+    a.button {
+        line-height: 14px;
+        padding-bottom: 6px;
     }
     .newuser {
         .social-bt {
@@ -1288,6 +1336,347 @@ body {
         margin: 20px 0px 0px 0px;
     }
 }
+
+/* CADASTRO SUCESSO */
+.cadastro-sucesso {
+    overflow: hidden;
+    margin-top: -13px;
+    //background: url(../images/offset.png?1) 0px -47px;
+
+    .header {
+        height: 60px;
+        box-sizing: border-box;
+        position: relative;
+        margin-bottom: 20px;
+        h2 {
+            position: absolute;
+            bottom: 0;
+            padding-left: 73px;
+            font-size: 30px;
+            line-height: 21px;
+            text-transform: uppercase;
+            font-weight: 100;
+            letter-spacing: 0.1px;
+            color: #de0084;
+            background: url(../images/cadastro-sucesso-tick.gif) no-repeat;
+            height: 100%;
+            box-sizing: border-box;
+            padding-top: 39px;
+        }
+        strong {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 245px;
+            font-size: 15px;
+            line-height: 13px;
+        }
+    }
+
+    p.desc { min-height: 73px; }
+
+    h1 {
+        margin: 15px 0 25px;
+    }
+}
+
+
+
+.products {
+    height: 340px;
+    width: 100%;
+    position: relative;
+
+    .loading {
+        width: 100%;
+        height: 100%;
+        background: url(../images/ajax-loader.gif) no-repeat center;
+    }
+
+    .slider {
+        position: absolute;
+        display: none;
+        width: 24px;
+        height: 41px;
+        top: 131px;
+        background: url(../images/sprite-arrows.png) no-repeat;
+        z-index: 20;
+        opacity: .5;
+        cursor: pointer;
+
+        &:hover { opacity: 1; }
+        &.prev { left: 0; }
+        &.next {
+            background-position: right;
+            right: 0;
+        }
+        &.show { display: block; }
+    }
+
+    .gallery {
+        width: 849px;
+        margin: 0 auto;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+
+
+        ul {
+            overflow: hidden;
+            position: absolute;
+            height: 100%;
+            top: 0;
+            left: 0;
+
+            li {
+                width: 184px;
+                height: 100%;
+                float: left;
+                position: relative;
+                overflow: hidden;
+                margin: 0 14px;
+                background-color: #f1f2f2;
+                //background-color: transparent;
+
+                .img-wrapper {
+                    width: 184px;
+                    height: 190px;
+                    overflow: hidden;
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .info {
+                    margin: 10px 10px 0;
+                    position: relative;
+                    height: 129px;
+                }
+
+                .nome {
+                    font-family: "archerbold", Arial;
+                    text-transform: uppercase;
+                    overflow: hidden;
+                    border-bottom: 1px solid #000;
+                    padding-bottom: 5px;
+                }
+
+                .descricao {
+                    font-family: "archerbold", Arial;
+                    font-size: 10px;
+                    line-height: 12px;
+                    margin-top: 11px;
+                }
+
+                .preco-e-link {
+                    overflow: hidden;
+                    position: absolute;
+                    width: 100%;
+                    box-sizing: border-box;
+                    bottom: 0;
+
+                    .preco {
+                        font-family: "archerbold", Arial;
+                        float: left;
+                        span {
+                            float: left;
+                        }
+                        .crifrao {
+                            font-size: 13px;
+                            line-height: 17px;
+                        }
+                        .reais {
+                            font-size: 26px;
+                        }
+                        .centavos {
+                            font-size: 12px;
+                            line-height: 12px;
+                        }
+                    }
+
+                    a.link {
+                        float: right;
+                        color: #fff;
+                        text-transform: uppercase;
+                        font-size: 9.5px;
+                        margin-top: 2px;
+                        padding: 0 5px 0 24px;  
+                        background: $marisa url(../images/image-marker-tag.gif) no-repeat 3px 1px;
+                        background-size: 18px;                     
+                    }
+                }
+            }
+        }           
+    }
+}
+
+#artigos .products {
+    margin-top: -10px;
+    height: auto;
+
+    .gallery {
+        width: 100%;
+        height: auto;
+        position: static;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        //background: url(../images/offset.png?1) no-repeat 0 -6px;
+
+
+        ul {
+            position: static;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+
+            li {
+                width: 100%;
+                height: 206px;
+                float: left;
+                position: relative;
+                overflow: hidden;
+                margin: 10px 0;
+                background-color: #f1f2f2;
+                //background-color: transparent;
+
+                .img-wrapper {
+                    width: 401px;
+                    height: 100%;
+                    overflow: hidden;
+                    float: left;
+
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        margin-top: -103.5px;                        
+                    }                    
+                }
+
+                .info {
+                    margin: 0;
+                    padding: 10px 7px 0 0;
+                    position: relative;
+                    width: 279px;
+                    box-sizing: border-box;
+                    height: 100%;
+                    float: right;
+                }
+
+                .nome {
+                    font-size: 16px;
+                    padding-bottom: 8px;
+                    text-align: left;
+                }
+
+                .descricao {
+                    font-size: 13px;
+                    line-height: 16px;
+                    margin-top: 11px;
+                    font-family: "verlaglight", Arial;
+                    text-align: left;
+                }
+
+                .preco-e-link {
+                    bottom: 15px;
+                    .preco {
+                        float: none;
+                        overflow: hidden;
+                        padding-bottom: 20px;
+                        .crifrao {
+                            font-size: 16px;
+                            line-height: 13px;
+                        }
+                        .reais {
+                            font-size: 38px;
+                            padding-left: 7px;
+                        }
+                        .centavos {
+                            font-size: 17px;
+                            line-height: 10px;
+                        }
+                    }
+
+                    a.link { 
+                        display: block;
+                        float: none;   
+                        font-size: 16.5px;
+                        line-height: 30px;
+                        width: 82px;
+                        height: 28px;
+                        margin-top: 2px;
+                        letter-spacing: -.5px;
+                        padding: 0 5px 0 32px;
+                        background-size: 26px;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+    }    
+}
+
+/* MODAL ONLY */
+.fields-wrapper {
+    display: none;
+    width: 243px;
+    overflow: hidden;
+    margin: 12px auto;
+
+    label {
+        font-family: 'verlaglight';
+        font-size: 14px;
+        color: #000;
+        line-height: 44px;
+        clear: both;
+        width: 100%;
+        display: block;
+        float: left;
+    }
+    input[type=text], input[type=password] {
+        height: 22px;
+        width: 78%;
+        border: 1px solid #c0c1c3;
+        float: right;
+        padding: 0 5px;
+        margin-top: 10px;
+    } 
+    button, a.button {
+        background: $marisa;
+        font-family: 'verlagbold';
+        font-size: 12px;
+        color: #fff;
+        -webkit-border-radius:0px;
+        -moz-border-radius:0px;
+        border-radius:0px;
+        border: 0px solid #c0c1c3;
+        outline:none;
+        display: inline-block;
+        padding: 7px 10px 7px;
+        margin-left: 21%;
+        margin-top: 10px;
+        float: left;
+        ico {
+            width: image-width("sprite/cadastrese.png");
+            height: image-height("sprite/cadastrese.png");
+            display: inline-block;
+            float: left;
+            margin-right: 10px;
+        }
+        ico.sprite-logoff {
+            width: image-width("sprite/logoff.png");
+            height: image-height("sprite/logoff.png");
+        }
+    }
+    a.button {
+        line-height: 14px;
+        padding-bottom: 6px;
+    }
+}
+
 #socials {
     padding-bottom: 20px;
     overflow: hidden;
@@ -1535,6 +1924,7 @@ div.parceiros {
         border: 1px solid #fff;
         text-indent: -99999px;
         margin-right: 4%;
+        background-color: transparent;
     }
     .container {
         padding-bottom: 2px;
@@ -2556,6 +2946,76 @@ button {
         overflow: hidden;
     }
 }
+
+
+/* SIGNUP MODAL */
+#signup-loading {
+    display: none;
+    @extend .absolute-full;
+    z-index: 200;
+    position: fixed;
+    background-color: $gray_overlay;
+
+    .inner {
+        position: absolute;
+        top: 40%;
+        width: 100%;
+    }
+
+    .label {
+        font-size: 40px;
+        width: 100%;
+        color: #fff;
+        text-align: center;
+    }
+
+    .spinner {
+    }    
+}
+
+/* Spinner */
+.spinner {
+  width: 70px;
+  height: 70px;
+
+  position: relative;
+  margin: 20px auto;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: bounce 2.0s infinite ease-in-out;
+  animation: bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
 
 @media screen and (max-width: 500px) {
     #artigos {

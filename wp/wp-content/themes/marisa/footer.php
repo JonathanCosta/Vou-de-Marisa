@@ -46,6 +46,9 @@ $theme_opts = get_option('marisa_options');
 </section>
 
 <script src="<?php echo get_template_directory_uri(); ?>/js/jquery-1.11.1.min.js"></script>
+<?php if(is_page('cadastre-se')): ?>
+        <script src="<?php echo get_template_directory_uri(); ?>/js/carroussel.js"></script>
+<?php endif; ?>
 <script src="<?php echo get_template_directory_uri(); ?>/js/underscore.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/image-marker.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/TweenMax.min.js"></script>
@@ -53,8 +56,10 @@ $theme_opts = get_option('marisa_options');
 
 <?php
     
-    $current_user = wp_get_current_user();
-    if ( 0 == $current_user->ID && strpos(getLastPathSegment($_SERVER['REQUEST_URI']),"cadastre-se") === false && $_COOKIE['firsttime'] == "yes" ) {
+    $isLoggedIn = FrontUser::isLoggedIn();
+    if ( !$isLoggedIn &&
+        strpos(getLastPathSegment($_SERVER['REQUEST_URI']),"cadastre-se") === false &&
+        strpos(getLastPathSegment($_SERVER['REQUEST_URI']),"login") === false && $_COOKIE['firsttime'] == "yes") {
         ?>
             <div class="film"></div>
             <div class="formnewuser">
@@ -75,14 +80,27 @@ $theme_opts = get_option('marisa_options');
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu pulvinar mi. Duis eget porttitor quam. Proin fermentum urna id nisi convallis, id tincidunt ipsum dictum.
                         </p>
                     </div>
+                    
+                    <form id="signup-form" action="./" method="post">
+                        <a href="<?php echo get_site_url(); ?>/cadastre-se" class="facebook-login-btn sprite-facebook-bt social-bt">
+                            Entrar com facebook
+                        </a>
 
-                    <a href="<?php echo get_site_url(); ?>/cadastre-se/" class="sprite-facebook-bt social-bt">
-                        Entrar com facebook
-                    </a>
+                        <a href="#" id="modal-email-login-btn" class="sprite-twitter-bt social-bt">
+                            Entrar com e-mail
+                        </a>
 
-                    <a href="<?php echo get_site_url(); ?>/cadastre-se/" class="sprite-twitter-bt social-bt">
-                        Entrar com Twitter
-                    </a>
+                        <div class="fields-wrapper">
+                                <label for="email">E-mail: <input id="email" name="user_email" type="text" required /></label>
+                                <label for="senha">Senha: <input id="senha" name="user_senha" type="password" required /></label>
+                                <button type="submit"><ico class="sprite-cadastrese"></ico>ENTRAR</button>    
+                        </div>
+
+                        <input name="front_login" type="hidden" value="1"/>
+                        <input name="facebook" type="hidden" value="0"/>                      
+
+                    </form>
+
 
                 </div>
             </div>
@@ -106,15 +124,17 @@ $theme_opts = get_option('marisa_options');
             );
             wp_list_categories( $args ); 
         ?>
-        <?php if ( strlen($current_user->user_firstname) > 0 ) { ?>
+        <?php if ($isLoggedIn) { ?>
         <li class="sprite-home-user">
-            <a href="meus-dados/">
-                <?php echo $current_user->user_firstname; ?>
+            <a href="<?php echo site_url() ?>/meus-dados">
+                <?php echo FrontUser::firstName(); ?>
             </a>
         </li>
         <?php } ?>
     </ul>
 </nav>
+
+<div id="fb-rootz"></div>
 
 </body>
 </html>

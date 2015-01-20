@@ -12,7 +12,10 @@ if ( strlen($_COOKIE['username']) < 1 ) {
         setcookie( "firsttime", "yes", $date_of_expiry );
     }
 }
- 
+
+    //Fix para bloqueio de cookies dentro de iframes no IE, por suportar P3P (http://www.w3.org/P3P/)
+    header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"'); 
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
@@ -35,11 +38,30 @@ if ( strlen($_COOKIE['username']) < 1 ) {
         templateUrl: '<?php echo get_template_directory_uri(); ?>',
         adminUrl: '<?php echo get_admin_url(); ?>',
         siteUrl: '<?php echo get_site_url(); ?>',
+        loggerUrl: '<?php echo LOGGER_BASE_URL ?>',
         thisPageUrl: '<?php echo the_permalink(); ?>',
         thisPageUrlEncoded: '<?php echo urlencode(the_permalink()); ?>',
         filtercategory: '',
         filterorderby: 'modified'
     };
+    window.fbAppId = '<?php echo FB_APP_ID ?>';
+    /*window.fbAsyncInit = function() {
+
+        FB.init({
+             appId  : window.fbAppId,
+             status: true, 
+             cookie: true,
+             oauth : true,
+             xfbml : true,
+             version: 'v2.1'
+        });
+
+        FB.Canvas.setAutoGrow(100);
+
+        if(App && App.Vent) {
+          App.Vent.trigger('fb:ready');
+        }
+    }*/     
 </script>
 </head>
     
@@ -100,7 +122,7 @@ if ( strlen($_COOKIE['username']) < 1 ) {
         </ul>
     </section>
     
-	<section id="header">
+    <section id="header">
         <div class="container">
             <a class="nav mobile menumobile">Exibir Menu Mobile</a>
             <h1 class="" onclick="document.location = '<?php echo site_url(); ?>';">
@@ -119,23 +141,24 @@ if ( strlen($_COOKIE['username']) < 1 ) {
                 </a>
             </div>
             <?php } ?>
-            <form class="<?php             
-                            if ( 0 < $current_user->ID ) {
-                                echo "logged";
-                            } 
-                          ?>" action="<?php echo site_url(); ?>/busca" method="get">
+            <form class="<?php if (FrontUser::isLoggedIn()) { echo "logged"; } ?>" action="<?php echo site_url(); ?>/busca" method="get">
                     <input type="text" name="b" class="txtbusca" placeholder="O que voc&ecirc; procura?" />
                     <button value="btbusca" class="sprite-sprite-busca">O que voc&ecirc; procura?</button>
             </form>
             <a href="<?php echo site_url(); ?>/parceiros/" class="nav hidemobile parceiros"><ico class="parceiros sprite-people"></ico> Parceiros</a>
-            <?php if ( strlen($current_user->user_firstname) < 1 ) { ?>
+    
+            <!-- If user is logged In -->
+            <?php if (!FrontUser::isLoggedIn()) { ?>
+
             <a href="<?php echo site_url(); ?>/cadastre-se/" class="nav hidemobile cadastro"><ico class="cadastro sprite-form"></ico> Cadastre-se</a>
-            <a  href="<?php echo site_url(); ?>/cadastre-se/" class="nav hidemobile entrar"><ico class="entrar sprite-door"></ico> Entrar</a>
+            <a  href="<?php echo site_url(); ?>/login/" class="nav hidemobile entrar"><ico class="entrar sprite-door"></ico> Entrar</a>
+
             <?php } else { ?>
+
             <div class="sprite-home-user hidemobile">
                 Ol&aacute; 
-                <a href="meus-dados/">
-                   <?php echo $current_user->user_firstname; ?>
+                <a href="<?php echo site_url() ?>/meus-dados">
+                   <?php echo FrontUser::firstName(); ?>
                 </a>
             </div>
             <?php } ?>
@@ -154,4 +177,4 @@ if ( strlen($_COOKIE['username']) < 1 ) {
                 </ul>
             </nav>
         </div>
-	</section>
+    </section>

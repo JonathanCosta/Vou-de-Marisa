@@ -272,7 +272,7 @@ module.exports = function (grunt) {
         'compass',
         'autoprefixer',
         'cssmin',
-        'filerev',
+        //'filerev',
         'usemin',
         'htmlmin',
         'clean:tmp'

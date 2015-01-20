@@ -126,12 +126,12 @@ query_posts($args);
     <div class="parceiros">
         <div class="container">
             <h4 class="sprite-parceiros-conteudo">
-                <a href="parceiros/" title="Parceiros de conteúdo">
+                <a href="/parceiros/" title="Parceiros de conteúdo">
                     Parceiros de conteúdo
                     <span>Conhe&ccedil;a o perfil dos nossos parceiros</span>
                 </a>
             </h4>
-            <a href="parceiros/" title="Parceiros de conteúdo">
+            <a href="/parceiros/" title="Parceiros de conteúdo">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/parceiros.png" alt="Parceiros de conteúdo" />
             </a>
         </div>

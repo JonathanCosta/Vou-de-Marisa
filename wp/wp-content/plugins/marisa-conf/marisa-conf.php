@@ -73,6 +73,7 @@ class JW_Options {
         
         add_settings_field('marisa_parceiros_descricao', 'Descri&ccedil;&atilde;o da página', array($this, 'marisa_parceiros_descricao_fn'), __FILE__, 'marisa_parceiros_section');
         add_settings_field('marisa_cadastrese_descricao', 'Descri&ccedil;&atilde;o da página', array($this, 'marisa_cadastrese_descricao_fn'), __FILE__, 'marisa_cadastrese_section');
+        add_settings_field('marisa_sucesso_descricao', 'Descri&ccedil;&atilde;o da página de sucesso', array($this, 'marisa_sucesso_descricao_fn'), __FILE__, 'marisa_cadastrese_section');
         add_settings_field('marisa_meusdados_descricao', 'Descri&ccedil;&atilde;o da página', array($this, 'marisa_meusdados_descricao_fn'), __FILE__, 'marisa_meusdados_section');
         
     }
@@ -166,6 +167,10 @@ class JW_Options {
     
     public function marisa_cadastrese_descricao_fn() {
         echo "<textarea cols=\"60\" rows=\"10\" name='marisa_options[marisa_cadastrese_descricao]' >{$this->options['marisa_cadastrese_descricao']}</textarea>";
+    }
+    
+    public function marisa_sucesso_descricao_fn() {
+        echo "<textarea cols=\"60\" rows=\"10\" name='marisa_options[marisa_sucesso_descricao]' >{$this->options['marisa_sucesso_descricao']}</textarea>";
     }
     
     public function marisa_parceiros_descricao_fn() {

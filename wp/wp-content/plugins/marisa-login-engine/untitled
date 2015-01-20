@@ -1,0 +1,16 @@
+    <div class="cadastro-sucesso">
+        <div class="header">
+            <h2>Parabéns</h2>
+            <strong>Seu cadastro foi realizado com sucesso!</strong>
+        </div>
+        <p class="desc">$descricao</p>
+
+        <h1><span>Produtos exclusivos pra você</span></h1>
+
+        <input type="hidden" id="fetch_products_handshake" value="$handShake">
+
+        <div class="products">
+            <div class="loading"></div>
+        </div>
+
+    </div>
